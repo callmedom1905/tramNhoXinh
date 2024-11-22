@@ -73,7 +73,6 @@
 }
 .related-posts{
     margin: 50px;
-    position: fixed;
     top: 0;
     width: 200px;
     height: 100vh;
@@ -106,12 +105,12 @@
 }
 
 /* Danh mục bài viết liên quan */
-ul {
+.related-posts ul {
     list-style: none;
     margin: 10px 0;
 }
 
-ul li a {
+.related-posts ul li a {
     color: #333;
     text-decoration: none;
     display: block;
@@ -119,6 +118,6 @@ ul li a {
     border-bottom: 1px solid #8D6E6E;
 }
 
-ul li a:hover {
+.related-posts ul li a:hover {
     color: #8d6e6e;
 }
