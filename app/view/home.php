@@ -38,7 +38,9 @@
                     extract($item);
                 
                 ?>
+                
                 <div class="col l-3 m-4 c-12">
+                <a href="index.php?page=productDetail&id=<?=$id?>">
                     <div class="product">
                         <div class="img-product">
                             <img src="public/image/img_product/<?=$image?>" alt="">
@@ -56,6 +58,7 @@
                             <i class="icon off fa-regular fa-heart"></i>
                         </button>
                     </div>
+                    </a>
                 </div>
                 <?php } ?>
 
@@ -89,7 +92,8 @@
                     foreach ($list6Pro as $item){
                         extract($item);
                     ?>
-                        <div class="product">
+                        <a href="index.php?page=productDetail&id=<?=$id?>">
+                            <div class="product">
                             <div class="img-product">
                                 <img src="public/image/img_product/<?=$image?>" alt="">
                             </div>
@@ -106,6 +110,7 @@
                                 <i class="icon off fa-regular fa-heart"></i>
                             </button>
                         </div>
+                        </a>
                         <?php } ?>
 
                     </div>

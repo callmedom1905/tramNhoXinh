@@ -26,14 +26,32 @@ class DataBase
         $this->stmt->execute($param);
         return $this->stmt;
     }
+
     public function getAll($sql)
     {
         $statement = $this->query($sql);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
+    
     public function getOne($sql)
     {
         $statement = $this->query($sql);
         return $statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function insert($sql, $param): bool|string{
+        $this->query($sql,$param);
+        return $this->conn->lastInsertId();  // trả về id sp mới nhập (nếu muốn)
+    }
+
+    public function delete($sql,$param){
+        $this->query($sql,$param);
+    }
+    public function __destruct(){
+        unset($this->conn); 
+    }
+
+    public function update($sql,$param){
+        $this->query($sql,$param);
     }
 }

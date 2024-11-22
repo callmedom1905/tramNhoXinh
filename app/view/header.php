@@ -124,7 +124,7 @@
                 </div>
 
                 <div class="cart-box-footer">
-                    <button>THANH TOÁN</button>
+                    <a href="index.php?page=payment"><button>THANH TOÁN</button></a>
                 </div>
             </div>
         </div>
@@ -143,9 +143,9 @@
                         </button>
                     </div>
                     <div class="join-register">
-                        <a href="#">Bạn chưa có tài khoản. ?Đăng ký</a>
+                        <a href="#">Bạn chưa có tài khoản? Đăng ký</a>
                     </div>
-                    <form action="">
+                    <form action="index.php?page=login" method="post">
                         <div class="input-group">
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email" placeholder="Nhập email" required>
@@ -157,7 +157,7 @@
                             </label>
     
                             <div class="password-container">
-                                <input type="password" id="password" name="password" placeholder="Nhập mật khẩu" required>
+                                <input type="password" id="password" name="mklogin" placeholder="Nhập mật khẩu" required>
                                 <button type="button" class="show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
@@ -171,7 +171,7 @@
                             <label for="rememberMe">Nhớ mật khẩu</label>
                         </div>
     
-                        <button type="submit" class="login-btn">Đăng nhập</button>
+                        <input type="submit" name="dangnhap" value="Đăng nhập" class="login-btn">
     
                     </form>
                 </div>
@@ -193,9 +193,9 @@
                         </button>
                     </div>
                     <div class="join-login">
-                        <a href="#">Bạn đã có tài khoản. ?Đăng nhập</a>
+                        <a href="#">Bạn đã có tài khoản? Đăng nhập</a>
                     </div>
-                    <form action="">
+                    <form action="index.php?page=register" method="post">
                         <div class="re-input-group">
                             <label for="re-email">Email:</label>
                             <input type="email" id="re-email" name="re-email" placeholder="Nhập email" required>
@@ -207,7 +207,7 @@
                             </label>
     
                             <div class="re-password-container">
-                                <input type="password" id="re-password" name="re-password" placeholder="Nhập mật khẩu"
+                                <input type="password" id="password" name="mk" placeholder="Nhập mật khẩu"
                                     required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
@@ -220,7 +220,7 @@
                             </label>
     
                             <div class="re-password-container">
-                                <input type="password" id="re-password" name="re-password" placeholder="Xác nhận mật khẩu"
+                                <input type="password" id="re-password" name="remk" placeholder="Xác nhận mật khẩu"
                                     required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
@@ -229,18 +229,15 @@
                         </div>
                         <div class="re-input-group">
                             <label for="re-name">Họ và tên</label>
-                            <input type="text" id="re-name" name="re-name" placeholder="Nhập tên" required>
+                            <input type="text" id="re-name" name="hoten" placeholder="Nhập tên" required>
                         </div>
                         <div class="re-input-group">
                             <label for="re-phone">Số điện thoại</label>
-                            <input type="text" id="re-phone" name="re-phone" placeholder="Nhập số điện thoại" required>
+                            <input type="text" id="re-phone" name="sdt" placeholder="Nhập số điện thoại" required>
                         </div>
-                        <div class="re-checkbox-group">
-                            <input class="re-checkbox" type="checkbox" id="re-rememberMe" name="re-rememberMe">
-                            <label for="re-rememberMe">Nhớ mật khẩu</label>
-                        </div>
+                        
     
-                        <button type="submit" class="register-btn">Đăng nhập</button>
+                        <input type="submit" name="dangky" value="Đăng ký" class="register-btn">
     
                     </form>
                 </div>
