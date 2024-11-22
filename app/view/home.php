@@ -40,8 +40,8 @@
                 ?>
                 
                 <div class="col l-3 m-4 c-12">
-                <a href="index.php?page=productDetail&id=<?=$id?>">
                     <div class="product">
+                    <a href="index.php?page=productDetail&id=<?=$id?>">
                         <div class="img-product">
                             <img src="public/image/img_product/<?=$image?>" alt="">
                         </div>
@@ -52,13 +52,14 @@
                             <span><?=$price?></span>
                             <span> <sub><del><?=$salePrice?></del></sub> </span>
                         </div>
+                    </a>
+
                         <button class="addCart-product">Thêm vào giỏ hàng</button>
                         <button class="heart-button">
                             <i class="icon on fa-solid fa-heart"></i>
                             <i class="icon off fa-regular fa-heart"></i>
                         </button>
                     </div>
-                    </a>
                 </div>
                 <?php } ?>
 
@@ -71,7 +72,7 @@
         <section class="row">
             <div class="col l-12 m-12 c-12 banner-sub">
                 <div class="sub-banner-home">
-                    <img src="public/image/bannerSlide.jpg" alt="">
+                    <img src="public/image/banner1.png" alt="">
                 </div>
             </div>
         </section>
@@ -87,30 +88,31 @@
                 <div class="box-hot-product">
                     <button class="prev-btn"> <i class="fa-solid fa-chevron-left"></i> </button>
                     <div class="products-container">
-                    <?php
-                    $list6Pro = $data['product6'];
-                    foreach ($list6Pro as $item){
-                        extract($item);
-                    ?>
-                        <a href="index.php?page=productDetail&id=<?=$id?>">
-                            <div class="product">
-                            <div class="img-product">
-                                <img src="public/image/img_product/<?=$image?>" alt="">
-                            </div>
-                            <div class="name-product">
-                                <span><?=$name?></span>
-                            </div>
-                            <div class="price-product">
-                                <span><?=$price?></span>
-                                <span> <sub><del><?=$salePrice?></del></sub> </span>
-                            </div>
-                            <button class="addCart-product">Thêm vào giỏ hàng</button>
-                            <button class="heart-button">
-                                <i class="icon on fa-solid fa-heart"></i>
-                                <i class="icon off fa-regular fa-heart"></i>
-                            </button>
-                        </div>
-                        </a>
+                        <?php
+                        $list6Pro = $data['product6'];
+                        foreach ($list6Pro as $item){
+                            extract($item);
+                        ?>
+                                <div class="product">
+                                    <a href="index.php?page=productDetail&id=<?=$id?>">
+                                        <div class="img-product">
+                                            <img src="public/image/img_product/<?=$image?>" alt="">
+                                        </div>
+                                        <div class="name-product">
+                                            <span><?=$name?></span>
+                                        </div>
+                                        <div class="price-product">
+                                            <span><?=$price?></span>
+                                            <span> <sub><del><?=$salePrice?></del></sub> </span>
+                                        </div>
+                                     </a>
+
+                                    <button class="addCart-product">Thêm vào giỏ hàng</button>
+                                    <button class="heart-button">
+                                        <i class="icon on fa-solid fa-heart"></i>
+                                        <i class="icon off fa-regular fa-heart"></i>
+                                    </button>
+                                </div>
                         <?php } ?>
 
                     </div>
