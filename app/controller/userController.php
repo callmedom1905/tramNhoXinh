@@ -62,7 +62,7 @@ class UserController{
                     location.href='admon/index.php';
                 </script>";
             }else if ($result['role'] == 0){
-                // $_SESSION['user'] = $result['username'];
+                $_SESSION['user'] = $result['email'];
                 echo "<script>
                     alert('Đăng nhập thành công');
                 </script>";

@@ -88,6 +88,10 @@ if (isset($_GET['page'])) {
             $login = new UserController();
             $login->login();
             break;
+        case 'logout':
+            session_unset();
+            header('Location: index.php');
+            break;
         
 
 

@@ -1,3 +1,21 @@
+<?php
+    if(isset($_SESSION['user']) && ($_SESSION['user']!='')){
+        $login = '
+        <ul class="nav_drop-down">
+            <li><a href="#">Tài khoản</a></li>
+            <li><a href="index.php?page=logout" >Đăng xuất</a></li>
+        </ul>
+        ';
+    }else{
+        $login = '
+        <ul class="nav_drop-down">
+            <li><a href="#" class="dangnhap">Đăng nhập</a></li>
+            <li><a href="#" class="dangky">Đăng ký</a></li>
+        </ul>
+        ';
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,10 +73,11 @@
                             <li class="col l-2 m-2 c-12"><a href="#">Giới thiệu</a></li>
                             <li class="col l-2 m-2 c-12"><a href="#">Liên hệ</a></li>
                             <li class="col l-2 m-2 c-12"><a href="#">Tài khoản </a>
-                                <ul class="nav_drop-down">
+                                <!-- <ul class="nav_drop-down">
                                     <li><a href="#" class="dangnhap">Đăng nhập</a></li>
                                     <li><a href="#" class="dangky">Đăng ký</a></li>
-                                </ul>
+                                </ul> -->
+                            <?=$login?>
 
                             </li>
                         </ul>
