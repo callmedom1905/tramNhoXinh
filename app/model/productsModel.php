@@ -24,14 +24,26 @@ class ProductsModel{
     //         return null;
     //     }
     // }
-    // //sản phẩm theo danh mục
-    // function getProCate(){
-        
-    // }
+    //sản phẩm theo danh mục
+    function getProCate($idcate){
+        $sql = "SELECT * FROM products WHERE idCate = $idcate";
+        return $this->db->getAll($sql);
+    }
 
+    //lấy tất cả sản phẩm
     function getAllPro(){
         $sql = "SELECT * FROM products";
         return $this->db->getAll($sql);
     }
+
+    //lấy sản phẩm nổi bật theo view
+    function getProHot(){
+        $sql = "SELECT * FROM products ORDER BY view DESC LIMIT 4";
+        return $this->db->getAll($sql);
+    }
+
+    
+
+
 
 }

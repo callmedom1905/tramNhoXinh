@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="public/css/prouduct.css">
     
 </head>
-<body>
+<body> 
 
     <main>
         <section>
@@ -21,14 +21,14 @@
                             <input type="text" placeholder="Tìm kiếm sản phẩm">
                             <button><i class="fas fa-search"></i></button>
                         </div>
-                        <h3 class="title">Danh mục</h3>
+                        <h3 class="title"><?=$data['nameCate'][0]['name']?></h3>
                         <ul class="cateProduct">
-                            <li><a class="nameCate" href="">Phụ kiện</a></li>
-                            <li><a class="nameCate" href="">Vòng tay</a></li>
-                            <li><a class="nameCate" href="">Túi len</a></li>
-                            <li><a class="nameCate" href="">Nón len</a></li>
-                            <li><a class="nameCate" href="">Trang trí</a></li>
-                            <li><a class="nameCate" href="">Tô màu</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=2">Phụ kiện</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=4">Vòng tay</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=6">Túi len</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=5">Nón len</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=3">Trang trí</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=1">Tô màu</a></li>
 
                         </ul>
 
@@ -41,7 +41,7 @@
                                 </td>
                             </tr>
                             <?php
-                                $listpro = $data['products'];
+                                $listpro = $data['prohot'];
                                 foreach ($listpro as $item) {
                                     extract($item);
                                 
@@ -52,9 +52,9 @@
                                             class="featured-img"></a>
                                     <a href="#">
                                         <p><?=$name?></p>
-                                        <!-- <p>Đánh giá sao</p> -->
+                                        <p><?=$view?> lượt xem</p>
                                         <p><?=$price?></p>
-                                        <p><?=$salePrice?></p>
+                                        <!-- <p><?=$salePrice?></p> -->
                                     </a>
                                 </td>
                             </tr>

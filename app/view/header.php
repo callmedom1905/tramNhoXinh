@@ -35,8 +35,10 @@
             <div class="row">
                 <div class="col l-6 m-6 c-6">
                     <div class="header_logo">
-                        <a href=""><img src="public/image/removebg_logo_tramNhoXinh.png" alt=""></a>
-                        <h3>Trạm Nhỏ Xinh</h3>
+                        <a href="index.php">
+                            <img src="public/image/removebg_logo_tramNhoXinh.png" alt="">
+                        </a>
+                        <a href="index.php"><h3>Trạm Nhỏ Xinh</h3></a>
                     </div>
                 </div>
                 <div class="col l-6 m-6 c-6">
@@ -58,15 +60,15 @@
             <input type="checkbox" id="bar-menu" class="bar-menu">
                     <div class="nav_menu">
                         <ul class="nav_main-menu row">
-                            <li class="col l-2 m-2 c-12"><a href="#">Trang chủ</a></li>
-                            <li class="col l-2 m-2 c-12"><a href="#">Danh mục</a>
+                            <li class="col l-2 m-2 c-12"><a href="index.php">Trang chủ</a></li>
+                            <li class="col l-2 m-2 c-12"><a href="">Danh mục</a>
                                 <ul class="nav_drop-down">
-                                    <li><a href="index.php?page=product">Phụ kiện</a></li>
-                                    <li><a href="#">Vòng tay</a></li>
-                                    <li><a href="#">Túi len</a></li>
-                                    <li><a href="#">Nón len</a></li>
-                                    <li><a href="#">Trang trí</a></li>
-                                    <li><a href="#">Tô màu</a></li>
+                                    <li><a href="index.php?page=product&id=2">Phụ kiện</a></li>
+                                    <li><a href="index.php?page=product&id=4">Vòng tay</a></li>
+                                    <li><a href="index.php?page=product&id=6">Túi len</a></li>
+                                    <li><a href="index.php?page=product&id=5">Nón len</a></li>
+                                    <li><a href="index.php?page=product&id=3">Trang trí</a></li>
+                                    <li><a href="index.php?page=product&id=1">Tô màu</a></li>
                                 </ul>
                             </li>
                             <li class="col l-2 m-2 c-12"><a href="#">Bài viết</a></li>

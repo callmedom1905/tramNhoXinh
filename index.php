@@ -4,6 +4,7 @@ ob_start();
 require_once 'app/model/database.php';
 require_once 'app/model/productsModel.php';
 require_once 'app/model/userModel.php';
+require_once 'app/model/productCateModel.php';
 require_once 'app/controller/homeController.php';
 require_once 'app/controller/paymentController.php';
 require_once 'app/controller/userController.php';
@@ -21,7 +22,7 @@ if (isset($_GET['page'])) {
         //     // trang sản phẩm
         case 'product':
             $product = new ProductController();
-            $product->viewProduct();
+            $product->viewProCate();
             break;
         // case 'productDetail':
         //     $productDetail = new ProductController();
