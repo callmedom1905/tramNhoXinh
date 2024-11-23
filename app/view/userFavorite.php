@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="public/css/userFavorite.css">
 </head>
 <body>
+<?php echo '<h1>Sua css</h1>'; ?>
+
 <main class="productFavorite">
 <div class="grid wide container">
     <div class="row">

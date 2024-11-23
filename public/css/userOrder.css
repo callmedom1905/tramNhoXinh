@@ -15,12 +15,12 @@
     padding: 20px;
 }
 
-ul {
+ul.user-menu {
     list-style: none;
     margin: 10px 0;
 }
 
-ul li a {
+ul.user-menu li a {
     color: #333;
     text-decoration: none;
     display: block;
@@ -29,7 +29,7 @@ ul li a {
     padding: 30px;
 }
 
-ul li a:hover {
+ul.user-menu li a:hover {
     color: #8D6E6E;
 }
 

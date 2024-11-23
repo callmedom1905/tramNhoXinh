@@ -43,20 +43,20 @@
 }
 
 /* Danh mục sản phẩm */
-ul {
+.cateProduct {
     list-style: none;
     padding: 0;
 }
 
-ul li a {
+.cateProduct li .nameCate {
     color: #333;
     text-decoration: none;
     display: block;
-    padding: 25px 5px;
+    padding: 15px 5px;
     border-bottom: 1px solid #8D6E6E;
 }
 
-ul li a:hover {
+.cateProduct li .nameCate:hover {
     color: #8d6e6e;
 }
 

@@ -61,7 +61,7 @@
                             <li class="col l-2 m-2 c-12"><a href="#">Trang chủ</a></li>
                             <li class="col l-2 m-2 c-12"><a href="#">Danh mục</a>
                                 <ul class="nav_drop-down">
-                                    <li><a href="#">Phụ kiện</a></li>
+                                    <li><a href="index.php?page=product">Phụ kiện</a></li>
                                     <li><a href="#">Vòng tay</a></li>
                                     <li><a href="#">Túi len</a></li>
                                     <li><a href="#">Nón len</a></li>

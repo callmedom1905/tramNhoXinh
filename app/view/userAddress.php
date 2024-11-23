@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/userAddress.css">
 </head>
+<style>
+<?php echo '<h1>Sua css</h1>'; ?>
 
+</style>
 <body>
     <!-- Header and nav -->
     <!-- Địa chỉ thanh toán -->

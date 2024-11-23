@@ -29,4 +29,9 @@ class ProductsModel{
         
     // }
 
+    function getAllPro(){
+        $sql = "SELECT * FROM products";
+        return $this->db->getAll($sql);
+    }
+
 }

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="public/css/userInfo.css">
 </head>
 <body>
+<?php echo '<h1>Sua css</h1>'; ?>
+
 <main class="inforUser">
     <section>
         <div class="grid wide container">
