@@ -42,6 +42,22 @@ class ProductsModel{
         return $this->db->getAll($sql);
     }
 
+    //lấy sản phẩm theo id product 
+    function getIdPro($idpro){
+        if($idpro > 0){
+            $sql = "SELECT * FROM products WHERE id = $idpro";
+            return $this->db->getOne($sql);
+        }else{
+            return null;
+        }
+    }
+
+    //lấy sản phẩm mới nhất
+    function getNewPro(){
+        $sql = "SELECT * FROM products ORDER BY id DESC LIMIT 4";
+        return $this->db->getAll($sql);
+    }
+
     
 
 

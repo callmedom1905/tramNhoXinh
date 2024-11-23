@@ -19,15 +19,15 @@ if (isset($_GET['page'])) {
             $home->viewHome();
             break;
 
-        //     // trang sản phẩm
+            // trang sản phẩm
         case 'product':
             $product = new ProductController();
             $product->viewProCate();
             break;
-        // case 'productDetail':
-        //     $productDetail = new ProductController();
-        //     $productDetail->viewProductDetail();
-        //     break;
+        case 'productDetail':
+            $productDetail = new ProductController();
+            $productDetail->viewProDetail();
+            break;
 
         //     // trang bài viết
         // case 'post':

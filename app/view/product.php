@@ -48,13 +48,14 @@
                                 ?>
                             <tr>
                                 <td>
-                                    <a href=""><img src="public/image/img_product/<?=$image?>" alt=""
-                                            class="featured-img"></a>
+                                    <a href="">
+                                        <img class="featured-img" src="public/image/img_product/<?=$image?>" alt="">
+                                    </a>
                                     <a href="#">
                                         <p><?=$name?></p>
                                         <p><?=$view?> lượt xem</p>
                                         <p><?=$price?></p>
-                                        <!-- <p><?=$salePrice?></p> -->
+                                        <p><?=$salePrice?></p>
                                     </a>
                                 </td>
                             </tr>

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="public/css/productDetail.css">
 </head>
-<?php echo '<h1>Sua css</h1>'; ?>
+
 <body>
     <main>
         <section>
@@ -16,17 +16,39 @@
                 <div class="row">
                     <div class="l-12">
                         <!--Chi tiết sản phẩm-->
+                        <?php
+                        $product = $data['detail'];
+                        extract($product);
+                        if (!empty($listImages)) {
+                            // Nếu $listImages không rỗng, tách chuỗi thành mảng
+                            $list = explode(',', $listImages);
+                        } else {
+                            // Nếu $listImages rỗng, gán mảng trống
+                            $list = [];
+                        }
+
+                        ?>
                         <div class="product-detail">
                             <div class="product-detail-thumbnails">
-                                <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Thumbnail 1" class="thumbnail">
-                                <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Thumbnail 2" class="thumbnail">
-                                <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Thumbnail 3" class="thumbnail">
-                                <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Thumbnail 4" class="thumbnail">
+                                <?php
+                                if (!empty($list)) {
+                                    $count = count($list);
+                                    for ($i = 0; $i < $count; $i++) {
+                                        // in số lượng ảnh có trong mảng
+                                        if (isset($list[$i])) {
+                                            echo "<img src='public/image/img_product/{$list[$i]}' alt='Thumbnail " . ($i + 1) . "' class='thumbnail'>";
+                                        }
+                                    }
+                                }else{
+                                    echo '';
+                                }
+                                ?>
                             </div>
-                            <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Tên sản phẩm">
+                            <img src="public/image/img_product/<?= $image ?>" alt="Tên sản phẩm">
                             <div class="info">
-                                <h2>Tên sản phẩm</h2>
-                                <p class="price">Giá<sup>đ</sup></p>
+                                <h2><?= $name ?></h2>
+                                <p class="price"><?= $price ?> đ</p>
+                                <p class="price"><?= $salePrice ?> đ</p>
                                 <div class="quantity-controls">
                                     <button onclick="minus()"><i class="fa-solid fa-minus"></i></button>
                                     <input type="text" id="amount" value="1">
@@ -42,7 +64,7 @@
                         <!-- Mô tả chi tiết sản phẩm-->
                         <div class="">
                             <h3 class="product-detail-title">Chi tiết sản phẩm</h3>
-                            <p class="product-detail-description">Mô tả chi tiết</p>
+                            <p class="product-detail-description"><?= $detail ?></p>
                             <H4 class="product-detail-info">Thông tin sản phẩm</H4>
                             <table class="product-detail-table">
                                 <tr>
@@ -51,7 +73,7 @@
                                 </tr>
                                 <tr>
                                     <td>Chất liệu</td>
-                                    <td>Vải len</td>
+                                    <td><?= $material ?></td>
                                 </tr>
                                 <tr>
                                     <td>Kích thước</td>
@@ -59,11 +81,13 @@
                                 </tr>
                                 <tr>
                                     <td>Màu sắc</td>
-                                    <td>Nâu</td>
+                                    <td><?= $color ?></td>
                                 </tr>
                             </table>
                         </div>
                     </div>
+
+
                     <div class="l-12">
                         <div class="review-section">
                             <h3 class="rating-title">Đánh giá</h3>
@@ -110,6 +134,9 @@
                         </div>
                         <!-- Phần bình luận -->
                         <div class="comment-section">
+                            <?php
+                            echo 'function show comments ';
+                            ?>
                             <div class="comment">
                                 <div class="user-avatar"></div>
                                 <div class="user-review">
@@ -142,100 +169,44 @@
                         </div>
                     </div>
                     <!-- Sản phẩm liên quan-->
-                     
+
                     <div class="col l-12">
                         <section class="row">
                             <div class="title-box">`
                                 <h3>Sản phẩm mới</h3>
                             </div>
                             <div class="row">
-                                <div class="col l-3 m-4 c-12">
-                                    <div class="product">
-                                        <div class="img-product">
-                                            <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="">
+                                <?php
+                                $newPro = $data['newpro'];
+                                foreach ($newPro as $item) {
+                                    extract($item);
+                                    ?>
+                                    <div class="col l-3 m-4 c-12">
+                                        <div class="product">
+                                            <a href="index.php?page=productDetail&id=<?= $id ?>">
+                                                <div class="img-product">
+                                                    <img src="public/image/img_product/<?= $image ?>" alt="">
+                                                </div>
+                                                <div class="name-product">
+                                                    <span><?= $name ?></span>
+                                                </div>
+                                                <div class="price-product">
+                                                    <span><?= $price ?></span>
+                                                    <span> <sub><del><?= $salePrice ?></del></sub> </span>
+                                                </div>
+                                            </a>
+                                            <button class="addCart-product">Thêm vào giỏ hàng</button>
+                                            <button class="heart-button">
+                                                <i class="icon on fa-solid fa-heart"></i>
+                                                <i class="icon off fa-regular fa-heart"></i>
+                                            </button>
                                         </div>
-                                        <div class="name-product">
-                                            <span>Tên sản phẩm</span>
-                                        </div>
-                                        <div class="price-product">
-                                            <span>100,000</span>
-                                            <span> <sub><del>100,000</del></sub> </span>
-                                        </div>
-                                        <button class="addCart-product">Thêm vào giỏ hàng</button>
-                                        <button class="heart-button">
-                                            <i class="icon on fa-solid fa-heart"></i>
-                                            <i class="icon off fa-regular fa-heart"></i>
-                                        </button>
                                     </div>
-                                </div>
-                
-                                <div class="col l-3 m-4 c-12">
-                                    <div class="product">
-                                        <div class="img-product">
-                                            <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="">
-                                        </div>
-                                        <div class="name-product">
-                                            <span>Lorem ipsum dolor sit amet coectetur adipisicing elit. Odio, nostrum? Lorem
-                                                ipsum dolor sit amet consectetur, adipisicing elit. Doloribus,
-                                                recusandae.</span>
-                                        </div>
-                                        <div class="price-product">
-                                            <span>100,000</span>
-                                            <span> <sub><del>100,000</del></sub> </span>
-                                        </div>
-                                        <button class="addCart-product">Thêm vào giỏ hàng</button>
-                                        <button class="heart-button">
-                                            <i class="icon on fa-solid fa-heart"></i>
-                                            <i class="icon off fa-regular fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                
-                                <div class="col l-3 m-4 c-12">
-                                    <div class="product">
-                                        <div class="img-product">
-                                            <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="">
-                                        </div>
-                                        <div class="name-product">
-                                            <span>Lorem ipsum dolor sit amet coectetur adipisicing elit. Odio, nostrum? Lorem
-                                                ipsum dolor sit amet consectetur, adipisicing elit. Doloribus,
-                                                recusandae.</span>
-                                        </div>
-                                        <div class="price-product">
-                                            <span>100,000</span>
-                                            <span> <sub><del>100,000</del></sub> </span>
-                                        </div>
-                                        <button class="addCart-product">Thêm vào giỏ hàng</button>
-                                        <button class="heart-button">
-                                            <i class="icon on fa-solid fa-heart"></i>
-                                            <i class="icon off fa-regular fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                                <div class="col l-3 m-4 c-12">
-                                    <div class="product">
-                                        <div class="img-product">
-                                            <img src="../image/y-tuong-lam-do-handmade-2.webp" alt="">
-                                        </div>
-                                        <div class="name-product">
-                                            <span>Lorem ipsum dolor sit amet coectetur adipisicing elit. Odio, nostrum? Lorem
-                                                ipsum dolor sit amet consectetur, adipisicing elit. Doloribus,
-                                                recusandae.</span>
-                                        </div>
-                                        <div class="price-product">
-                                            <span>100,000</span>
-                                            <span> <sub><del>100,000</del></sub> </span>
-                                        </div>
-                                        <button class="addCart-product">Thêm vào giỏ hàng</button>
-                                        <button class="heart-button">
-                                            <i class="icon on fa-solid fa-heart"></i>
-                                            <i class="icon off fa-regular fa-heart"></i>
-                                        </button>
-                                    </div>
-                                </div>
-            
+                                <?php } ?>
+
+
                             </div>
-                
+
                         </section>
                     </div>
                 </div>
