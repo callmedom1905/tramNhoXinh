@@ -49,7 +49,7 @@
                             <span><?=$name?></span>
                         </div>
                         <div class="price-product">
-                            <span><?=$price?></span>
+                            <span><?=number_format($price)?> đ</span>
                             <span> <sub><del><?=$salePrice?></del></sub> </span>
                         </div>
                     </a>
@@ -102,7 +102,7 @@
                                             <span><?=$name?></span>
                                         </div>
                                         <div class="price-product">
-                                            <span><?=$price?></span>
+                                            <span><?=number_format($price)?> đ</span>
                                             <span> <sub><del><?=$salePrice?></del></sub> </span>
                                         </div>
                                      </a>

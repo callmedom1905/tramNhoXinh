@@ -39,7 +39,7 @@
                                             echo "<img src='public/image/{$list[$i]}' alt='Thumbnail " . ($i + 1) . "' class='thumbnail'>";
                                         }
                                     }
-                                }else{
+                                } else {
                                     echo '';
                                 }
                                 ?>
@@ -47,8 +47,8 @@
                             <img src="public/image/<?= $image ?>" alt="Tên sản phẩm">
                             <div class="info">
                                 <h2><?= $name ?></h2>
-                                <p class="price"><?= $price ?> đ</p>
-                                <p class="price"><?= $salePrice ?> đ</p>
+                                <p class="price"><?= number_format($price) ?> đ</p>
+                                <p class="price"><?= $salePrice ?> </p>
                                 <div class="quantity-controls">
                                     <button onclick="minus()"><i class="fa-solid fa-minus"></i></button>
                                     <input type="text" id="amount" value="1">
@@ -69,7 +69,7 @@
                             <table class="product-detail-table">
                                 <tr>
                                     <td>Loại sản phẩm</td>
-                                    <td><?=$data['nameCate'][0]['name']?></td>
+                                    <td><?= $data['nameCate'][0]['name'] ?></td>
                                 </tr>
                                 <tr>
                                     <td>Chất liệu</td>
@@ -77,7 +77,7 @@
                                 </tr>
                                 <tr>
                                     <td>Kích thước</td>
-                                    <td>15×30×20</td>
+                                    <td><?=$size?></td>
                                 </tr>
                                 <tr>
                                     <td>Màu sắc</td>
@@ -93,67 +93,202 @@
                             <h3 class="rating-title">Đánh giá</h3>
                             <div class="rating-summary">
                                 <div class="average-rating">
-                                    <p>4.8</p>
-                                    <p class="review-count">Của 123 đánh giá</p>
+                                    <?php
+                                    $rating = $data['rating'];
+                                    $totalStar = null;
+                                    for ($i = 0; $i < count($rating); $i++) {
+                                        $totalStar += (int) $rating[$i]['star'];
+                                        $count = count($rating);
+                                    }
+                                    $star = $totalStar / $count;
+                                    ?>
+                                    <p><?= round($star) ?></p>
+                                    <p class="review-count">Của <?= $count ?> đánh giá</p>
                                     <span class="star-rating">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-regular fa-star-half-stroke"></i>
+                                        <?php
+                                        $star = round($star);
+                                        if ($star == 1) {
+                                            echo "
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            ";
+                                        } elseif ($star == 2) {
+                                            echo "
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            ";
+                                        } elseif ($star == 3) {
+                                            echo "
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            ";
+                                        } elseif ($star == 4) {
+                                            echo "
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            ";
+                                        } elseif ($star == 5) {
+                                            echo "
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            <i class='fa-solid fa-star'></i>
+                                            ";
+                                        } else {
+                                            echo "
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            <i class='fa-regular fa-star'></i>
+                                            "; // Trường hợp rating không nằm trong 1-5
+                                        }
+                                        ?>
+
                                     </span>
                                 </div>
+
                                 <div class="rating-distribution">
+                                    <?php
+                                    if($star != 0){
+
+                                    
+                                    $rate1 = 0;
+                                    $rate2 = 0;
+                                    $rate3 = 0;
+                                    $rate4 = 0;
+                                    $rate5 = 0;
+
+                                    foreach($rating as $item){
+                                        extract($item);
+                                        if($star == 1){
+                                            $rate1++;
+                                        }else if($star == 2){
+                                            $rate2++;
+                                        }else if($star == 3){
+                                            $rate3++;
+                                        }else if($star == 4){
+                                            $rate4++;
+                                        }else{
+                                            $rate5++;
+                                        }
+                                    }
+
+                                    $sl = count($rating);
+                                    $percent5 = ($rate5/$sl)*100;
+                                    $percent4 = ($rate4/$sl)*100;
+                                    $percent3 = ($rate3/$sl)*100;
+                                    $percent2 = ($rate2/$sl)*100;
+                                    $percent1 = ($rate1/$sl)*100;
+                                    ?>
                                     <div class="rating-bar"><span>Xuất sắc</span>
                                         <div class="bar">
-                                            <div class="fill" style="width: 100%;"></div>
-                                        </div><span>100</span>
+                                            <div class="fill" style="width: <?php echo $percent5;?>%;"></div>
+                                        </div><span><?=$rate5?></span>
                                     </div>
                                     <div class="rating-bar"><span>Tốt</span>
                                         <div class="bar">
-                                            <div class="fill" style="width: 11%;"></div>
-                                        </div><span>80</span>
+                                            <div class="fill" style="width: <?php echo $percent4;?>%;"></div>
+                                        </div><span><?=$rate4?></span>
                                     </div>
                                     <div class="rating-bar"><span>Trung bình</span>
                                         <div class="bar">
-                                            <div class="fill" style="width: 3%;"></div>
-                                        </div><span>50</span>
+                                            <div class="fill" style="width: <?php echo $percent3;?>%;"></div>
+                                        </div><span><?=$rate3?></span>
                                     </div>
                                     <div class="rating-bar"><span>Kém</span>
                                         <div class="bar">
-                                            <div class="fill" style="width: 8%;"></div>
-                                        </div><span>20</span>
+                                            <div class="fill" style="width: <?php echo $percent2;?>%;"></div>
+                                        </div><span><?=$rate2?></span>
                                     </div>
                                     <div class="rating-bar"><span>Rất kém</span>
                                         <div class="bar">
-                                            <div class="fill" style="width: 1%;"></div>
-                                        </div><span>10</span>
+                                            <div class="fill" style="width: <?php echo $percent1;?>%;"></div>
+                                        </div><span><?=$rate1?></span>
                                     </div>
+                                    <?php }else{
+                                    echo "
+                                    <div class='rating-bar'><span>Xuất sắc</span>
+                                        <div class='bar'>
+                                            <div class='fill' style='width:0%;'></div>
+                                        </div><span>0</span>
+                                    </div>
+                                    <div class='rating-bar'><span>Tốt</span>
+                                        <div class='bar'>
+                                            <div class='fill' style='width:0%;'></div>
+                                        </div><span>0</span>
+                                    </div>
+                                    <div class='rating-bar'><span>Trung bình</span>
+                                        <div class='bar'>
+                                            <div class='fill' style='width:0%;'></div>
+                                        </div><span>0</span>
+                                    </div>
+                                    <div class='rating-bar'><span>Kém</span>
+                                        <div class='bar'>
+                                            <div class='fill' style='width:0%;'></div>
+                                        </div><span>0</span>
+                                    </div>
+                                    <div class='rating-bar'><span>Rất kém</span>
+                                        <div class='bar'>
+                                            <div class='fill' style='width:0%;'></div>
+                                        </div><span>0</span>
+                                    </div>
+                                    ";
+                                }
+                                
+                                ?>
                                 </div>
+                                
+
                             </div>
                         </div>
                         <!-- Phần bình luận -->
                         <div class="comment-section">
                             <?php
                             $comment = $data['comment'];
-                            foreach($comment as $item){
+                            foreach ($comment as $item) {
                                 extract($item);
-                            ?>
-                            <div class="comment">
-                                <div class="user-avatar"></div>
-                                <div class="user-review">
-                                    <p class="user-name"><?=$name?></p>
-                                    <p><?=$text?></p>
+                                ?>
+                                <div class="comment">
+                                    <div class="user-avatar"></div>
+                                    <div class="user-review">
+                                        <p class="user-name"><?= $name ?></p>
+                                        <p><?= $text ?></p>
+                                    </div>
+                                    <p class="comment-date"><?= $dateProComment ?></p>
                                 </div>
-                                <p class="comment-date"><?=$dateProComment?></p>
-                            </div>
                             <?php } ?>
-                            
+
                         </div>
                         <div class="center-button-container">
-                            <button class="load-more-btn">Xem thêm
-                                <i class="fa-solid fa-chevron-down"></i>
-                            </button>
+                                <?php
+                                $slComment =count($data['comment']);
+                                if($slComment > 3){
+                                    echo "
+                                    <button class='load-more-btn'>Xem thêm
+                                        <i class='fa-solid fa-chevron-down'></i>
+                                    </button>
+                                    ";
+                                }else{
+                                    echo '';
+                                }
+
+
+                                ?>
+                            
                         </div>
                     </div>
                     <!-- Sản phẩm liên quan-->
@@ -179,7 +314,7 @@
                                                     <span><?= $name ?></span>
                                                 </div>
                                                 <div class="price-product">
-                                                    <span><?= $price ?></span>
+                                                    <span><?=number_format($price)?>đ</span>
                                                     <span> <sub><del><?= $salePrice ?></del></sub> </span>
                                                 </div>
                                             </a>

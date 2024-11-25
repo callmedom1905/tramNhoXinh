@@ -4,6 +4,7 @@ class ProductController
     private $products;
     private $category;
     private $comment;
+    private $rating;
     private $data;
 
     function __construct()
@@ -11,6 +12,7 @@ class ProductController
         $this->products = new ProductsModel();
         $this->category = new ProductCateModel();
         $this->comment = new ProductCommentModel();
+        $this->rating = new RatingModel();
     }
     function renderView($view, $data)
     {
@@ -42,6 +44,7 @@ class ProductController
             $result = $this->products->getIdCate($idpro);
             $this->data['splq'] = $this->products->getProCateById($result['idCate'], $idpro);
             $this->data['comment'] = $this->comment->getComment($idpro); //lấy bình luận sản phẩm theo id
+            $this->data['rating'] = $this->rating->getRating($idpro); //lấy đánh giá sản phẩm
             return $this->renderView('productDetail', $this->data);
         } else {
             echo 'Not found product';

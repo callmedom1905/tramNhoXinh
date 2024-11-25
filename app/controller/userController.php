@@ -53,7 +53,7 @@ class UserController{
         $password = $_POST['mklogin']; 
         $result = $this->user->checkUser($email, $password);
         if(is_array($result)){
-            if($result['role'] == 1){
+            if($result['role'] == 1 && $result['active'] == 1){
                 // $_SESSION['admin'] = $result['username'];
                 echo "<script>
                     alert('Đăng nhập admin thành công');
@@ -61,7 +61,7 @@ class UserController{
                 echo "<script>
                     location.href='admin/index.php';
                 </script>";
-            }else if ($result['role'] == 0){
+            }else if ($result['role'] == 0 && $result['active'] == 1){
                 $_SESSION['user'] = $result['email'];
                 echo "<script>
                     alert('Đăng nhập thành công');

@@ -56,7 +56,7 @@
                                     <a href="#">
                                         <p><?=$name?></p>
                                         <p><?=$view?> lượt xem</p>
-                                        <p><?=$price?></p>
+                                        <p><?=number_format($price)?> đ</p>
                                         <p><?=$salePrice?></p>
                                     </a>
                                 </td>
@@ -86,7 +86,7 @@
                                             <span><?=$name?></span>
                                         </div>
                                         <div class="price-product">
-                                            <span><?=$price?></span>
+                                            <span><?=number_format($price)?> đ</span>
                                             <span> <sub><del><?=$salePrice?></del></sub> </span>
                                         </div>
                                         </a>
