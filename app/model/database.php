@@ -4,7 +4,7 @@ class DataBase
     private $servername = "localhost";
     private $username = "root";
     private $password = "root";
-    private $dbname = "tramNhoXinh";
+    private $dbname = "project";
     private $conn;
     private $stmt;
 

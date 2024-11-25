@@ -10,4 +10,9 @@ class ProductCateModel{
         $sql = "SELECT * FROM productcate WHERE id = $idcate";
         return $this->db->getAll($sql);
     }
+
+    function getAllCate(){
+        $sql = "SELECT * FROM productcate";
+        return $this->db->getAll($sql);
+    }
 }

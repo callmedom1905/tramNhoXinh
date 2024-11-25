@@ -36,7 +36,7 @@
                                     for ($i = 0; $i < $count; $i++) {
                                         // in số lượng ảnh có trong mảng
                                         if (isset($list[$i])) {
-                                            echo "<img src='public/image/img_product/{$list[$i]}' alt='Thumbnail " . ($i + 1) . "' class='thumbnail'>";
+                                            echo "<img src='public/image/{$list[$i]}' alt='Thumbnail " . ($i + 1) . "' class='thumbnail'>";
                                         }
                                     }
                                 }else{
@@ -44,7 +44,7 @@
                                 }
                                 ?>
                             </div>
-                            <img src="public/image/img_product/<?= $image ?>" alt="Tên sản phẩm">
+                            <img src="public/image/<?= $image ?>" alt="Tên sản phẩm">
                             <div class="info">
                                 <h2><?= $name ?></h2>
                                 <p class="price"><?= $price ?> đ</p>
@@ -69,7 +69,7 @@
                             <table class="product-detail-table">
                                 <tr>
                                     <td>Loại sản phẩm</td>
-                                    <td>Nón</td>
+                                    <td><?=$data['nameCate'][0]['name']?></td>
                                 </tr>
                                 <tr>
                                     <td>Chất liệu</td>
@@ -135,32 +135,20 @@
                         <!-- Phần bình luận -->
                         <div class="comment-section">
                             <?php
-                            echo 'function show comments ';
+                            $comment = $data['comment'];
+                            foreach($comment as $item){
+                                extract($item);
                             ?>
                             <div class="comment">
                                 <div class="user-avatar"></div>
                                 <div class="user-review">
-                                    <p class="user-name">Trần Chí Minh</p>
-                                    <p>Viết bình luận</p>
+                                    <p class="user-name"><?=$name?></p>
+                                    <p><?=$text?></p>
                                 </div>
-                                <p class="comment-date">01/01/2024</p>
+                                <p class="comment-date"><?=$dateProComment?></p>
                             </div>
-                            <div class="comment">
-                                <div class="user-avatar"></div>
-                                <div class="user-review">
-                                    <p class="user-name">Trần Chí Minh</p>
-                                    <p>Viết bình luận</p>
-                                </div>
-                                <p class="comment-date">01/01/2024</p>
-                            </div>
-                            <div class="comment">
-                                <div class="user-avatar"></div>
-                                <div class="user-review">
-                                    <p class="user-name">Trần Chí Minh</p>
-                                    <p>Viết bình luận</p>
-                                </div>
-                                <p class="comment-date">01/01/2024</p>
-                            </div>
+                            <?php } ?>
+                            
                         </div>
                         <div class="center-button-container">
                             <button class="load-more-btn">Xem thêm
@@ -173,19 +161,19 @@
                     <div class="col l-12">
                         <section class="row">
                             <div class="title-box">`
-                                <h3>Sản phẩm mới</h3>
+                                <h3>Sản phẩm liên quan</h3>
                             </div>
                             <div class="row">
                                 <?php
-                                $newPro = $data['newpro'];
-                                foreach ($newPro as $item) {
+                                $relatePro = $data['splq'];
+                                foreach ($relatePro as $item) {
                                     extract($item);
                                     ?>
                                     <div class="col l-3 m-4 c-12">
                                         <div class="product">
                                             <a href="index.php?page=productDetail&id=<?= $id ?>">
                                                 <div class="img-product">
-                                                    <img src="public/image/img_product/<?= $image ?>" alt="">
+                                                    <img src="public/image/<?= $image ?>" alt="">
                                                 </div>
                                                 <div class="name-product">
                                                     <span><?= $name ?></span>

@@ -59,7 +59,7 @@ class UserController{
                     alert('Đăng nhập admin thành công');
                 </script>";
                 echo "<script>
-                    location.href='admon/index.php';
+                    location.href='admin/index.php';
                 </script>";
             }else if ($result['role'] == 0){
                 $_SESSION['user'] = $result['email'];

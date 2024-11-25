@@ -43,7 +43,7 @@
                     <div class="product">
                     <a href="index.php?page=productDetail&id=<?=$id?>">
                         <div class="img-product">
-                            <img src="public/image/img_product/<?=$image?>" alt="">
+                            <img src="public/image/<?=$image?>" alt="">
                         </div>
                         <div class="name-product">
                             <span><?=$name?></span>
@@ -96,7 +96,7 @@
                                 <div class="product">
                                     <a href="index.php?page=productDetail&id=<?=$id?>">
                                         <div class="img-product">
-                                            <img src="public/image/img_product/<?=$image?>" alt="">
+                                            <img src="public/image/<?=$image?>" alt="">
                                         </div>
                                         <div class="name-product">
                                             <span><?=$name?></span>

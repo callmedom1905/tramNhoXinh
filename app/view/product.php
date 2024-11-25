@@ -23,12 +23,14 @@
                         </div>
                         <h3 class="title"><?=$data['nameCate'][0]['name']?></h3>
                         <ul class="cateProduct">
-                            <li><a class="nameCate" href="index.php?page=product&id=2">Phụ kiện</a></li>
-                            <li><a class="nameCate" href="index.php?page=product&id=4">Vòng tay</a></li>
-                            <li><a class="nameCate" href="index.php?page=product&id=6">Túi len</a></li>
-                            <li><a class="nameCate" href="index.php?page=product&id=5">Nón len</a></li>
-                            <li><a class="nameCate" href="index.php?page=product&id=3">Trang trí</a></li>
-                            <li><a class="nameCate" href="index.php?page=product&id=1">Tô màu</a></li>
+                            <?php
+                            $cate = $data['cate'];
+                            foreach($cate as $item){
+                                extract($item);
+                                echo "<li><a class='nameCate' href='index.php?page=product&id=$id'>$name</a></li>";
+                            }
+                            
+                            ?>
 
                         </ul>
 
@@ -49,7 +51,7 @@
                             <tr>
                                 <td>
                                     <a href="">
-                                        <img class="featured-img" src="public/image/img_product/<?=$image?>" alt="">
+                                        <img class="featured-img" src="public/image/<?=$image?>" alt="">
                                     </a>
                                     <a href="#">
                                         <p><?=$name?></p>
@@ -78,7 +80,7 @@
                                     <div class="product">
                                         <a href="index.php?page=productDetail&id=<?=$id?>">
                                         <div class="img-product">
-                                            <img src="public/image/img_product/<?=$image?>" alt="">
+                                            <img src="public/image/<?=$image?>" alt="">
                                         </div>
                                         <div class="name-product">
                                             <span><?=$name?></span>

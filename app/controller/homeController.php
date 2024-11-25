@@ -1,10 +1,12 @@
 <?php
 class HomeController{
     private $product;
+    private $category;
     private $data;
    
     function __construct(){
         $this->product = new ProductsModel();
+        $this->category = new ProductCateModel();
     }
     
     function renderView($view, $data){

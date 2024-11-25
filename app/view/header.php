@@ -117,7 +117,7 @@
                         <i class="fa-solid fa-xmark"></i>
                     </label>
                 </div>
-                <div class="cart-box-main">
+                <!-- <div class="cart-box-main">
                     <div class="col l-3 m-3 c-3 cart-img">
                         <img src="public/image/y-tuong-lam-do-handmade-2.webp" alt="">
                     </div>
@@ -142,7 +142,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
 
                 <div class="cart-box-footer">
                     <a href="index.php?page=payment"><button>THANH TOÁN</button></a>

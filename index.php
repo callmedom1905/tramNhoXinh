@@ -5,6 +5,7 @@ require_once 'app/model/database.php';
 require_once 'app/model/productsModel.php';
 require_once 'app/model/userModel.php';
 require_once 'app/model/productCateModel.php';
+require_once 'app/model/productCommentModel.php';
 require_once 'app/controller/homeController.php';
 require_once 'app/controller/paymentController.php';
 require_once 'app/controller/userController.php';
@@ -44,10 +45,10 @@ if (isset($_GET['page'])) {
         //     break;
 
             // trang thanh toán
-        // case 'payment':
-        //     $payment = new PaymentController();
-        //     $payment->viewPayment();
-        //     break;
+        case 'payment':
+            $payment = new PaymentController();
+            $payment->viewPayment();
+            break;
         // case 'paymentStep1':
         //     $paymentStep1 = new PaymentController();
         //     $paymentStep1->viewPaymentStep1();

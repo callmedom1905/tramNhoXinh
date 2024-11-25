@@ -19,7 +19,7 @@
                         <div class="productPost">
                             <!-- Hình ảnh sản phẩm -->
                             <div class="productPost-img">
-                                <img src="../image/img_product/E912FE84-CB9B-4A8A-B213-5BF5D72DDCEA.jpg" alt="Khăn Bandana Handmade Sunflower">
+                                <img src="../image/E912FE84-CB9B-4A8A-B213-5BF5D72DDCEA.jpg" alt="Khăn Bandana Handmade Sunflower">
                             </div>
                     
                             <!-- Tiêu đề sản phẩm -->

@@ -30,7 +30,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href=""><img src="../image/img_product/IMG_4594.jpg" alt="" class="featured-img"></a>
+                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
                                 <a href="#">
                                     <p>Tiêu đề bài viết nổi bật</p>
 
@@ -40,7 +40,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href=""><img src="../image/img_product/IMG_4594.jpg" alt="" class="featured-img"></a>
+                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
                                 <a href="#">
                                     <p>Tiêu đề bài viết nổi bật</p>
 
@@ -50,7 +50,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href=""><img src="../image/img_product/IMG_4594.jpg" alt="" class="featured-img"></a>
+                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
                                 <a href="#">
                                     <p>Tiêu đề bài viết nổi bật</p>
 
@@ -60,7 +60,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <a href=""><img src="../image/img_product/IMG_4594.jpg" alt="" class="featured-img"></a>
+                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
                                 <a href="#">
                                     <p>Tiêu đề bài viết nổi bật</p>
 
@@ -71,7 +71,7 @@
                         <tr>
 
                             <td>
-                                <a href=""><img src="../image/img_product/IMG_4594.jpg" alt="" class="featured-img"></a>
+                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
                                 <a href="#">
                                     <p>Tiêu đề bài viết nổi bật</p>
 
@@ -86,7 +86,7 @@
                 <div class="l-9">
                     <div class="post-item">
                         <div class="post-img">
-                            <img src="../image/img_product/IMG_4594.jpg" alt="Hình bài viết">
+                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
                         </div>
                         <div class="post-content">
                         
@@ -99,7 +99,7 @@
                     </div>
                     <div class="post-item">
                         <div class="post-img">
-                            <img src="../image/img_product/IMG_4594.jpg" alt="Hình bài viết">
+                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
                         </div>
                         <div class="post-content">
                         
@@ -113,7 +113,7 @@
                     </div>
                     <div class="post-item">
                         <div class="post-img">
-                            <img src="../image/img_product/IMG_4594.jpg" alt="Hình bài viết">
+                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
                         </div>
                         <div class="post-content">
                                 <h3>Tiêu đề bài viết</h3>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="post-item">
                         <div class="post-img">
-                            <img src="../image/img_product/IMG_4594.jpg" alt="Hình bài viết">
+                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
                         </div>
                         <div class="post-content">
                                 <h3>Tiêu đề bài viết</h3>
