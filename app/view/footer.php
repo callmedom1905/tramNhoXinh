@@ -34,9 +34,9 @@
                     <div class="footer_item">
                         <h3>Chính sách</h3>
                         <ul class="footer_policy">
-                            <li>1</li>
-                            <li>2</li>
-                            <li>3</li>
+                            <li>Chính sách hỗ trợ khách hàng</li>
+                            <li>Chính sách giao hàng</li>
+                            <li>Chính sách bảo mật thông tin</li>
                         </ul>
                     </div>
                 </div>

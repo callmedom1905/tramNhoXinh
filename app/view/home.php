@@ -124,81 +124,46 @@
             <div class="title-box">
                 <h3>Bài viết mới nhất</h3>
             </div>
+            <?php 
+            $post = $data['post'];
+            foreach($post as $item){
+                extract($item);
+            ?>
             <div class="col l-4 m-6 c-12">
                 <div class="post">
                     <div class="img-post">
-                        <a href="#"><img src="public/image/y-tuong-lam-do-handmade-2.webp" alt=""></a>
+                        <a href="#"><img src="public/image/<?=$image?>" alt=""></a>
 
                     </div>
                     <div class="name-post">
-                        <a href="#">Lorem ipsum dolor sit amet coectetur adipisicing elit. Odio, nostrum?
-                            Lorem
-                            ipsum dolor sit amet consectetur, adipisicing elit. Doloribus,
-                            recusandae.</a>
+                        <a href="#"><?=$title?></a>
                     </div>
                     <div class="description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Excepturi, totam.
-                            Cum, est? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, veritatis.</span>
+                        <span><?=$description?></span>
                     </div>
                 </div>
             </div>
+            <?php } ?>
 
-            <div class="col l-4 m-6 c-12">
-                <div class="post">
-                    <div class="img-post">
-                        <a href="#"><img src="public/image/y-tuong-lam-do-handmade-2.webp" alt=""></a>
-
-                    </div>
-                    <div class="name-post">
-                        <a href="#">Lorem ipsum dolor sit amet coectetur adipisicing elit. Odio, nostrum?
-                            Lorem
-                            ipsum dolor sit amet consectetur, adipisicing elit. Doloribus,
-                            recusandae.</a>
-                    </div>
-                    <div class="description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Excepturi, totam.
-                            Cum, est? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, veritatis.</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col l-4 m-6 c-12">
-                <div class="post">
-                    <div class="img-post">
-                        <a href="#"><img src="public/image/y-tuong-lam-do-handmade-2.webp" alt=""></a>
-
-                    </div>
-                    <div class="name-post">
-                        <a href="#">Lorem ipsum dolor sit amet coectetur adipisicing elit. Odio, nostrum?
-                            Lorem
-                            ipsum dolor sit amet consectetur, adipisicing elit. Doloribus,
-                            recusandae.</a>
-                    </div>
-                    <div class="description">
-                        <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Excepturi, totam.
-                            Cum, est? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Odit, veritatis.</span>
-                    </div>
-                </div>
-            </div>
-
+            
         </section>
         <section class="row">
             <div class="col l-4 m-6 c-12">
                 <div class="policy-home">
-                    <h1>Chính sách</h1>
+                    <h1>Chính sách hỗ trợ khách hàng</h1>
+                    <i class="fa-regular fa-envelope-open"></i>
                 </div>
             </div>
             <div class="col l-4 m-6 c-12">
                 <div class="policy-home">
-                    <h1>Chính sách</h1>
+                    <h1>Chính sách giao hàng</h1>
+                    <i class="fa-solid fa-truck"></i>
                 </div>
             </div>
             <div class="col l-4 m-6 c-12">
                 <div class="policy-home">
-                    <h1>Chính sách</h1>
+                    <h1>Chính sách bảo mật thông tin</h1>
+                    <i class="fa-solid fa-user-shield"></i>
                 </div>
             </div>
 

@@ -6,6 +6,7 @@ require_once 'app/model/productsModel.php';
 require_once 'app/model/userModel.php';
 require_once 'app/model/productCateModel.php';
 require_once 'app/model/productCommentModel.php';
+require_once 'app/model/postModel.php';
 require_once 'app/model/ratingModel.php';
 require_once 'app/controller/homeController.php';
 require_once 'app/controller/paymentController.php';
