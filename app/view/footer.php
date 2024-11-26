@@ -21,12 +21,10 @@
                     <div class="footer_item">
                         <h3>Điều hướng</h3>
                         <ul class="footer_menu">
-                            <li><a href="">Trang chủ</a></li>
-                            <li><a href="">Sản phẩm</a></li>
+                            <li><a href="index.php">Trang chủ</a></li>
                             <li><a href="">Bài viết</a></li>
                             <li><a href="">Giới thiệu</a></li>
                             <li><a href="">Liên hệ</a></li>
-                            <li><a href="">Tài khoản</a></li>
                         </ul>
                     </div>
                 </div>

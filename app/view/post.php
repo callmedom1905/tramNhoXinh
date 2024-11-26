@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,143 +10,86 @@
 </head>
 
 <body>
-<main>
-    <section>
-        <div class="grid wide container">
-            <div class="row">
-                <!-- Cột danh mục -->
-                <div class="l-3">
-                    <div class="search-bar">
-                        <input type="text" placeholder="Tìm kiếm bài viết" >
-                        <button><i class="fas fa-search"></i></button>
+    <main>
+        <section>
+            <div class="grid wide container">
+                <div class="row">
+                    <!-- Cột danh mục -->
+                    <div class="l-3">
+                        <div class="search-bar">
+                            <input type="text" placeholder="Tìm kiếm bài viết">
+                            <button><i class="fas fa-search"></i></button>
+                        </div>
+
+                        <!-- Bảng bài viết nổi bật -->
+
+                        <table class="featured-posts">
+                            <tr class="featured-title">
+                                <td>
+                                    <h3>Bài viết nổi bật</h3>
+                                </td>
+                            </tr>
+                            <?php
+                                $post = $data['posts'];
+                                foreach ($post as $item) {
+                                    extract($item);
+
+                            ?>
+                            <tr>
+                                <td>
+                                    <a href="index.php?page=postDetail&id=<?= $id ?>">
+                                        <img src="public/image/<?=$image?>" alt="" class="featured-img">
+                                    </a>
+                                    <a href="index.php?page=postDetail&id=<?= $id ?>">
+                                        <p><?=$title?></p>
+
+                                        <p><?=$datePost?></p>
+                                    </a>
+                                </td>
+                            </tr>
+                            <?php }?>
+
+                        </table>
                     </div>
-                    
-                    <!-- Bảng bài viết nổi bật -->
-                    
-                    <table class="featured-posts">
-                        <tr class="featured-title">
-                            <td>
-                                <h3>Bài viết nổi bật</h3>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
-                                <a href="#">
-                                    <p>Tiêu đề bài viết nổi bật</p>
 
-                                    <p>01/01/2024 | Tên tác giả</p>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
-                                <a href="#">
-                                    <p>Tiêu đề bài viết nổi bật</p>
+                    <!-- Cột bài viết -->
+                    <div class="l-9">
+                        <?php
+                        $post = $data['posts'];
+                        foreach ($post as $item) {
+                            extract($item);
 
-                                    <p>01/01/2024 | Tên tác giả</p>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
-                                <a href="#">
-                                    <p>Tiêu đề bài viết nổi bật</p>
+                            ?>
+                            <div class="post-item">
+                                <div class="post-img">
+                                    <img src="public/image/<?= $image ?>" alt="<?= $image ?>">
+                                </div>
+                                <div class="post-content">
 
-                                    <p>01/01/2024 | Tên tác giả</p>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
-                                <a href="#">
-                                    <p>Tiêu đề bài viết nổi bật</p>
+                                    <h3><?= $title ?></h3>
+                                    <p class="author-date"><?= $datePost ?></p>
+                                    <p class="comments">Lượt xem <?= $view ?></p>
+                                    <p class="description"><?= $description ?></p>
+                                    <a href="index.php?page=postDetail&id=<?= $id ?>">
+                                        <button>Xem thêm...</button>
+                                    </a>
 
-                                    <p>01/01/2024 | Tên tác giả</p>
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
+                                </div>
+                            </div>
 
-                            <td>
-                                <a href=""><img src="../image/IMG_4594.jpg" alt="" class="featured-img"></a>
-                                <a href="#">
-                                    <p>Tiêu đề bài viết nổi bật</p>
+                        <?php } ?>
 
-                                    <p>01/01/2024 | Tên tác giả</p>
-                                </a>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-
-                <!-- Cột bài viết -->
-                <div class="l-9">
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
-                        </div>
-                        <div class="post-content">
-                        
-                                <h3>Tiêu đề bài viết</h3>
-                                <p class="author-date">Tên tác giả | 01/01/2024</p>
-                                <p class="comments">0 bình luận</p>
-                                <p class="description">Mô tả bài viết chi tiết hoặc ngắn gọn.</p>
-                                <button>Xem thêm...</button>
-                        </div>
-                    </div>
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
-                        </div>
-                        <div class="post-content">
-                        
-                                <h3>Tiêu đề bài viết</h3>
-                                <p class="author-date">Tên tác giả | 01/01/2024</p>
-                                <p class="comments">0 bình luận</p>
-                                <p class="description">Mô tả bài viết chi tiết hoặc ngắn gọn.</p>
-                                <button>Xem thêm...</button>
-                        
-                        </div>
-                    </div>
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
-                        </div>
-                        <div class="post-content">
-                                <h3>Tiêu đề bài viết</h3>
-                                <p class="author-date">Tên tác giả | 01/01/2024</p>
-                                <p class="comments">0 bình luận</p>
-                                <p class="description">Mô tả bài viết chi tiết hoặc ngắn gọn.</p>
-                                <button>Xem thêm...</button>
-                        
-                        </div>
-                    </div>
-                    <div class="post-item">
-                        <div class="post-img">
-                            <img src="../image/IMG_4594.jpg" alt="Hình bài viết">
-                        </div>
-                        <div class="post-content">
-                                <h3>Tiêu đề bài viết</h3>
-                                <p class="author-date">Tên tác giả | 01/01/2024</p>
-                                <p class="comments">0 bình luận</p>
-                                <p class="description">Mô tả bài viết chi tiết hoặc ngắn gọn.</p>
-                                <button>Xem thêm...</button>
-                        </div>
-                    </div>
-                    <div class="pagination">
-                        <a href="#" class="active">1</a>
-                        <a href="#">2</a>
-                        <a href="#"><i class="fas fa-arrow-right"></i></a>
-                    </div>
+                        <!-- <div class="pagination">
+                            <a href="#" class="active">1</a>
+                            <a href="#">2</a>
+                            <a href="#"><i class="fas fa-arrow-right"></i></a>
+                        </div> -->
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</main>
+            </div>
+        </section>
+    </main>
 </body>
+
 </html>

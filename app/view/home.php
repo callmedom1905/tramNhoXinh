@@ -130,18 +130,20 @@
                 extract($item);
             ?>
             <div class="col l-4 m-6 c-12">
-                <div class="post">
-                    <div class="img-post">
-                        <a href="#"><img src="public/image/<?=$image?>" alt=""></a>
+                <a href="index.php?page=postDetail&id=<?=$id?>">
+                    <div class="post">
+                        <div class="img-post">
+                            <img src="public/image/<?=$image?>" alt="">
 
+                        </div>
+                        <div class="name-post">
+                            <p><?=$title?></p>
+                        </div>
+                        <div class="description">
+                            <span><?=$description?></span>
+                        </div>
                     </div>
-                    <div class="name-post">
-                        <a href="#"><?=$title?></a>
-                    </div>
-                    <div class="description">
-                        <span><?=$description?></span>
-                    </div>
-                </div>
+                </a>
             </div>
             <?php } ?>
 

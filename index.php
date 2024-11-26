@@ -12,6 +12,7 @@ require_once 'app/controller/homeController.php';
 require_once 'app/controller/paymentController.php';
 require_once 'app/controller/userController.php';
 require_once 'app/controller/productController.php';
+require_once 'app/controller/postController.php';
 require_once 'app/view/header.php';
 $db = new DataBase();
 if (isset($_GET['page'])) {
@@ -32,19 +33,15 @@ if (isset($_GET['page'])) {
             $productDetail->viewProDetail();
             break;
 
-        //     // trang bài viết
-        // case 'post':
-        //     $post = new PostController();
-        //     $post->viewPost();
-        //     break;
-        // case 'postProBandana':
-        //     $postProBandana = new PostController();
-        //     $postProBandana->viewPostProBandana();
-        //     break;
-        // case 'postProShoulder':
-        //     $postProShoulder = new PostController();
-        //     $postProShoulder->viewPostProShoulder();
-        //     break;
+            // trang bài viết
+        case 'post':
+            $post = new PostController();
+            $post->viewPost();
+            break;
+        case 'postDetail':
+            $postDetail = new PostController();
+            $postDetail->viewPostDetail();
+            break;
 
             // trang thanh toán
         case 'payment':
