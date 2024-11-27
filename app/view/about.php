@@ -12,7 +12,7 @@
       <h2>Về Chúng Tôi</h2>
       <p>Trạm nhỏ xinh, nơi mỗi sản phẩm thủ công đều chứa đựng sự tinh tế và sáng tạo, là kết quả của những đôi bàn tay khéo léo, tỉ mỉ từ len, dây, đá.</p>
       <div class="about-image">
-          <img src="public/image/About-logo6.PNG" alt="">
+          <img src="public/image/img_about/About-logo6.png" alt="">
       </div>
   <section class="about">
     <div class="container">
@@ -22,7 +22,7 @@
           <p>Chúng tôi là một nhóm 6 thành viên đến từ FPT Polytechnic (Fpoly), với niềm đam mê và sự sáng tạo không ngừng nghỉ trong việc khám phá và phát triển các sản phẩm thủ công. Với mong muốn mang đến những món đồ độc đáo và ý nghĩa, chúng tôi đã thành lập trang web "Trạm nhỏ xinh" như một không gian sáng tạo, nơi hội tụ những sản phẩm thủ công được làm từ len, dây, đá – tất cả đều được chế tác tỉ mỉ và cẩn thận từng chi tiết. Mỗi sản phẩm là một tác phẩm nghệ thuật, không chỉ mang lại vẻ đẹp tinh tế mà còn chứa đựng tâm huyết và sự chăm chút của những người làm ra chúng.</p>
         </div>
         <div class="image-section">
-          <img src="../image/about.jpg" alt="Viết ghi chép">
+          <img src="public/image/img_about/about.jpg" alt="Viết ghi chép">
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
     <div class="container">
       <div class="mission-content">
         <div class="image-section">
-          <img src="../image/write.jpg" alt="Bảng chữ cái">
+          <img src="public/image/img_about/write.jpg" alt="Bảng chữ cái">
         </div>
         <div class="text-section">
           <h2>Sứ mệnh của chúng tôi</h2>

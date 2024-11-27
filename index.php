@@ -29,6 +29,10 @@ if (isset($_GET['page'])) {
             $postProShoulderlen = new PostController();
             $postProShoulderlen->postProShoulderlen();
             break;
+        case 'postProMockhoa':
+            $postProMockhoa = new PostController();
+            $postProMockhoa->postProMockhoa();
+            break;
         case 'about':
             $about = new AboutController();
             $about->aboutView();

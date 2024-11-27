@@ -39,7 +39,7 @@
                             <td>
 
                                 <a href=""><img src="public/image/img_product/<?=$image?>" alt="" class="featured-img"></a>
-                                <a href="#">
+                                <a href="index.php?page=postProBandana">
                                     <p><?=$title?></p>
 
                                     <p><?=$datePost?></p>
@@ -67,8 +67,9 @@
                                 <h3><?=$title?></h3>
                                 <p class="author-date"><?=$datePost?></p>
                                 <p class="description"><?=$description?></p>
-                                <button>Xem thêm...</button>
+                                <a href="index.php?page=postProBandana">Xem thêm...</a>
                         </div>
+                  
                     </div>
                     <?php } ?>
 

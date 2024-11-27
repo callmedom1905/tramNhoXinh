@@ -14,10 +14,14 @@ class PostController{
         return $this->renderView('post',$this->data);
     }
     function postProBandana(){
-        return $this->renderView('postProBandana');
+        $this->data['post1'] = $this->post->laybaiviet();
+        return $this->renderView('postProBandana',$this->data);
     }
     function postProShoulderlen(){
-        return $this->renderView('postProShoulderlen');
+        return $this->renderView('postProShoulderlen',$this->data);
+    }
+    function postProMockhoa(){
+        return $this->renderView('postProMockhoa',$this->data);
     }
 }
 ?>

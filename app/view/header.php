@@ -51,9 +51,9 @@
                                     <li><a href="#">Tô màu</a></li>
                                 </ul>
                             </li>
-                            <li class="col l-2 m-2 c-12"><a href="#">Bài viết</a></li>
-                            <li class="col l-2 m-2 c-12"><a href="#">Giới thiệu</a></li>
-                            <li class="col l-2 m-2 c-12"><a href="#">Liên hệ</a></li>
+                            <li class="col l-2 m-2 c-12"><a href="index.php?page=post">Bài viết</a></li>
+                            <li class="col l-2 m-2 c-12"><a href="index.php?page=about">Giới thiệu</a></li>
+                            <li class="col l-2 m-2 c-12"><a href="index.php?page=">Liên hệ</a></li>
                             <li class="col l-2 m-2 c-12"><a href="#">Tài khoản </a>
                                 <ul class="nav_drop-down">
                                     <li><a href="#" class="dangnhap">Đăng nhập</a></li>

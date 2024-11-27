@@ -13,11 +13,18 @@
         <section>
             <div class="grid wide container">
             <div class="row">
+            <div class="productPost">
+                        <?php
+                        $listpost = $data['post1'];
+                        foreach ($listpost as $one){
+                            extract($one);
+                      
+                        ?>
             <div class="l-9">
             <div class="productPost">
                 <!-- Hình ảnh sản phẩm -->
                 <div class="productPost-img">
-                    <img src="public/image/img_product/IMG_4315.jpg" alt="Túi Handmade Từ Sợi Dệt">
+                    <img src="public/image/img_product/<?=$image?>" alt="Túi Handmade Từ Sợi Dệt">
                 </div>
     
                 <!-- Tiêu đề sản phẩm -->
@@ -61,6 +68,7 @@
                     <p class="check-item"><strong>Món quà đầy ý nghĩa:</strong> Đây là món quà tuyệt vời cho những người thân yêu, hoặc cho chính bản thân bạn, để thể hiện sự yêu thích đối với sự tinh tế và phong cách sống tối giản. Một món quà không chỉ đẹp về hình thức mà còn mang giá trị tinh thần sâu sắc.</p>
                 </div>
             </div>
+            <?php } ?>
         </div>
         <div class="l-3">
             <div class="related-posts">

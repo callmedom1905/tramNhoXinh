@@ -20,6 +20,7 @@ class HomeController{
         $this->data['product6'] = $this->product->get6Pro();
         return $this->renderView('home', $this->data);
     }
+    
 
 
 }

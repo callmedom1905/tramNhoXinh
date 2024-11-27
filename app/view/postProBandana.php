@@ -12,12 +12,20 @@
         <section>
             <div class="grid wide container">
                 <div class="row">
+                <div class="productPost">
+                        <?php
+                        $listpost = $data['post1'];
+                        foreach ($listpost as $one){
+                            extract($one);
+                      
+                        ?>
                     <!-- Cột trái: Nội dung bài viết sản phẩm -->
                     <div class="l-9">
-                        <div class="productPost">
+                    
+                        
                             <!-- Hình ảnh sản phẩm -->
                             <div class="productPost-img">
-                                <img src="public/image/img_product/E912FE84-CB9B-4A8A-B213-5BF5D72DDCEA.jpg" alt="Khăn Bandana Handmade Sunflower">
+                                <img src="public/image/img_product/<?=$image?>" alt="Khăn Bandana Handmade Sunflower">
                             </div>
                     
                             <!-- Tiêu đề sản phẩm -->
@@ -56,7 +64,9 @@
                                 <p class="check-item"><strong>Phụ kiện không lỗi mốt:</strong> Đây là sản phẩm lý tưởng cho mọi mùa trong năm. Với thiết kế vượt thời gian và dễ dàng kết hợp với mọi trang phục, khăn Bandana Handmade Sunflower sẽ luôn là món đồ yêu thích và không bao giờ lỗi mốt.</p>
                             </div>
                         </div>
+                        <?php } ?>
                     </div>
+                    
                     
                     <!-- Cột phải: Bài viết liên quan -->
                     <div class="l-3">
