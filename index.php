@@ -14,7 +14,7 @@ require_once 'app/controller/paymentController.php';
 require_once 'app/controller/userController.php';
 require_once 'app/controller/productController.php';
 require_once 'app/controller/postController.php';
-require_once 'app/controller/MailerController.php';
+require_once 'app/controller/mailerController.php';
 require_once 'app/view/header.php';
 $db = new DataBase();
 if (isset($_GET['page'])) {

@@ -136,7 +136,7 @@ class UserController
         $code = $_GET['code'] ?? '';
         if ($this->user->verify($code)) {
             echo "<script>alert('Xác thực thành công! Vui lòng đăng nhập để sử dụng dịch vụ của chúng tôi.')</script>";
-            header("Location: index.php");
+            echo '<script>location.href="index.php"</script>';
         } else {
             echo "Liên kết xác minh không hợp lệ hoặc đã hết hạn.";
         }

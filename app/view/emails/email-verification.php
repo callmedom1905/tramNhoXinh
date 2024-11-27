@@ -4,9 +4,9 @@
             <h1 style="margin: 0; font-size: 24px;">Chào mừng bạn đến với Trạm Nhỏ Xinh</h1>
         </div>
         <div style="padding: 20px;">
-            <p style="margin: 0 0 16px;">Xin chào,</p>
+            <p style="margin: 0 0 16px;">Xin chào, Chúng tôi là Trạm Nhỏ XInh </p>
             <p style="margin: 0 0 16px;">
-                Chúng tôi rất vui mừng khi bạn đã đăng ký tài khoản tại <strong>Trạm Nhỏ Xinh</strong>. Để hoàn tất việc đăng ký và xác thực tài khoản, vui lòng nhấp vào nút bên dưới:
+                Cảm ơn bạn đã đăng ký tài khoản tại <strong>Trạm Nhỏ Xinh</strong>. Để hoàn thành việc xác thực tài khoản để đăng ký, vui lòng nhấp vào nút bên dưới:
             </p>
             <div style="text-align: center; margin: 20px 0;">
                 <a href="http://localhost:8888/project/index.php?page=verify&code=<?=$code?>" 

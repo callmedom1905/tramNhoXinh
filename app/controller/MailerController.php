@@ -13,8 +13,8 @@ class MailerController{
             $this->mailer->isSMTP();
             $this->mailer->Host = 'smtp.gmail.com';
             $this->mailer->SMTPAuth = true;
-            $this->mailer->Username = 'minhtcps38149@gmail.com'; // Thay bằng email thật
-            $this->mailer->Password = 'bdxu njrq hbta psid'; // Thay bằng mật khẩu ứng dụng
+            $this->mailer->Username = 'tramnhoxinh2410@gmail.com'; // Thay bằng email thật
+            $this->mailer->Password = 'tijk iwrc wwpe mswv'; // Thay bằng mật khẩu ứng dụng
             $this->mailer->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
             $this->mailer->Port = 587;
         }
@@ -28,7 +28,7 @@ class MailerController{
 
         public function sendVerificationEmail($email, $code) {
             try {
-                $this->mailer->setFrom('minhtcps38149@gmail.com', 'Trạm Nhỏ Xinh');
+                $this->mailer->setFrom('tramnhoxinh2410@gmail.com', 'Trạm Nhỏ Xinh');
                 $this->mailer->addAddress($email);
                 $this->mailer->isHTML(true);
                 $this->mailer->Subject = "Xác thực Email của bạn";
