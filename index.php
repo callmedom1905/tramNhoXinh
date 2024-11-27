@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+require_once 'vendor/autoload.php';
 require_once 'app/model/database.php';
 require_once 'app/model/productsModel.php';
 require_once 'app/model/userModel.php';
@@ -13,6 +14,7 @@ require_once 'app/controller/paymentController.php';
 require_once 'app/controller/userController.php';
 require_once 'app/controller/productController.php';
 require_once 'app/controller/postController.php';
+require_once 'app/controller/MailerController.php';
 require_once 'app/view/header.php';
 $db = new DataBase();
 if (isset($_GET['page'])) {
@@ -94,7 +96,16 @@ if (isset($_GET['page'])) {
             session_unset();
             header('Location: index.php');
             break;
+        case 'forgotPass':
+            $forgotPass = new UserController();
+            $forgotPass->forgotPass();
+            break;
         
+        //xác thực email
+        case 'verify':
+            $verify = new UserController();
+            $verify->verifyEmail();
+            break;
 
 
 

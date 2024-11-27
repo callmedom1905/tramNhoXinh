@@ -52,6 +52,8 @@ class DataBase
     }
 
     public function update($sql,$param){
-        $this->query($sql,$param);
+        return $this->query($sql,$param);
     }
+
+
 }

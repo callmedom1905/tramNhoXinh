@@ -80,14 +80,37 @@ clickDangnhapOFdangky.addEventListener('click', function(){
     anRegister.style.display = "none"
     const hienLogin = document.querySelector('.main-box-login');
     hienLogin.style.display = "block"
+    // console.log(hienLogin);
+    
     
     
 })
 // END JS Đăng ký Trạm Nhỏ Xinh 
 
 
+// đổi đăng nhập thành quên pass
+let clickDangnhapOFquenPass = document.querySelector('.box-login .actions')
+clickDangnhapOFquenPass.addEventListener('click', function(){
+    const anLogin = document.querySelector('.main-box-login')
+    anLogin.style.display = "none"
+    const hienQuenPass = document.querySelector('.main-box-quenPass')
+    hienQuenPass.style.display = "block" 
+    console.log(hienQuenPass);
+    
+})
+//END login thành quên
 
 
+// Đổi quên pass thành đăng nhập
+let clickForgotOFdangnhap = document.querySelector('.box-quenPass .join-login')
+clickForgotOFdangnhap.addEventListener('click', function(){
+    const anQuenPass = document.querySelector('.main-box-quenPass')
+    anQuenPass.style.display = "none"
+    const hienLogin = document.querySelector('.main-box-login')
+    hienLogin.style.display = "block" 
+    
+})
+//end đổi quên thành login
 
 // JS Giỏ hàng Trạm Nhỏ Xinh 
 const cartTang = document.querySelectorAll('.giam');

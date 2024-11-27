@@ -178,7 +178,7 @@
                             </label>
     
                             <div class="password-container">
-                                <input type="password" id="password" name="mklogin" placeholder="Nhập mật khẩu" required>
+                                <input type="password" autocomplete="" id="password" name="mklogin" placeholder="Nhập mật khẩu" required>
                                 <button type="button" class="show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
@@ -228,7 +228,7 @@
                             </label>
     
                             <div class="re-password-container">
-                                <input type="password" id="password" name="mk" placeholder="Nhập mật khẩu"
+                                <input type="password" autocomplete="" id="re-password" name="mk" placeholder="Nhập mật khẩu"
                                     required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
@@ -241,7 +241,7 @@
                             </label>
     
                             <div class="re-password-container">
-                                <input type="password" id="re-password" name="remk" placeholder="Xác nhận mật khẩu"
+                                <input type="password" autocomplete="" id="re-Repassword" name="remk" placeholder="Xác nhận mật khẩu"
                                     required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
@@ -259,6 +259,63 @@
                         
     
                         <input type="submit" name="dangky" value="Đăng ký" class="register-btn">
+    
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <!-- quên mật khẩu -->
+    <section class="row main-box-quenPass">
+        <div class="col l-12 m-12 c-12 quenPass">
+            <div class="forgot-overlay" id="forgot-overlay"></div>
+            <div class="background-box-quenPass">
+                <div class="box-quenPass">
+                    <div class="quenPass-box-header">
+                        <h1>Quên mật khẩu</h1>
+                    </div>
+                    <div class="join-login">
+                        <a href="#">Đăng nhập</a>
+                    </div>
+                    <form action="index.php?page=forgotPass" method="post">
+                        <div class="forgot-input-group">
+                            <label for="forgot-email">Email:</label>
+                            <input type="email" id="forgot-email" name="forgot-email" placeholder="Nhập email" required>
+                        </div>
+                        <div class="forgot-input-group">
+                            <label for="forgot-phone">Số điện thoại</label>
+                            <input type="text" id="forgot-phone" name="forgot-phone" placeholder="Nhập số điện thoại" required>
+                        </div>
+    
+                        <div class="forgot-input-group">
+                            <label for="password" class="forgot-passForm">
+                                <span class="forgot-text-passForm">Mật khẩu mới:</span>
+                            </label>
+    
+                            <div class="forgot-password-container">
+                                <input type="password" autocomplete="" id="forgot-password" name="forgot-password" placeholder="Nhập mật khẩu"
+                                    required>
+                                <button type="button" class="re-show-password">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="forgot-input-group">
+                            <label for="forgot-password" class="forgot-passForm">
+                                <span class="forgot-text-passForm">Xác nhận mật khẩu mới</span>
+                            </label>
+    
+                            <div class="forgot-password-container">
+                                <input type="password" autocomplete="" id="forgot-re-password" name="forgot-Repassword" placeholder="Xác nhận mật khẩu"
+                                    required>
+                                <button type="button" class="re-show-password">
+                                    <i class="fa-solid fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+    
+                        <input type="submit" name="quenPass" class="quenPass-btn" value="Xác nhận">
     
                     </form>
                 </div>
