@@ -34,36 +34,44 @@
             <div class="row">
                 <?php
                 $list8Pro = $data['product8'];
-                foreach ($list8Pro as $item){
+                foreach ($list8Pro as $item) {
                     extract($item);
-                
-                ?>
-                
-                <div class="col l-3 m-4 c-12">
-                    <div class="product">
-                    <a href="index.php?page=productDetail&id=<?=$id?>">
-                        <div class="img-product">
-                            <img src="public/image/<?=$image?>" alt="">
-                        </div>
-                        <div class="name-product">
-                            <span><?=$name?></span>
-                        </div>
-                        <div class="price-product">
-                            <span><?=number_format($price)?> đ</span>
-                            <span> <sub><del><?=$salePrice?></del></sub> </span>
-                        </div>
-                    </a>
 
-                        <button class="addCart-product">Thêm vào giỏ hàng</button>
-                        <button class="heart-button">
-                            <i class="icon on fa-solid fa-heart"></i>
-                            <i class="icon off fa-regular fa-heart"></i>
-                        </button>
+                    ?>
+
+                    <div class="col l-3 m-4 c-12">
+                        <div class="product">
+                            <a href="index.php?page=productDetail&id=<?= $id ?>">
+                                <div class="img-product">
+                                    <img src="public/image/<?= $image ?>" alt="">
+                                </div>
+                                <div class="name-product">
+                                    <span><?= $name ?></span>
+                                </div>
+                                <div class="price-product">
+                                    <span><?= number_format($price) ?> đ</span>
+                                    <span> <sub><del><?= $salePrice ?></del></sub> </span>
+                                </div>
+                            </a>
+
+                            <!-- thêm giỏ hàng -->
+                            <form action="index.php?page=addToCartHome" method="post" class="addCart-product">
+                                <input type="hidden" name="product_id" value="<?=$id?>">
+                                <input type="hidden" name="product_name" value="<?=$name?>">
+                                <input type="hidden" name="product_price" value="<?=$price?>">
+                                <input type="hidden" name="product_image" value="<?=$image?>">
+                                <input type="hidden" name="product_color" value="<?=$color?>">
+                                <button type="submit" name="addToCart" class="addCart-product">Thêm vào giỏ hàng</button>
+                            </form>
+                            <button class="heart-button">
+                                <i class="icon on fa-solid fa-heart"></i>
+                                <i class="icon off fa-regular fa-heart"></i>
+                            </button>
+                        </div>
                     </div>
-                </div>
                 <?php } ?>
 
-               
+
                 <!-- Thêm các sản phẩm khác tương tự -->
             </div>
 
@@ -90,29 +98,36 @@
                     <div class="products-container">
                         <?php
                         $list6Pro = $data['product6'];
-                        foreach ($list6Pro as $item){
+                        foreach ($list6Pro as $item) {
                             extract($item);
-                        ?>
-                                <div class="product">
-                                    <a href="index.php?page=productDetail&id=<?=$id?>">
-                                        <div class="img-product">
-                                            <img src="public/image/<?=$image?>" alt="">
-                                        </div>
-                                        <div class="name-product">
-                                            <span><?=$name?></span>
-                                        </div>
-                                        <div class="price-product">
-                                            <span><?=number_format($price)?> đ</span>
-                                            <span> <sub><del><?=$salePrice?></del></sub> </span>
-                                        </div>
-                                     </a>
-
-                                    <button class="addCart-product">Thêm vào giỏ hàng</button>
-                                    <button class="heart-button">
-                                        <i class="icon on fa-solid fa-heart"></i>
-                                        <i class="icon off fa-regular fa-heart"></i>
-                                    </button>
-                                </div>
+                            ?>
+                            <div class="product">
+                                <a href="index.php?page=productDetail&id=<?= $id ?>">
+                                    <div class="img-product">
+                                        <img src="public/image/<?= $image ?>" alt="">
+                                    </div>
+                                    <div class="name-product">
+                                        <span><?= $name ?></span>
+                                    </div>
+                                    <div class="price-product">
+                                        <span><?= number_format($price) ?> đ</span>
+                                        <span> <sub><del><?= $salePrice ?></del></sub> </span>
+                                    </div>
+                                </a>
+                                 <!-- thêm giỏ hàng -->
+                                <form action="index.php?page=addToCart" method="post" class="addCart-product">
+                                    <input type="hidden" name="product_id" value="<?=$id?>">
+                                    <input type="hidden" name="product_name" value="<?=$name?>">
+                                    <input type="hidden" name="product_price" value="<?=$price?>">
+                                    <input type="hidden" name="product_image" value="<?=$image?>">
+                                    <input type="hidden" name="product_color" value="<?=$color?>">
+                                    <button type="submit" name="addToCart" class="addCart-product">Thêm vào giỏ hàng</button>
+                                </form>
+                                <button class="heart-button">
+                                    <i class="icon on fa-solid fa-heart"></i>
+                                    <i class="icon off fa-regular fa-heart"></i>
+                                </button>
+                            </div>
                         <?php } ?>
 
                     </div>
@@ -124,30 +139,30 @@
             <div class="title-box">
                 <h3>Bài viết mới nhất</h3>
             </div>
-            <?php 
+            <?php
             $post = $data['post'];
-            foreach($post as $item){
+            foreach ($post as $item) {
                 extract($item);
-            ?>
-            <div class="col l-4 m-6 c-12">
-                <a href="index.php?page=postDetail&id=<?=$id?>">
-                    <div class="post">
-                        <div class="img-post">
-                            <img src="public/image/<?=$image?>" alt="">
+                ?>
+                <div class="col l-4 m-6 c-12">
+                    <a href="index.php?page=postDetail&id=<?= $id ?>">
+                        <div class="post">
+                            <div class="img-post">
+                                <img src="public/image/<?= $image ?>" alt="">
 
+                            </div>
+                            <div class="name-post">
+                                <p><?= $title ?></p>
+                            </div>
+                            <div class="description">
+                                <span><?= $description ?></span>
+                            </div>
                         </div>
-                        <div class="name-post">
-                            <p><?=$title?></p>
-                        </div>
-                        <div class="description">
-                            <span><?=$description?></span>
-                        </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
             <?php } ?>
 
-            
+
         </section>
         <section class="row">
             <div class="col l-4 m-6 c-12">

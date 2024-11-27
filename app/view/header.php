@@ -117,32 +117,46 @@
                         <i class="fa-solid fa-xmark"></i>
                     </label>
                 </div>
-                <!-- <div class="cart-box-main">
+                <!-- box sản phẩm -->
+                 <?php
+                 foreach ($_SESSION['cart'] as $item) {
+                    // Kiểm tra nếu $item là một mảng
+                    if (is_array($item)) {
+                 ?>
+                <div class="cart-box-main">
+                    <input type="hidden" name="idproduct" class="idproduct" value="<?=$item['id']?>">
                     <div class="col l-3 m-3 c-3 cart-img">
-                        <img src="public/image/y-tuong-lam-do-handmade-2.webp" alt="">
+                        <img src="public/image/<?=$item['image']?>" alt="">
                     </div>
                     <div class="col l-9 m-9 c-9 cart-container-pro">
                         <div class="cart-name-pro">
-                            <h4>Tên sản phẩm</h4>
+                            <h4><?=$item['name']?></h4>
                         </div>
                         <div class="cart-variant-pro">
-                            <span>Thuộc tính:(Màu sắc, kích thước)</span>
+                            <span>Thuộc tính: <?=$item['color']?></span>
                         </div>
                         <div class="cart-quantityANDPrice-pro">
                             <div class="cart-quantity">
                                 <button class="giam"><i class="fa-solid fa-minus"></i></button>
-                                <span class="so">0</span>
+                                <span class="so"><?=$item['quantity']?></span>
                                 <button class="tăng"><i class="fa-solid fa-plus"></i></button>
                             </div>
                             <div class="cart-Price">
-                                <h3 class="price">999.999</h3>
+                                <h3 class="price"><?=(int)$item['price']?></h3>
                             </div>
-                            <button class="cart-xoaProduct">
-                                <i class="fa-solid fa-xmark"></i>
-                            </button>
+                            <form action="index.php?page=removeFromCart" method="post" class="form-deteleCart">
+                                <input type="hidden" name="deletePro" value="<?=$item['id']?>">
+                                <button class="cart-xoaProduct" name="removeFromCart"><i class="fa-solid fa-xmark"></i></button>
+                            </form>
+                            
                         </div>
                     </div>
-                </div> -->
+                </div>
+                <?php  
+                 }
+                }
+                ?>
+                
 
                 <div class="cart-box-footer">
                     <a href="index.php?page=payment"><button>THANH TOÁN</button></a>

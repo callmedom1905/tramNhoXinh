@@ -15,6 +15,7 @@ require_once 'app/controller/userController.php';
 require_once 'app/controller/productController.php';
 require_once 'app/controller/postController.php';
 require_once 'app/controller/mailerController.php';
+require_once 'app/controller/cartController.php';
 require_once 'app/view/header.php';
 $db = new DataBase();
 if (isset($_GET['page'])) {
@@ -25,7 +26,7 @@ if (isset($_GET['page'])) {
             $home->viewHome();
             break;
 
-            // trang sản phẩm
+        // trang sản phẩm
         case 'product':
             $product = new ProductController();
             $product->viewProCate();
@@ -35,7 +36,7 @@ if (isset($_GET['page'])) {
             $productDetail->viewProDetail();
             break;
 
-            // trang bài viết
+        // trang bài viết
         case 'post':
             $post = new PostController();
             $post->viewPost();
@@ -45,7 +46,7 @@ if (isset($_GET['page'])) {
             $postDetail->viewPostDetail();
             break;
 
-            // trang thanh toán
+        // trang thanh toán
         case 'payment':
             $payment = new PaymentController();
             $payment->viewPayment();
@@ -83,7 +84,7 @@ if (isset($_GET['page'])) {
         //     $contact->viewContact();
         //     break;
 
-            //các chức năng
+        //các chức năng
         case 'register':
             $register = new UserController();
             $register->register();
@@ -100,7 +101,17 @@ if (isset($_GET['page'])) {
             $forgotPass = new UserController();
             $forgotPass->forgotPass();
             break;
-        
+        //giỏ hàng
+        case 'addToCart':
+            $addToCart = new CartController();
+            $addToCart->addToCart();
+            break;
+        case 'removeFromCart':
+            $removeFromCart = new CartController();
+            $removeFromCart->removeFromCart();
+            break;
+
+
         //xác thực email
         case 'verify':
             $verify = new UserController();

@@ -342,6 +342,10 @@ header {
 
 }
 
+.cart-quantityANDPrice-pro .form-deteleCart{
+    justify-items: end;
+}
+
 .cart-quantityANDPrice-pro .cart-quantity {
     height: 34px;
     display: flex;
@@ -377,7 +381,7 @@ header {
     width: 169px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    margin-left: 25px;
 }
 
 .cart-box-main .cart-img {

@@ -91,7 +91,14 @@
                                         </div>
                                         </a>
                                         
-                                        <button class="addCart-product">Thêm vào giỏ hàng</button>
+                                        <form action="index.php?page=addToCart" method="post" class="addCart-product">
+                                            <input type="hidden" name="product_id" value="<?=$id?>">
+                                            <input type="hidden" name="product_name" value="<?=$name?>">
+                                            <input type="hidden" name="product_price" value="<?=$price?>">
+                                            <input type="hidden" name="product_image" value="<?=$image?>">
+                                            <input type="hidden" name="product_color" value="<?=$color?>">
+                                            <button type="submit" name="addToCart" class="addCart-product">Thêm vào giỏ hàng</button>
+                                        </form>
                                         <button class="heart-button">
                                             <i class="icon on fa-solid fa-heart"></i>
                                             <i class="icon off fa-regular fa-heart"></i>
