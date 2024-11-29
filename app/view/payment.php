@@ -20,6 +20,15 @@
                     <p class="payment__title-text">Thanh toán</p>
                 </div>
                 <div class="col l-6 payment__product">
+                    <?php
+                    print_r($_SESSION['cart']);
+                    foreach ($_SESSION['cart'] as $item){
+                        extract($item);
+                        echo $id;
+                    }
+
+
+                    ?>
                     <div class="payment__product-item row">
                         <div class="col l-6 payment__product-item-left">
                             <img src="../image/removebg_logo_tramNhoXinh.png" alt="">
@@ -69,7 +78,6 @@
                             <strong>0đ</strong>
                         </div>
                     </div>
-
                     <button class="payment-button">Thanh toán</button>
                 </div>
             </div>

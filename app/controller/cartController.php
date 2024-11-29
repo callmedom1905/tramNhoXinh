@@ -34,9 +34,7 @@ class CartController
                 if (is_array($cartItem) && isset($cartItem['id']) && $cartItem['id'] == $id) {
                     $cartItem['quantity']++; // Cập nhật số lượng
                     $found = true;
-                    echo '<script>alert("Sản phẩm đã có trong giỏ hàng")</script>';
-                    echo '<script>location.href="index.php"</script>';
-
+                    header("Location: ".$_SERVER['HTTP_REFERER']);
                     break;
                 }
             }
@@ -45,8 +43,9 @@ class CartController
             // Nếu sản phẩm chưa có trong giỏ hàng, thêm mới
             if (!$found) {
                 $_SESSION['cart'][] = $item;
-                echo '<script>alert("Thêm sản phẩm vào giỏ hàng thành công")</script>';
-                echo '<script>location.href="index.php"</script>';
+                // chuyển hướng đến trang hiện tại
+                header("Location: ".$_SERVER['HTTP_REFERER']);
+
             }
         } else {
             echo '<script>alert("Không có sản phẩm nào được gửi")</script>';
@@ -65,8 +64,9 @@ class CartController
                 foreach ($_SESSION['cart'] as $key => $cartItem) {
                     if (is_array($cartItem) && $cartItem['id'] == $id) {
                         unset($_SESSION['cart'][$key]); // Xóa sản phẩm khỏi giỏ hàng
-                        echo '<script>alert("Sản phẩm đã được xóa khỏi giỏ hàng")</script>';
-                        echo '<script>location.href="index.php"</script>';
+                        // chuyển hướng đến trang hiện tại
+                        header("Location: ".$_SERVER['HTTP_REFERER']);
+
                         break;
                     }
                 }

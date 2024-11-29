@@ -1325,3 +1325,34 @@ form {
         border-radius: 5px;
     }
 }
+/* thanh tìm kiếm header */
+.header_search form input {
+    border-radius: 5px 0 0 5px;
+    margin: 10px 0 10px 10px;
+    padding-left: 20px;
+    border: 1px solid #8D6E6E;
+    width: 400px;
+    height: 30px;
+}
+.header_search form input:focus {
+    border: 1px solid #8D6E6E;
+    border-radius: 5px 0 0 5px;
+}
+.header_search form input:focus + button{
+    display: block;
+}
+.header_search form{
+    display: flex;
+}
+.header_search form button{
+    display: block;
+    color: white;
+    background-color: #c29696;
+    border-bottom-right-radius: 5px ;
+    border-top-right-radius: 5px;
+    border: 1px solid #8D6E6E;
+    width: 100px;
+    height: 30px;
+    margin: 10px 10px 10px 0;
+    font-size: 14px;
+}

@@ -1,19 +1,19 @@
 <?php
-    if(isset($_SESSION['user']) && ($_SESSION['user']!='')){
-        $login = '
+if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
+    $login = '
         <ul class="nav_drop-down">
-            <li><a href="#">Tài khoản</a></li>
+            <li><a href="">Tài khoản id '.$_SESSION['user'].'</a></li>
             <li><a href="index.php?page=logout" >Đăng xuất</a></li>
         </ul>
         ';
-    }else{
-        $login = '
+} else {
+    $login = '
         <ul class="nav_drop-down">
             <li><a href="#" class="dangnhap">Đăng nhập</a></li>
             <li><a href="#" class="dangky">Đăng ký</a></li>
         </ul>
         ';
-    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +22,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Header</title>
+    <title>Trạm Nhỏ Xinh</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/grid.css">
     <link rel="stylesheet" href="public/css/header.css">
@@ -38,14 +38,20 @@
                         <a href="index.php">
                             <img src="public/image/removebg_logo_tramNhoXinh.png" alt="">
                         </a>
-                        <a href="index.php"><h3>Trạm Nhỏ Xinh</h3></a>
+                        <a href="index.php">
+                            <h3>Trạm Nhỏ Xinh</h3>
+                        </a>
                     </div>
                 </div>
                 <div class="col l-6 m-6 c-6">
                     <div class="header_search">
                         <div class="header_sub-search">
-                            <input type="text" placeholder="Tìm kiếm" name="search" id="search">
-                            <label for="cart-checkbox-icon" class="box-cart-icon"><i class="fa-solid fa-cart-shopping"></i></label>
+                            <form action="index.php?page=search" method="post"> 
+                                <input class="inputSearch" type="text" placeholder="Tìm kiếm sản phẩm" name="search" id="search">
+                                <button class="submitSearch" name="submitSearch">Tìm kiếm</button>
+                            </form>
+                            <label for="cart-checkbox-icon" class="box-cart-icon"><i
+                                    class="fa-solid fa-cart-shopping"></i></label>
                             <label for="bar-menu" class="icon-bar-menu"><i class="fa-solid fa-bars"></i></label>
                         </div>
                     </div>
@@ -56,8 +62,8 @@
     <nav>
         <div class="grid wide">
             <div class="nav row">
-                <div class="col l-8 m-10">  
-            <input type="checkbox" id="bar-menu" class="bar-menu">
+                <div class="col l-8 m-10">
+                    <input type="checkbox" id="bar-menu" class="bar-menu">
                     <div class="nav_menu">
                         <ul class="nav_main-menu row">
                             <li class="col l-2 m-2 c-12"><a href="index.php">Trang chủ</a></li>
@@ -79,7 +85,7 @@
                                     <li><a href="#" class="dangnhap">Đăng nhập</a></li>
                                     <li><a href="#" class="dangky">Đăng ký</a></li>
                                 </ul> -->
-                            <?=$login?>
+                                <?= $login ?>
 
                             </li>
                         </ul>
@@ -118,45 +124,48 @@
                     </label>
                 </div>
                 <!-- box sản phẩm -->
-                 <?php
-                 foreach ($_SESSION['cart'] as $item) {
-                    // Kiểm tra nếu $item là một mảng
-                    if (is_array($item)) {
-                 ?>
-                <div class="cart-box-main">
-                    <input type="hidden" name="idproduct" class="idproduct" value="<?=$item['id']?>">
-                    <div class="col l-3 m-3 c-3 cart-img">
-                        <img src="public/image/<?=$item['image']?>" alt="">
-                    </div>
-                    <div class="col l-9 m-9 c-9 cart-container-pro">
-                        <div class="cart-name-pro">
-                            <h4><?=$item['name']?></h4>
-                        </div>
-                        <div class="cart-variant-pro">
-                            <span>Thuộc tính: <?=$item['color']?></span>
-                        </div>
-                        <div class="cart-quantityANDPrice-pro">
-                            <div class="cart-quantity">
-                                <button class="giam"><i class="fa-solid fa-minus"></i></button>
-                                <span class="so"><?=$item['quantity']?></span>
-                                <button class="tăng"><i class="fa-solid fa-plus"></i></button>
+                <?php
+                if (isset($_SESSION['cart'])) {
+                    foreach ($_SESSION['cart'] as $item) {
+                        // Kiểm tra nếu $item là một mảng
+                        if (is_array($item)) {
+                            ?>
+                            <div class="cart-box-main">
+                                <input type="hidden" name="idproduct" class="idproduct" value="<?= $item['id'] ?>">
+                                <div class="col l-3 m-3 c-3 cart-img">
+                                    <img src="public/image/<?= $item['image'] ?>" alt="">
+                                </div>
+                                <div class="col l-9 m-9 c-9 cart-container-pro">
+                                    <div class="cart-name-pro">
+                                        <h4><?= $item['name'] ?></h4>
+                                    </div>
+                                    <div class="cart-variant-pro">
+                                        <span>Thuộc tính: <?= $item['color'] ?></span>
+                                    </div>
+                                    <div class="cart-quantityANDPrice-pro">
+                                        <div class="cart-quantity">
+                                            <button class="giam"><i class="fa-solid fa-minus"></i></button>
+                                            <span class="so"><?= $item['quantity'] ?></span>
+                                            <button class="tăng"><i class="fa-solid fa-plus"></i></button>
+                                        </div>
+                                        <div class="cart-Price">
+                                            <h3 class="price"><?= (int) $item['price'] ?></h3>
+                                        </div>
+                                        <form action="index.php?page=removeFromCart" method="post" class="form-deteleCart">
+                                            <input type="hidden" name="deletePro" value="<?= $item['id'] ?>">
+                                            <button class="cart-xoaProduct" name="removeFromCart"><i
+                                                    class="fa-solid fa-xmark"></i></button>
+                                        </form>
+
+                                    </div>
+                                </div>
                             </div>
-                            <div class="cart-Price">
-                                <h3 class="price"><?=(int)$item['price']?></h3>
-                            </div>
-                            <form action="index.php?page=removeFromCart" method="post" class="form-deteleCart">
-                                <input type="hidden" name="deletePro" value="<?=$item['id']?>">
-                                <button class="cart-xoaProduct" name="removeFromCart"><i class="fa-solid fa-xmark"></i></button>
-                            </form>
-                            
-                        </div>
-                    </div>
-                </div>
-                <?php  
-                 }
+                        <?php
+                        }
+                    }
                 }
                 ?>
-                
+
 
                 <div class="cart-box-footer">
                     <a href="index.php?page=payment"><button>THANH TOÁN</button></a>
@@ -185,14 +194,15 @@
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email" placeholder="Nhập email" required>
                         </div>
-    
+
                         <div class="input-group">
                             <label for="password" class="passForm">
                                 <span class="text-passForm">Mật khẩu:</span>
                             </label>
-    
+
                             <div class="password-container">
-                                <input type="password" autocomplete="" id="password" name="mklogin" placeholder="Nhập mật khẩu" required>
+                                <input type="password" autocomplete="" id="password" name="mklogin"
+                                    placeholder="Nhập mật khẩu" required>
                                 <button type="button" class="show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
@@ -205,9 +215,9 @@
                             <input class="checkbox" type="checkbox" id="rememberMe" name="rememberMe">
                             <label for="rememberMe">Nhớ mật khẩu</label>
                         </div>
-    
+
                         <input type="submit" name="dangnhap" value="Đăng nhập" class="login-btn">
-    
+
                     </form>
                 </div>
             </div>
@@ -235,15 +245,15 @@
                             <label for="re-email">Email:</label>
                             <input type="email" id="re-email" name="re-email" placeholder="Nhập email" required>
                         </div>
-    
+
                         <div class="re-input-group">
                             <label for="password" class="re-passForm">
                                 <span class="re-text-passForm">Mật khẩu:</span>
                             </label>
-    
+
                             <div class="re-password-container">
-                                <input type="password" autocomplete="" id="re-password" name="mk" placeholder="Nhập mật khẩu"
-                                    required>
+                                <input type="password" autocomplete="" id="re-password" name="mk"
+                                    placeholder="Nhập mật khẩu" required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
@@ -253,10 +263,10 @@
                             <label for="re-password" class="re-passForm">
                                 <span class="re-text-passForm">Xác nhận mật khẩu</span>
                             </label>
-    
+
                             <div class="re-password-container">
-                                <input type="password" autocomplete="" id="re-Repassword" name="remk" placeholder="Xác nhận mật khẩu"
-                                    required>
+                                <input type="password" autocomplete="" id="re-Repassword" name="remk"
+                                    placeholder="Xác nhận mật khẩu" required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
@@ -270,10 +280,10 @@
                             <label for="re-phone">Số điện thoại</label>
                             <input type="text" id="re-phone" name="sdt" placeholder="Nhập số điện thoại" required>
                         </div>
-                        
-    
+
+
                         <input type="submit" name="dangky" value="Đăng ký" class="register-btn">
-    
+
                     </form>
                 </div>
             </div>
@@ -299,17 +309,18 @@
                         </div>
                         <div class="forgot-input-group">
                             <label for="forgot-phone">Số điện thoại</label>
-                            <input type="text" id="forgot-phone" name="forgot-phone" placeholder="Nhập số điện thoại" required>
+                            <input type="text" id="forgot-phone" name="forgot-phone" placeholder="Nhập số điện thoại"
+                                required>
                         </div>
-    
+
                         <div class="forgot-input-group">
                             <label for="password" class="forgot-passForm">
                                 <span class="forgot-text-passForm">Mật khẩu mới:</span>
                             </label>
-    
+
                             <div class="forgot-password-container">
-                                <input type="password" autocomplete="" id="forgot-password" name="forgot-password" placeholder="Nhập mật khẩu"
-                                    required>
+                                <input type="password" autocomplete="" id="forgot-password" name="forgot-password"
+                                    placeholder="Nhập mật khẩu" required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
@@ -319,18 +330,18 @@
                             <label for="forgot-password" class="forgot-passForm">
                                 <span class="forgot-text-passForm">Xác nhận mật khẩu mới</span>
                             </label>
-    
+
                             <div class="forgot-password-container">
-                                <input type="password" autocomplete="" id="forgot-re-password" name="forgot-Repassword" placeholder="Xác nhận mật khẩu"
-                                    required>
+                                <input type="password" autocomplete="" id="forgot-re-password" name="forgot-Repassword"
+                                    placeholder="Xác nhận mật khẩu" required>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
                             </div>
                         </div>
-    
+
                         <input type="submit" name="quenPass" class="quenPass-btn" value="Xác nhận">
-    
+
                     </form>
                 </div>
             </div>
@@ -339,4 +350,5 @@
     </section>
 </body>
 <script src="public/js/header.js"></script>
+
 </html>

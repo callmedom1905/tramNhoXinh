@@ -100,7 +100,13 @@
                                         $totalStar += (int) $rating[$i]['star'];
                                         $count = count($rating);
                                     }
-                                    $star = $totalStar / $count;
+                                    $count = count($rating);
+                                    if($count != 0){
+                                        $star = $totalStar / $count;
+
+                                    }else{
+                                        $star = 0;
+                                    }
                                     ?>
                                     <p><?= round($star) ?></p>
                                     <p class="review-count">Của <?= $count ?> đánh giá</p>

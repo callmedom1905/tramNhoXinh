@@ -18,24 +18,23 @@
                     <!-- Cột danh mục -->
                     <div class="col l-3">
                         <div class="search-bar">
-                            <form action="index.php?page=search" method="post"> 
-                                <input type="text" name="search" placeholder="Tìm kiếm sản phẩm">
-                                <button name="submitSearch"><i class="fas fa-search"></i></button>
+                        <form action="index.php?page=search" method="POST">
+                                <input type="text" placeholder="Tìm kiếm" name="search" id="search">
+                                <button  id="search-btn" name="submitSearch"><i class="fas fa-search"></i></button>
+                                
                             </form>
-                            
                         </div>
-                        <h3 class="title"><?=$data['nameCate'][0]['name']?></h3>
+                        
                         <ul class="cateProduct">
-                            <?php
-                            $cate = $data['cate'];
-                            foreach($cate as $item){
-                                extract($item);
-                                echo "<li><a class='nameCate' href='index.php?page=product&id=$id'>$name</a></li>";
-                            }
-                            
-                            ?>
+                            <li><a class="nameCate" href="index.php?page=product&id=2">Phụ kiện</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=4">Vòng tay</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=6">Túi len</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=5">Nón len</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=3">Trang trí</a></li>
+                            <li><a class="nameCate" href="index.php?page=product&id=1">Tô màu</a></li>
 
                         </ul>
+                        
 
                         <!-- Bảng sản phẩm nổi bật -->
 
@@ -46,6 +45,7 @@
                                 </td>
                             </tr>
                             <?php
+                                
                                 $listpro = $data['prohot'];
                                 foreach ($listpro as $item) {
                                     extract($item);
@@ -53,15 +53,14 @@
                                 ?>
                             <tr>
                                 <td>
-                                    <a href="index.php?page=productDetail&id=<?=$id?>">
+                                    <a href="">
                                         <img class="featured-img" src="public/image/<?=$image?>" alt="">
                                     </a>
                                     <a href="#">
                                         <p><?=$name?></p>
                                         <p><?=$view?> lượt xem</p>
-                                        <p><?=number_format($price)?> đ</p>
-                                        <p><?=$salePrice?></p>
-                                    </a>
+                                        <p><?=$price?></p>
+                                        <p><?=$salePrice?></p></a>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -74,9 +73,19 @@
                     <div class="col l-9">
                         <section class="row">
                         <?php
-                                $listpro = $data['products'];
-                                foreach ($listpro as $item) {
-                                    extract($item);
+                                $listpro = $data['dataSearch'];
+                                $key = $data['key'];
+                                if($listpro == null){
+                                    echo '
+                                    <div style="width:860px; height: 600px; display: flex; justify-content: center; line-height: 600px;">
+                                         <p style = "font-weight: 300;">Không tìm thấy nội dung với từ khóa <h2>"'.$key.'"</h2>. Vui lòng tìm kiếm với từ khóa khác.</p>
+                                    </div>
+                                   
+                                    
+                                    ';
+                                }else{
+                                    foreach ($listpro as $item) {
+                                        extract($item);
                                 
                                 ?>
                                 <div class="col l-4 m-4 c-12">
@@ -89,26 +98,19 @@
                                             <span><?=$name?></span>
                                         </div>
                                         <div class="price-product">
-                                            <span><?=number_format($price)?> đ</span>
+                                            <span><?=$price?></span>
                                             <span> <sub><del><?=$salePrice?></del></sub> </span>
                                         </div>
                                         </a>
                                         
-                                        <form action="index.php?page=addToCart" method="post" class="addCart-product">
-                                            <input type="hidden" name="product_id" value="<?=$id?>">
-                                            <input type="hidden" name="product_name" value="<?=$name?>">
-                                            <input type="hidden" name="product_price" value="<?=$price?>">
-                                            <input type="hidden" name="product_image" value="<?=$image?>">
-                                            <input type="hidden" name="product_color" value="<?=$color?>">
-                                            <button type="submit" name="addToCart" class="addCart-product">Thêm vào giỏ hàng</button>
-                                        </form>
+                                        <button class="addCart-product">Thêm vào giỏ hàng</button>
                                         <button class="heart-button">
                                             <i class="icon on fa-solid fa-heart"></i>
                                             <i class="icon off fa-regular fa-heart"></i>
                                         </button>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php }} ?>
 
 
                 

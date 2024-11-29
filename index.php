@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+//Model
 require_once 'vendor/autoload.php';
 require_once 'app/model/database.php';
 require_once 'app/model/productsModel.php';
@@ -9,6 +10,10 @@ require_once 'app/model/productCateModel.php';
 require_once 'app/model/productCommentModel.php';
 require_once 'app/model/postModel.php';
 require_once 'app/model/ratingModel.php';
+require_once 'app/model/favoriteModel.php';
+require_once 'app/model/searchModel.php';
+
+//Controller
 require_once 'app/controller/homeController.php';
 require_once 'app/controller/paymentController.php';
 require_once 'app/controller/userController.php';
@@ -16,6 +21,13 @@ require_once 'app/controller/productController.php';
 require_once 'app/controller/postController.php';
 require_once 'app/controller/mailerController.php';
 require_once 'app/controller/cartController.php';
+require_once 'app/controller/favoriteController.php';
+require_once 'app/controller/getFavoriteController.php';
+require_once 'app/controller/updateFavoriteController.php';
+require_once 'app/controller/removeFavoriteController.php';
+require_once 'app/controller/searchController.php';
+
+
 require_once 'app/view/header.php';
 $db = new DataBase();
 if (isset($_GET['page'])) {
@@ -95,7 +107,12 @@ if (isset($_GET['page'])) {
             break;
         case 'logout':
             session_unset();
-            header('Location: index.php');
+            echo "<script>
+                    localStorage.removeItem('userId');
+                    localStorage.removeItem('danhSachThichSP');
+                    alert('Đăng xuất thành công');
+                    window.location.href = 'index.php'; 
+                </script>";
             break;
         case 'forgotPass':
             $forgotPass = new UserController();
@@ -110,6 +127,29 @@ if (isset($_GET['page'])) {
             $removeFromCart = new CartController();
             $removeFromCart->removeFromCart();
             break;
+        //thích sản phẩm
+        case 'insertFavorite':
+            $favorite = new FavoriteController();
+            $favorite->insertFavorite();
+        break;
+        case 'getFavorite':
+            $getFavorite = new GetFavoriteController();
+            $getFavorite->getFavorite();
+            break;
+        case 'capNhatTrucTiep':
+            $capNhatTrucTiep = new UpdateFavoriteController();
+            $capNhatTrucTiep->capNhatTrucTiep();
+            break;
+        case 'removeFavorite':
+            $removeFavorite = new RemoveFavoriteController();
+            $removeFavorite->removeFavorite();
+            break;
+        //tìm kiếm
+        case 'search':
+            $search = new SearchController();
+            $search->getSearch();
+            break;
+        
 
 
         //xác thực email

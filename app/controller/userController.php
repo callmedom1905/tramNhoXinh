@@ -61,6 +61,7 @@ class UserController
             $email = $_POST['email'];
             $password = md5($_POST['mklogin']);
             $result = $this->user->checkUser($email, $password);
+            $_SESSION['user'] = $result['id'];
             if (is_array($result)) {
                 if ($result['role'] == 1 && $result['active'] == 1) {
                     // $_SESSION['admin'] = $result['username'];
@@ -71,8 +72,10 @@ class UserController
                     location.href='admin/index.php';
                 </script>";
                 } else if ($result['role'] == 0 && $result['active'] == 1) {
-                    $_SESSION['user'] = $result['email'];
+                    $_SESSION['user'] = $result['id'];
+                    $userId = $result['id'];
                     echo "<script>
+                    localStorage.setItem('userId', '$userId');
                     alert('Đăng nhập thành công');
                 </script>";
                     echo "<script>

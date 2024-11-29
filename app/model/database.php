@@ -27,15 +27,15 @@ class DataBase
         return $this->stmt;
     }
 
-    public function getAll($sql)
+    public function getAll($sql, $param = []): mixed
     {
-        $statement = $this->query($sql);
+        $statement = $this->query($sql, $param);
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
     
-    public function getOne($sql)
+    public function getOne($sql, $param = []): mixed
     {
-        $statement = $this->query($sql);
+        $statement = $this->query($sql, $param);
         return $statement->fetch(PDO::FETCH_ASSOC);
     }
 
