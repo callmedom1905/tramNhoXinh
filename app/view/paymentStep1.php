@@ -19,20 +19,32 @@
                 <div class="col l-12 paymentStep1__title">
                     <p class="paymentStep1__title-address">Địa chỉ</p>
                 </div>
+                    <?php
+                    print_r($_SESSION['order']);
+                    foreach ($_SESSION['order'] as $item){
+                        extract($item);
+                    ?>
                     <section class="address row">
                         <div class="col address__input">
                             <input type="checkbox" id="checkbox">
                         </div>
 
-                        <div class="col l-10 address-col">
+                        <div class="l-10 address-col">
 
                             <div class="address__item">
                                 <div class="address__item-title">
-                                    <p>Nhà riêng</p>
+                                    <p><?=$name?></p>
                                 </div>
                                 <div class="address__item-content">
-                                    <p>51/17 Tân Lập 2, Hiệp Phú, TP Thủ Đức</p>
-                                    <p>0933661897</p>
+                                    <?php
+                                    if(isset($_SESSION['order']['address'])){
+                                        echo "<p>".$_SESSION['order']['address']."</p>";
+                                    }else{
+                                        echo "<p>Thêm địa chỉ để đặt hàng</p>";
+                                    }
+                                    ?>
+                                    
+                                    <p><?=$phone?></p>
                                 </div>
                             </div>
                         </div>
@@ -49,39 +61,8 @@
                             </div>
                         </div>
                     </section>
-
-
-
-                    <section class="address row">
-                        <div class="col address__input">
-                            <input type="checkbox" id="checkbox">
-                        </div>
-
-                        <div class="col l-10 address-col">
-
-                            <div class="address__item">
-                                <div class="address__item-title">
-                                    <p>Nhà riêng</p>
-                                </div>
-                                <div class="address__item-content">
-                                    <p>51/17 Tân Lập 2, Hiệp Phú, TP Thủ Đức</p>
-                                    <p>0933661897</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col l-1">
-                            <div class="address__item-icon row">
-                                <!-- 2 icon sửa và xóa địa chỉ -->
-                                <div class="col l-6 icon">
-                                    <i class="fa-solid fa-pen-to-square"></i>
-                                </div>
-                                <div class="col l-6 icon">
-                                    <i class="fa-regular fa-circle-xmark"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+                    <?php } ?>
+                   
 
                 
                 <!-- add address -->
@@ -100,14 +81,14 @@
                                 <a class="btn-close-dialog" href=""><i class="fa-regular fa-circle-xmark"></i></a>    
                             </div>
                             <form>
-                                <label for="">Tên địa chỉ</label> 
-                                <input type="text"> 
+                                <label for="">Tên người nhận</label> 
+                                <input type="text" name="name"> 
                                 <label for="">Địa chỉ cụ thể</label>
-                                <input type="text">
+                                <input type="text" name="address">
                                 <label for="">Số điện thoại</label>
-                                <input type="text"> 
+                                <input type="text" name="phone"> 
 
-                                <input type="submit" value="Lưu địa chỉ">
+                                <input type="submit" name="add-address" value="Lưu địa chỉ">
                             </form>
                         </div>
                     </div>

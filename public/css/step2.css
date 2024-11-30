@@ -65,7 +65,7 @@
 }
 
 .paymentStep2__product-price{
-    padding: 10px;
+    padding: 30px;
 }
 /* thông tin giá */
 .payment__infomation-summary {
@@ -104,6 +104,7 @@
 
 .qr{
     text-align: center;
+    margin-top: 30px;
 }
 
 .name__bank{
@@ -116,7 +117,7 @@
     margin: 20px 0;
 }
   
-  .paymentStep2__btn-prev, .paymentStep2__btn-next {
+  .paymentStep2__btn-prev a, .paymentStep2__btn-next {
     width: 150px;
     display: inline-block;
     padding: 10px 20px;
@@ -127,12 +128,34 @@
     cursor: pointer;
     user-select: none;
     transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
   }
   
   .paymentStep2__btn-prev:hover , .paymentStep2__btn-next:hover{
     background-color: #8d6e6e;
+    border-radius: 5px;
   }
   
   .paymentStep2__btn-prev:active, .paymentStep2__btn-next:active {
     transform: scale(0.95);
   }
+
+  .acceptInfo{
+    text-align: start;
+  }
+
+
+  .payment-radio{
+    padding: 10px;
+    margin: 10px;
+    border: 1px solid #8d6e6e;
+  }
+  input[type="radio"]{
+    padding: 10px;
+    cursor: pointer;
+    align-items: center;
+  }
+  input[type="radio"]:checked{
+    background-color: #8d6e6e;
+  }
+

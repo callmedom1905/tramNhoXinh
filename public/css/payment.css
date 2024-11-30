@@ -32,6 +32,7 @@
 
 .payment__product-item .payment__product-item-left p{
     font-size: 16;
+    margin-left: 20px;
 
 }
 /* ô bên phải sản phẩm */
@@ -58,11 +59,19 @@
     margin-bottom: 20px;
 }
 
+.payment__info{
+    display: flex;
+    justify-content: center;
+}
+
 .payment__infomation label {
     display: block;
     margin: 15px 0 5px;
     font-size: 16px;
     color: #666;
+    font-weight: bold;
+    text-align: left;
+
 }
 
 /* Input và Textarea */

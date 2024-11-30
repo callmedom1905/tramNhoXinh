@@ -1,3 +1,13 @@
+<?php
+// Xử lý form khi được gửi
+$selectedMethod = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['paymentMethod'])) {
+        $selectedMethod = $_POST['paymentMethod']; // Lấy phương thức thanh toán được chọn
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,44 +27,75 @@
                 <div class="col l-6 paymentStep2__order">
                     <div class="paymentStep2__order-title">Tóm tắt đơn hàng</div>
                     <!-- sp 1 -->
-                    <div class="paymentStep2__order-product mgt24">
-                        <div class="img__title">
-                            <img src="../image/removebg_logo_tramNhoXinh.png" alt="">
-                            <p>Tên sản phẩm</p>
+                    <?php
+                    foreach ($_SESSION['cart'] as $pro) {
+                        extract($pro);
+
+                        ?>
+                        <div class="paymentStep2__order-product mgt24">
+                            <div class="img__title">
+                                <img src="public/image/<?= $image ?>" alt="">
+                                <p><?= $name ?></p>
+                            </div>
+                            <div class="paymentStep2__product-price">
+                                <p><?= $quantity ?> cái</p>
+                            </div>
                         </div>
-                        <div class="paymentStep2__product-price">
-                            <p>100,000 đ</p>
-                        </div>
-                    </div>
-                    <!-- sp 2 -->
-                    <div class="paymentStep2__order-product mgt24">
-                        <div class="img__title">
-                            <img src="../image/removebg_logo_tramNhoXinh.png" alt="">
-                            <p>Tên sản phẩm</p>
-                        </div>
-                        <div class="paymentStep2__product-price">
-                            <p>100,000 đ</p>
-                        </div>
-                    </div>
+                    <?php } ?>
+
                     <!-- địa chỉ -->
-                    <div class="tcolor fs14 mgt24">
-                        <p>Địa chỉ</p>
-                    </div>
-                    <div class=" fs16 mgt20">
-                        <p>51/17 Tân Lập 2, Hiệp Phú, TP Thủ Đức</p>
-                    </div>
-                    <!-- đơn vị vận chuyển -->
-                    <div class="tcolor fs14 mgt24">
-                        <p>Đơn vị vận chuyển</p>
-                    </div>
-                    <div class=" fs16 mgt20">
-                        <p>JT Express</p>
-                    </div>
+                    <?php
+                    foreach ($_SESSION['order'] as $order) {
+                        extract($order);
+
+                        ?>
+                        <div class="acceptInfo">
+                            <div class="tcolor fs14 mgt24">
+                                <p>Người nhận</p>
+                            </div>
+                            <div class=" fs16 mgt20">
+                                <p><?= $name ?></p>
+                            </div>
+                            <div class="tcolor fs14 mgt24">
+                                <p>Số điện thoại</p>
+                            </div>
+                            <div class=" fs16 mgt20">
+                                <p><?= $phone ?></p>
+                            </div>
+                            <div class="tcolor fs14 mgt24">
+                                <p>Địa chỉ</p>
+                            </div>
+                            <div class=" fs16 mgt20">
+                                <p><?= $address ?></p>
+                            </div>
+                            <!-- đơn vị vận chuyển -->
+                            <div class="tcolor fs14 mgt24">
+                                <p>Đơn vị vận chuyển</p>
+                            </div>
+                            <div class=" fs16 mgt20">
+                                <p>JT Express</p>
+                            </div>
+                        </div>
+
+
+                    <?php } ?>
+
                     <!-- thông tin giá -->
-                    <div class="payment__infomation-summary fs16">
-                        <div class="summary-item ">
+                    <?php
+                    $tongsp = null;
+                    if (isset($_SESSION['cart'])) {
+                        foreach ($_SESSION['cart'] as $item) {
+                            extract($item);
+                            $tong1sp = $price * $quantity;
+                            $tongsp += $tong1sp;
+                        }
+                    }
+
+                    ?>
+                    <div class="payment__infomation-summary">
+                        <div class="summary-item">
                             <span>Sản phẩm</span>
-                            <span>0đ</span>
+                            <span><?= number_format($tongsp) ?> đ</span>
                         </div>
                         <div class="summary-item">
                             <span>Vận chuyển</span>
@@ -62,7 +103,8 @@
                         </div>
                         <div class="summary-item total">
                             <strong>Tổng cộng</strong>
-                            <strong>0đ</strong>
+                            <strong><?= number_format($tongsp) ?> đ</strong>
+                            <input type="hidden" name="totalPrice" value="<?= $tongsp ?>">
                         </div>
                     </div>
                 </div>
@@ -71,44 +113,59 @@
                 <div class="col l-1"></div>
 
                 <div class="col l-5 paymentStep2__pay">
-                    <div class="paymentStep2__pay-title">Phương thức thanh toán</div>
                     <div class="paymentStep2__pay-btn">
-                        <div id="cod" class="action-btn-pay fs14">Thanh toán khi nhận hàng</div>
-                        <div id="bank" class="action-btn-pay fs14">Thanh toán khi nhận hàng</div>
-                    </div>
-                    <div class="row">
-                        <div class="col l-12 qr">
-                            <img src="../image/QRcode.png" alt="">
-                        </div>
-                    </div>
-                    <div class="payment_pay-credit">
-                        <div class="fs16 mgt20 tcolor">
-                            <p>Ngân hàng</p>
-                        </div>
-                        <div class="fs14 name__bank mgt16">
-                            <p>TP Bank</p>
-                        </div>
-                        <div class="fs16 mgt20 tcolor">
-                            <p>Số tài khoản</p>
-                        </div>
-                        <div class="fs14 name__bank mgt16">
-                            <p>0123456789</p>
-                        </div>
-                        <div class="fs16 mgt20 tcolor">
-                            <p>Tên chủ tài khoản</p>
-                        </div>
-                        <div class="fs14 name__bank mgt16">
-                            <p>Trạm Nhỏ Xinh</p>
-                        </div>
+                        <form method="POST" action="index.php?page=order">
+                            <label class="payment-radio">
+                                <input id="btnCOD" type="radio" name="paymentMethod" value="1">
+                                Thanh toán khi nhận hàng
+                            </label>
+                            <label class="payment-radio">
+                                <input id="btnBank" type="radio" name="paymentMethod" value="2" >
+                                Thanh toán ngân hàng
+                            </label>
+                       
+                    <!-- thanh toans chuyen khoan -->
+                            <section id="paymentBank">
+                                <div class="row">
+                                    <div class="col l-12 qr">
+                                        <img src="public/image/QRcode.png" alt="">
+                                    </div>
+                                </div>
+                                <div class="payment_pay-credit">
+                                    <div class="fs16 mgt20 tcolor">
+                                        <p>Ngân hàng</p>
+                                    </div>
+                                    <div class="fs14 name__bank mgt16">
+                                        <p>TP Bank</p>
+                                    </div>
+                                    <div class="fs16 mgt20 tcolor">
+                                        <p>Số tài khoản</p>
+                                    </div>
+                                    <div class="fs14 name__bank mgt16">
+                                        <p>0123456789</p>
+                                    </div>
+                                    <div class="fs16 mgt20 tcolor">
+                                        <p>Tên chủ tài khoản</p>
+                                    </div>
+                                    <div class="fs14 name__bank mgt16">
+                                        <p>Trạm Nhỏ Xinh</p>
+                                    </div>
+                                </div>
+                            </section>
+
+
+                            <div class="col l-12 paymentStep2_btn">
+                                <span class="paymentStep2__btn-prev fs16"><a href="index.php?page=payment">Trở lại</a></span>
+                                <button name="submitOrder" class="paymentStep2__btn-next fs16">Đặt hàng</button>
+                            </div>
+                        </form>
+
                     </div>
 
-                    <div class="col l-12 paymentStep2_btn">
-                        <span class="paymentStep2__btn-prev fs16">Trở lại</span>
-                        <span class="paymentStep2__btn-next fs16">Thanh toán</span>
-                    </div>
+
                 </div>
             </div>
     </main>
 </body>
-<script src="public/js/paymentStep2.js"></script>
+
 </html>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 ob_start();
+// session_unset();
 //Model
 require_once 'vendor/autoload.php';
 require_once 'app/model/database.php';
@@ -12,6 +13,8 @@ require_once 'app/model/postModel.php';
 require_once 'app/model/ratingModel.php';
 require_once 'app/model/favoriteModel.php';
 require_once 'app/model/searchModel.php';
+require_once 'app/model/orderModel.php';
+require_once 'app/model/orderItemModel.php';
 
 //Controller
 require_once 'app/controller/homeController.php';
@@ -64,13 +67,13 @@ if (isset($_GET['page'])) {
             $payment->viewPayment();
             break;
         // case 'paymentStep1':
-        //     $paymentStep1 = new PaymentController();
-        //     $paymentStep1->viewPaymentStep1();
-        //     break;
-        // case 'paymentStep2':
         //     $paymentStep2 = new PaymentController();
-        //     $paymentStep2->viewPaymentStep2();
+        //     $paymentStep2->viewPaymentStep1();
         //     break;
+        case 'paymentStep2':
+            $paymentStep2 = new PaymentController();
+            $paymentStep2->viewPaymentStep2();
+            break;
 
         //     // trang thông tin người dùng
         // case 'userAddress':
@@ -149,7 +152,11 @@ if (isset($_GET['page'])) {
             $search = new SearchController();
             $search->getSearch();
             break;
-        
+        //đặt hàng
+        case 'order':
+            $order = new PaymentController();
+            $order->createOrder();
+            break;
 
 
         //xác thực email

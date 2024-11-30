@@ -50,7 +50,7 @@
 }
 
 .dot.active {
-    background-color: white;
+    background-color: #8d6e6e;
 }
 
 @media (max-width:1023px) {

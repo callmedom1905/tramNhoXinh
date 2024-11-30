@@ -17,10 +17,10 @@
             <div class="col l-12 m-12 c-12 banner" style="padding: 0px;"> <!--có css ở đây-->
                 <div class="banner-home">
                     <div class="slider-container">
-                        <div class="slide"><img src="public/image/bannerSlide.jpg" alt="Slide 1"></div>
-                        <div class="slide"><img src="public/image/bannerSlide.jpg" alt="Slide 2"></div>
-                        <div class="slide"><img src="public/image/bannerSlide.jpg" alt="Slide 3"></div>
-                        <div class="slide"><img src="public/image/bannerSlide.jpg" alt="Slide 4"></div>
+                        <div class="slide"><img src="public/image/bannerSlide1.jpg" alt="Slide 1"></div>
+                        <div class="slide"><img src="public/image/bannerSlide2.jpg" alt="Slide 2"></div>
+                        <div class="slide"><img src="public/image/bannerSlide3.jpg" alt="Slide 3"></div>
+                        <div class="slide"><img src="public/image/bannerSlide4.jpg" alt="Slide 4"></div>
                     </div>
                     <div class="dots-container"></div>
                 </div>
@@ -80,7 +80,7 @@
         <section class="row">
             <div class="col l-12 m-12 c-12 banner-sub">
                 <div class="sub-banner-home">
-                    <img src="public/image/banner1.png" alt="">
+                    <img src="public/image/bannerPhu.jpg" alt="">
                 </div>
             </div>
         </section>

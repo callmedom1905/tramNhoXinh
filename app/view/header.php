@@ -16,17 +16,11 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trạm Nhỏ Xinh</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/grid.css">
     <link rel="stylesheet" href="public/css/header.css">
-</head>
+
 
 <body>
     <!-- Header and nav -->
@@ -149,7 +143,7 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                             <button class="tăng"><i class="fa-solid fa-plus"></i></button>
                                         </div>
                                         <div class="cart-Price">
-                                            <h3 class="price"><?= (int) $item['price'] ?></h3>
+                                            <h3 class="price"><?= number_format($item['price']) ?>đ</h3>
                                         </div>
                                         <form action="index.php?page=removeFromCart" method="post" class="form-deteleCart">
                                             <input type="hidden" name="deletePro" value="<?= $item['id'] ?>">
@@ -166,10 +160,20 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                 }
                 ?>
 
+                <?php
+                if(!empty($_SESSION['user'])){
 
+                
+                ?>
                 <div class="cart-box-footer">
                     <a href="index.php?page=payment"><button>THANH TOÁN</button></a>
                 </div>
+                <?php }else{?>
+
+                <div class="cart-box-footer">
+                    <a href="index.php"><button>Đăng nhập để thanh toán</button></a>
+                </div>
+                <?php } ?>
             </div>
         </div>
     </section>
@@ -350,5 +354,3 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
     </section>
 </body>
 <script src="public/js/header.js"></script>
-
-</html>
