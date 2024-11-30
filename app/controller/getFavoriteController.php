@@ -17,10 +17,10 @@ class GetFavoriteController
             header('Content-Type: application/json');
             echo json_encode(['success' => true, 'favorite' => $favorites], JSON_PRETTY_PRINT);
             exit;
-            echo '<pre>';
-            print_r($favorites);
-            echo '</pre>';
-            return $favorites;
+            // echo '<pre>';
+            // print_r($favorites);
+            // echo '</pre>';
+            // return $favorites;
             if($favorites) {
                 echo json_encode(['success' => true, 'favorite' => $favorites]);
             } else {
