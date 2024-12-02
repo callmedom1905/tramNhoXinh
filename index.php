@@ -111,10 +111,17 @@ if (isset($_GET['page'])) {
         case 'logout':
             session_unset();
             echo "<script>
-                    localStorage.removeItem('userId');
-                    localStorage.removeItem('danhSachThichSP');
-                    alert('Đăng xuất thành công');
-                    window.location.href = 'index.php'; 
+                    if (confirm('Bạn có chắc chắn muốn đăng xuất không?')) {
+                        // Người dùng chọn Yes
+                        localStorage.removeItem('userId');
+                        localStorage.removeItem('danhSachThichSP');
+                        alert('Đăng xuất thành công');
+                        window.location.href = 'index.php'; 
+                    } else {
+                        // Người dùng chọn No
+                        alert('Bạn đã hủy đăng xuất');
+                        window.history.back(); // Quay lại trang trước
+                    }
                 </script>";
             break;
         case 'forgotPass':

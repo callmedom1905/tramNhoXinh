@@ -41,4 +41,26 @@ class UserModel
         $param = [$code];
         return $this->db->update($sql, $param);
     }
+
+    //admin
+    function getAllUser(){
+        $sql = "SELECT * FROM users";
+        return $this->db->getAll($sql);
+    }
+
+    function getUser($id){
+        $sql = "SELECT * FROM users WHERE id = $id";
+        return $this->db->getOne($sql);
+    }
+
+    function editUser($data){
+        $sql = "UPDATE users SET email =?, name =?, role =?, active =? WHERE id =?";
+        $param = [$data['email'], $data['name'], $data['role'], $data['active'], $data['id']];
+        return $this->db->update($sql,$param);
+    }
+
+    function deleteUser($id){
+        $sql = "DELETE FROM users WHERE id = ?";
+        $this->db->delete($sql, [$id]);
+    }
 }

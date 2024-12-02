@@ -26,7 +26,7 @@ class ProductController
             $idcate = $_GET['id'];
             $this->data['products'] = $this->products->getProCate($idcate); //lấy sản phẩm cùng danh mục
             $this->data['prohot'] = $this->products->getProHot();  //lấy sản phẩm hot (view cao)
-            $this->data['nameCate'] = $this->category->getNameCate($idcate);  //lấy tên danh mục theo id
+            $this->data['nameCate'] = $this->category->getNameCateUser($idcate);  //lấy tên danh mục theo id
             $this->data['cate'] = $this->category->getAllCate();
             return $this->renderView('product', $this->data);
         } else {

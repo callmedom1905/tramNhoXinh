@@ -1,12 +1,13 @@
 <?php 
 class OrderItemModel{
-    private $orderItem;
+    private $db;
     function __construct(){
-        $this->orderItem = new DataBase();
+        $this->db = new DataBase();
     }
     function insertOrderItem($data){
         $sql = "INSERT INTO orderitems (idProduct, quantity, priceItem, idOrder) VALUES (?,?,?,?)";
         $param = [$data['idProduct'], $data['quantity'], $data['priceItem'], $data['idOrder']];
-        return $this->orderItem->insert($sql, $param);
+        return $this->db->insert($sql, $param);
     }
+    
 }
