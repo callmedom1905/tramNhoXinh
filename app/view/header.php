@@ -2,7 +2,7 @@
 if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
     $login = '
         <ul class="nav_drop-down">
-            <li><a href="">Tài khoản id '.$_SESSION['user'].'</a></li>
+            <li><a href="index.php?page=userInfo">Tài khoản id ' . $_SESSION['user'] . '</a></li>
             <li><a href="index.php?page=logout" >Đăng xuất</a></li>
         </ul>
         ';
@@ -17,9 +17,9 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
 ?>
 
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="public/css/grid.css">
-    <link rel="stylesheet" href="public/css/header.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link rel="stylesheet" href="public/css/grid.css">
+<link rel="stylesheet" href="public/css/header.css">
 
 
 <body>
@@ -40,8 +40,9 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                 <div class="col l-6 m-6 c-6">
                     <div class="header_search">
                         <div class="header_sub-search">
-                            <form action="index.php?page=search" method="post"> 
-                                <input class="inputSearch" type="text" placeholder="Tìm kiếm sản phẩm" name="search" id="search">
+                            <form action="index.php?page=search" method="post">
+                                <input class="inputSearch" type="text" placeholder="Tìm kiếm sản phẩm" name="search"
+                                    id="search">
                                 <button class="submitSearch" name="submitSearch">Tìm kiếm</button>
                             </form>
                             <label for="cart-checkbox-icon" class="box-cart-icon"><i
@@ -109,8 +110,36 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                     <h1>Giỏ hàng</h1>
                     <div class="cart-item-header">
                         <div class="item">
-                            <h6>Sản phẩm: <span class="totalProduct"></span></h6>
-                            <h6>Tổng tiền: <span class="totalPrice"></span></h6>
+                            <h6>Sản phẩm:
+                                <?php
+                                $totalPro = 0;
+                                if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                                    foreach ($_SESSION['cart'] as $item) {
+                                        if (isset($item['quantity']) && is_numeric($item['quantity'])) {
+                                            $totalPro += $item['quantity'];
+                                        }
+                                    }
+                                    echo '<span class="totalProduct">' . $totalPro . '</span>';
+                                } else {
+                                    echo '<span class="totalProduct">0</span>';
+                                }
+                                ?>
+                            </h6>
+                            <h6>Tổng tiền:
+                                <?php
+                                $totalPrice = 0;
+                                if (isset($_SESSION['cart']) && is_array($_SESSION['cart']) && count($_SESSION['cart']) > 0) {
+                                    foreach ($_SESSION['cart'] as $item) {
+                                        if (isset($item['price']) && is_numeric($item['price']) && isset($item['quantity']) && is_numeric($item['quantity'])) {
+                                            $totalPrice += $item['price'] * $item['quantity'];
+                                        }
+                                    }
+                                    echo '<span class="totalPrice">' . number_format($totalPrice, 0, ',', '.') . '</span> Đ';
+                                } else {
+                                    echo '<span class="totalPrice">0</span> Đ';
+                                }
+                                ?>
+                            </h6>
                         </div>
                     </div>
                     <label for="cart-checkbox-icon" type="submit" id="cart-closeButton">
@@ -138,12 +167,14 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                     </div>
                                     <div class="cart-quantityANDPrice-pro">
                                         <div class="cart-quantity">
-                                            <button class="giam"><i class="fa-solid fa-minus"></i></button>
+                                            <button class="giam" data-id="<?= $item['id'] ?>"><i
+                                                    class="fa-solid fa-minus"></i></button>
                                             <span class="so"><?= $item['quantity'] ?></span>
-                                            <button class="tăng"><i class="fa-solid fa-plus"></i></button>
+                                            <button class="tang" data-id="<?= $item['id'] ?>"><i
+                                                    class="fa-solid fa-plus"></i></button>
                                         </div>
                                         <div class="cart-Price">
-                                            <h3 class="price"><?= number_format($item['price']) ?>đ</h3>
+                                        <h3 class="price"><?= number_format((int) $item['price'], 0, ',', '.') ?></h3>
                                         </div>
                                         <form action="index.php?page=removeFromCart" method="post" class="form-deteleCart">
                                             <input type="hidden" name="deletePro" value="<?= $item['id'] ?>">
@@ -154,25 +185,23 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                     </div>
                                 </div>
                             </div>
-                        <?php
+                            <?php
                         }
                     }
                 }
                 ?>
 
                 <?php
-                if(!empty($_SESSION['user'])){
+                if (!empty($_SESSION['user'])) {
+                    ?>
+                    <div class="cart-box-footer">
+                        <a href="index.php?page=payment"><button>THANH TOÁN</button></a>
+                    </div>
+                <?php } else { ?>
 
-                
-                ?>
-                <div class="cart-box-footer">
-                    <a href="index.php?page=payment"><button>THANH TOÁN</button></a>
-                </div>
-                <?php }else{?>
-
-                <div class="cart-box-footer">
-                    <a href="index.php"><button>Đăng nhập để thanh toán</button></a>
-                </div>
+                    <div class="cart-box-footer">
+                        <a href="index.php"><button>Đăng nhập để thanh toán</button></a>
+                    </div>
                 <?php } ?>
             </div>
         </div>

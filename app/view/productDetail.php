@@ -1,10 +1,14 @@
+<?php
+$product = $data['detail'];
+extract($product);
+?>
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết sản phẩm</title>
+    <title><?=$name?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="public/css/productDetail.css">
 </head>
@@ -17,8 +21,7 @@
                     <div class="l-12">
                         <!--Chi tiết sản phẩm-->
                         <?php
-                        $product = $data['detail'];
-                        extract($product);
+
                         if (!empty($listImages)) {
                             // Nếu $listImages không rỗng, tách chuỗi thành mảng
                             $list = explode(',', $listImages);
@@ -50,13 +53,21 @@
                                 <p class="price"><?= number_format($price) ?> đ</p>
                                 <p class="price"><?= $salePrice ?> </p>
                                 <div class="quantity-controls">
-                                    <button onclick="minus()"><i class="fa-solid fa-minus"></i></button>
+                                    <button class="minus"><i class="fa-solid fa-minus"></i></button>
                                     <input type="text" id="amount" value="1">
-                                    <button onclick="plus()"><i class="fa-solid fa-plus"></i></button>
+                                    <button class="plus"><i class="fa-solid fa-plus"></i></button>
                                 </div>
                                 <p>Mô tả</p>
                                 <div class="cart-button">
-                                    <button>Thêm vào giỏ hàng</button>
+                                    <form action="index.php?page=addToCartInDetail" method="post" style=" display: contents;">
+                                        <input type="hidden" name="product_quantity" class="amount" id="hidden_quantity" value="1">
+                                        <input type="hidden" name="product_id" value="<?= $id ?>">
+                                        <input type="hidden" name="product_name" value="<?= $name ?>">
+                                        <input type="hidden" name="product_price" value="<?= $price ?>">
+                                        <input type="hidden" name="product_image" value="<?= $image ?>">
+                                        <input type="hidden" name="product_color" value="<?= $color ?>">
+                                        <button type="submit" name="addToCartInDetail" class="addCart-product">Thêm vào giỏ hàng</button>
+                                    </form>
                                     <button>Mua ngay</button>
                                 </div>
                             </div>
@@ -309,6 +320,7 @@
                                 $relatePro = $data['splq'];
                                 foreach ($relatePro as $item) {
                                     extract($item);
+                                    if($status == 1){
                                     ?>
                                     <div class="col l-3 m-4 c-12">
                                         <div class="product">
@@ -325,13 +337,16 @@
                                                 </div>
                                             </a>
                                             <button class="addCart-product">Thêm vào giỏ hàng</button>
-                                            <button class="heart-button">
+                                            <button class="heart-button" data-id="<?=$id?>">
                                                 <i class="icon on fa-solid fa-heart"></i>
                                                 <i class="icon off fa-regular fa-heart"></i>
                                             </button>
                                         </div>
                                     </div>
-                                <?php } ?>
+                                <?php 
+                                    }
+                                } 
+                            ?>
 
 
                             </div>

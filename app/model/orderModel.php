@@ -19,6 +19,17 @@ class OrderModel{
         $sql = "SELECT * FROM orders";
         return $this->db->getAll($sql);
     }
+    //lấy đơn hàng theo id user
+    function getOrderByIdUser($idUser){
+        $sql = "SELECT * FROM orders WHERE idUser = $idUser";
+        return $this->db->getAll($sql);
+    }
+
+    function cancelOrder($id){
+        $sql = "UPDATE orders SET status = 0 WHERE id = ?";
+        $param = [$id];
+        return $this->db->update($sql, $param);
+    }
     //admin
     function getOrderDetail(){
         $sql = "SELECT * FROM orderitems";
@@ -44,4 +55,7 @@ class OrderModel{
                     oi.idOrder = :idOrder";
         return $this->db->getAll($sql, ['idOrder' => $idOrder]);
     }
+
+
+    
 }

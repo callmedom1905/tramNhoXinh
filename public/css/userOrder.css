@@ -1,16 +1,4 @@
 
-
-.container {
-    gap: 20px;
-    margin-top: 20px;
-}
-
-.row {
-    display: flex;
-    flex-wrap: wrap;
-
-}
-
 .l-3, .l-4, .l-9 {
     padding: 20px;
 }

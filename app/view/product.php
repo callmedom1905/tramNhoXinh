@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sản phẩm</title>
+    <title><?=$data['nameCate'][0]['name']?></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/prouduct.css">
     
@@ -77,6 +77,7 @@
                                 $listpro = $data['products'];
                                 foreach ($listpro as $item) {
                                     extract($item);
+                                    if($status == 1){
                                 
                                 ?>
                                 <div class="col l-4 m-4 c-12">
@@ -102,13 +103,16 @@
                                             <input type="hidden" name="product_color" value="<?=$color?>">
                                             <button type="submit" name="addToCart" class="addCart-product">Thêm vào giỏ hàng</button>
                                         </form>
-                                        <button class="heart-button">
+                                        <button class="heart-button" data-id="<?=$id?>">
                                             <i class="icon on fa-solid fa-heart"></i>
                                             <i class="icon off fa-regular fa-heart"></i>
                                         </button>
                                     </div>
                                 </div>
-                            <?php } ?>
+                            <?php 
+                                 }    
+                            } 
+                            ?>
 
 
                 

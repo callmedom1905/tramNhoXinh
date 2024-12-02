@@ -75,23 +75,46 @@ if (isset($_GET['page'])) {
             $paymentStep2->viewPaymentStep2();
             break;
 
-        //     // trang thông tin người dùng
-        // case 'userAddress':
-        //     $userAddress = new UserController();
-        //     $userAddress->viewUserAddress();
-        //     break;
-        // case 'userFavorite':
-        //     $userFavorite = new UserController();
-        //     $userFavorite->viewUserFavorite();
-        //     break;
-        // case 'userInfo':
-        //     $userInfo = new UserController();
-        //     $userInfo->viewUserInfo();
-        //     break;
-        // case 'userOrder':
-        //     $userOrder = new UserController();
-        //     $userOrder->viewUserOrder();
-        //     break;
+            // trang thông tin người dùng
+        case 'userInfo':
+            $userInfo = new UserController();
+            $userInfo->viewUserInfo();
+            break;
+        case 'updateInfo':
+            $updateInfo = new UserController();
+            $updateInfo->updateUserInfo();
+            break;
+            //trang đơn hàng người dùng
+        case 'userOrder':
+            $userOrder = new UserController();
+            $userOrder->viewUserOrder();
+            break;
+        case 'cancelOrder':
+            $cancelOrder = new UserController();
+            $cancelOrder->cancelOrder();
+            break;
+            //trang yêu thích sản phẩm
+        case 'userFavorite':
+            $userFavorite = new UserController();
+            $userFavorite->viewUserFavorite();
+            break;
+            //trang địa chỉ người dùng
+        case 'userAddress':
+            $userAddress = new UserController();
+            $userAddress->viewUserAddress();
+            break;
+        case 'deleteAddress':
+            $deleteAddress = new UserController();
+            $deleteAddress->deleteAddress();
+            break;
+        case 'updateAddress':
+            $updateAddress = new UserController();
+            $updateAddress->updateAddress();
+            break;
+
+        
+        
+        
 
         //     //trang liên hệ
         // case 'contact':
@@ -136,6 +159,14 @@ if (isset($_GET['page'])) {
         case 'removeFromCart':
             $removeFromCart = new CartController();
             $removeFromCart->removeFromCart();
+            break;
+        case 'addToCartInDetail':
+            $addToCartInDetail = new CartController();
+            $addToCartInDetail->addToCartInDetail();
+            break;
+        case 'updateCart':
+            $updateCart = new CartController();
+            $updateCart->updateCart();
             break;
         //thích sản phẩm
         case 'insertFavorite':

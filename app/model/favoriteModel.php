@@ -36,4 +36,9 @@ class FavoriteModel
         $param = [$userId, $productId];
         return $this->db->getOne($sql, $param);
     }
+
+    function getAllFavoriteByIdUser($idUser){
+        $sql = "SELECT * FROM favorite JOIN products ON favorite.idProduct = products.id WHERE idUser = $idUser";
+        return $this->db->getAll($sql);
+    }
 }

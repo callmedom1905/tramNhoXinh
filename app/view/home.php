@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Trang chủ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/main.css">
 </head>
@@ -36,6 +36,7 @@
                 $list8Pro = $data['product8'];
                 foreach ($list8Pro as $item) {
                     extract($item);
+                    if($status == 1){
 
                     ?>
 
@@ -69,7 +70,11 @@
                             </button>
                         </div>
                     </div>
-                <?php } ?>
+                <?php 
+                    }
+                } 
+                
+                ?>
 
 
                 <!-- Thêm các sản phẩm khác tương tự -->

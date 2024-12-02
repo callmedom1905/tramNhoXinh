@@ -113,54 +113,72 @@ clickForgotOFdangnhap.addEventListener('click', function(){
 //end đổi quên thành login
 
 // JS Giỏ hàng Trạm Nhỏ Xinh 
-const cartTang = document.querySelectorAll('.giam');
-const cartGiam = document.querySelectorAll('.tăng');
-const cartSo = document.querySelectorAll('.so');
-const giaProduct = document.querySelectorAll('.cart-Price .price');
-const tenSanPham = document.querySelector('.productName'); 
-const totalPriceElement = document.querySelector('.totalPrice'); 
-const totalProductElement = document.querySelector('.totalProduct'); 
+// Xử lý sự kiện giảm số lượng
+document.querySelectorAll('.giam').forEach(nut => {
+    nut.addEventListener('click', () => {
+        const cartBoxMain = nut.closest('.cart-box-main');
+        const so = cartBoxMain.querySelector('.so');
+        let currentQuantity = parseInt(so.textContent); 
 
-let tongSanPham = 0;
-let tongTien = 0;
-totalPriceElement.textContent = tongTien
-totalProductElement.textContent = tongSanPham
-function capNhatsoAndtongTien(buttonType, index) {
-    const quantityElement = cartSo[index];
-    let quantity = parseInt(quantityElement.textContent);
-
-    if (buttonType === 'minus') {
-        if (quantity > 1) quantity--; 
-    } else if (buttonType === 'plus') {
-        quantity++;
-    }
-    quantityElement.textContent = quantity;
-    const price = parseInt(giaProduct[index].textContent.replace('.', '').replace('Đ', ''));
-    const totalPriceProduct = quantity * price;
-    tongSanPham = 0;
-    tongTien = 0;
-    cartSo.forEach((item, i) => {
-        const soLuong = parseInt(item.textContent);
-        const gia = parseInt(giaProduct[i].textContent.replace('.', '').replace('Đ', ''));
-        tongSanPham += soLuong;
-        tongTien += soLuong * gia;
+        if (currentQuantity > 1) {
+            so.textContent = currentQuantity - 1; 
+            updateCart('giam', nut.dataset.id); 
+            hamCapNhat(); 
+        }
     });
-    totalProductElement.textContent = tongSanPham;
-    totalPriceElement.textContent = tongTien.toLocaleString('vi-VN') + "Đ";
-    if (tongSanPham === 0) {
-        tenSanPham.textContent = "Không có sản phẩm";
-        totalProductElement.textContent = "0";
-        totalPriceElement.textContent = "0Đ";
-    } 
-    // else {
-    //     tenSanPham.textContent = "Tên sản phẩm";
-    // }
-}
-cartTang.forEach((button, index) => {
-    button.addEventListener('click', () => capNhatsoAndtongTien('minus', index));
 });
-cartGiam.forEach((button, index) => {
-    button.addEventListener('click', () => capNhatsoAndtongTien('plus', index));
+document.querySelectorAll('.tang').forEach(nut => {
+    nut.addEventListener('click', () => {
+        const cartBoxMain = nut.closest('.cart-box-main');
+        const so = cartBoxMain.querySelector('.so');
+        let currentQuantity = parseInt(so.textContent); 
+        so.textContent = currentQuantity + 1; 
+        updateCart('tang', nut.dataset.id); 
+        hamCapNhat(); 
+    });
 });
 
-// END JS Giỏ hàng Trạm Nhỏ Xinh 
+
+function updateCart(action, proId) {
+    fetch('index.php?page=updateCart', {
+        method: 'POST',
+        body: JSON.stringify({
+            action: action,
+            proId: proId,
+        }),
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => console.error('Error:', error));
+}
+function hamCapNhat() {
+    let totalPro = 0;
+    let totalPrice = 0;
+    document.querySelectorAll('.cart-box-main').forEach(cartBox => {
+        const quantity = parseInt(cartBox.querySelector('.so').textContent); 
+        const price = parseInt(cartBox.querySelector('.price').textContent.replace(/\./g, '')); // Lấy giá trị và loại bỏ dấu chấm
+        console.log(quantity, price);
+        
+        totalPro += quantity; 
+        totalPrice += price * quantity; 
+    });
+    console.log(totalPro,totalPrice);
+    const capNhatTongPro = document.querySelector('.totalProduct');
+    console.log(capNhatTongPro);
+    
+    if (capNhatTongPro) {
+        capNhatTongPro.textContent = totalPro;
+    }
+
+    const capNhatTongTien = document.querySelector('.totalPrice');
+    console.log(capNhatTongTien);
+    
+    if (capNhatTongTien) {
+        capNhatTongTien.textContent = totalPrice
+    }
+}

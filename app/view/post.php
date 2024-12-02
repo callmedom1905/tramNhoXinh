@@ -33,6 +33,7 @@
                                 $post = $data['posts'];
                                 foreach ($post as $item) {
                                     extract($item);
+                                    if($status == 1){
 
                             ?>
                             <tr>
@@ -47,7 +48,10 @@
                                     </a>
                                 </td>
                             </tr>
-                            <?php }?>
+                            <?php 
+                                 }
+                             }
+                        ?>
 
                         </table>
                     </div>
@@ -58,7 +62,7 @@
                         $post = $data['posts'];
                         foreach ($post as $item) {
                             extract($item);
-
+                            if($status == 1){
                             ?>
                             <div class="post-item">
                                 <div class="post-img">
@@ -77,7 +81,10 @@
                                 </div>
                             </div>
 
-                        <?php } ?>
+                        <?php 
+                            }
+                        } 
+                        ?>
 
                         <!-- <div class="pagination">
                             <a href="#" class="active">1</a>

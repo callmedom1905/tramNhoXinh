@@ -1,64 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yêu thích</title>
     <link rel="stylesheet" href="public/css/userFavorite.css">
 </head>
-<body>
-<?php echo '<h1>Sua css</h1>'; ?>
 
-<main class="productFavorite">
-<div class="grid wide container">
-    <div class="row">
-        <div class="col l-3">
-            <ul class="user-menu">
-                <li><a href="">Thông tin khách hàng</a></li>
-                <li><a href="">Đơn hàng</a></li>
-                <li><a href="">Yêu thích</a></li>
-                <li><a href="">Địa chỉ</a></li>
-            </ul>
-        </div>
-        <div class="col l-9">
-            <div class="main-product">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Hình ảnh</th>
-                            <th>Tên sản phẩm</th>
-                            <th>Xem chi tiết</th>
-                            <th>Bỏ thích</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!-- 1 sản phẩm -->
-                        <tr>
-                            <td><img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Sản phẩm 1" width="80"></td>
-                            <td>Sản phẩm A</td>
-                            <td><a href="#chitietsanpham">Xem chi tiết</a></td>
-                            <td><a href="" class="remove-favorite">Bỏ thích</a></td>
-                        </tr>
-                        <!-- 1 sản phẩm -->
-                        <tr>
-                            <td><img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Sản phẩm 2" width="80"></td>
-                            <td>Sản phẩm B</td>
-                            <td><a href="">Xem chi tiết</a></td>
-                            <td><a href="" class="remove-favorite">Bỏ thích</a></td>
-                        </tr>
-                        <!-- 1 sản phẩm -->
-                        <tr>
-                            <td><img src="../image/y-tuong-lam-do-handmade-2.webp" alt="Sản phẩm 3" width="80"></td>
-                            <td>Sản phẩm C</td>
-                            <td><a href="">Xem chi tiết</a></td>
-                            <td><a href="" class="remove-favorite">Bỏ thích</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+<body>
+
+    <main class="productFavorite">
+        <div class="grid wide container">
+            <div class="row">
+                <div class="col l-3">
+                    <ul class="user-menu">
+                        <li><a href="index.php?page=userInfo">Thông tin khách hàng</a></li>
+                        <li><a href="index.php?page=userOrder">Đơn hàng</a></li>
+                        <li><a href="index.php?page=userFavorite">Yêu thích</a></li>
+                        <li><a href="index.php?page=userAddress">Địa chỉ</a></li>
+                    </ul>
+                </div>
+                <div class="col l-9">
+                    <h2>Sản phẩm yêu thích</h2>
+                    <div class="main-product">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Hình ảnh</th>
+                                    <th>Tên sản phẩm</th>
+                                    <th>Xem chi tiết</th>
+                                    <th>Bỏ thích</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($data['favorite'] as $item) {
+                                ?> 
+                                <tr>
+                                    <td><img src="public/image/<?=$item['image']?>" alt="Sản phẩm 1" width="80"></td>
+                                    <td><?=$item['name']?></td>
+                                    <td><a href="index.php?page=productDetail&id=<?=$item['id']?>">Xem chi tiết</a></td>
+                                    <td><a href="" class="remove-favorite">Bỏ thích</a></td>
+                                </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-</main>
+    </main>
 </body>
+
 </html>
