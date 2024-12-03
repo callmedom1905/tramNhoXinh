@@ -46,7 +46,7 @@
             </div>
             <div class="category-main-product">
                 <label for="">Giá giảm</label>
-                <input type="text" name="salePrice" value="<?= $salePrice ?>">
+                <input type="number" name="salePrice" value="<?= $salePrice === null ? '' : $salePrice?>">
                 <input type="hidden" name="idPro" value="<?= $pro_detail['id'] ?>">
             </div>
             <div class="category-main-product">
