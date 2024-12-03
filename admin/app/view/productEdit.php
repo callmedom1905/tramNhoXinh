@@ -5,11 +5,6 @@
             <a href="?page=product">Quay về</a>
         </div>
         <div class="main-header">
-            <div class="right-main-header">
-                <!-- <input type="text" placeholder="Tìm kiếm">
-                <div class="filter"><i class="fa-solid fa-filter"></i></div>
-                <div class="sort"><i class="fa-solid fa-arrow-down-a-z"></i></div> -->
-            </div>
         </div>
     </div>
     <!-- xong phần header -->
@@ -46,7 +41,7 @@
             </div>
             <div class="category-main-product">
                 <label for="">Giá giảm</label>
-                <input type="number" name="salePrice" value="<?= $salePrice === null ? '' : $salePrice?>">
+                <input type="number" name="salePrice" value="<?= $salePrice == null ? ' ' : $salePrice ?>">
                 <input type="hidden" name="idPro" value="<?= $pro_detail['id'] ?>">
             </div>
             <div class="category-main-product">
@@ -78,8 +73,12 @@
                         echo "Chưa có ảnh";
                     } else {
                         // Nếu có ảnh phụ, hiển thị chúng
-                        foreach ($listImages as $img) {
-                            echo "<img src='../public/image/$img' width='80px' height='80px' style='margin:5px 5px 5px 0'><br>";
+                        foreach ($listImages as $key => $img) {
+                            echo "
+                <div style='display: inline-block; text-align: center;'>
+                    <img src='../public/image/$img' width='80px' height='80px' style='margin-bottom: 5px;'><br>
+                    <button type='button' class='delete-image' data-image='$img'>Xóa</button>
+                </div>";
                         }
                     }
                     ?>
@@ -96,6 +95,7 @@
 </div>
 </div>
 </div>
+<script src="public/js/deleteImage.js"></script>
 </body>
 
 </html>
