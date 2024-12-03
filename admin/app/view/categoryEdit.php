@@ -5,11 +5,6 @@
             <a href="?page=category">Quay về</a>
         </div>
         <div class="main-header">
-            <div class="right-main-header">
-                <input type="text" placeholder="Tìm kiếm">
-                <div class="filter"><i class="fa-solid fa-filter"></i></div>
-                <div class="sort"><i class="fa-solid fa-arrow-down-a-z"></i></div>
-            </div>
         </div>
     </div>
     <!-- xong phần header -->
