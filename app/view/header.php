@@ -2,7 +2,7 @@
 if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
     $login = '
         <ul class="nav_drop-down">
-            <li><a href="index.php?page=userInfo">Tài khoản id ' . $_SESSION['user'] . '</a></li>
+            <li><a href="index.php?page=userInfo">Tài khoản</a></li>
             <li><a href="index.php?page=logout" >Đăng xuất</a></li>
         </ul>
         ';
