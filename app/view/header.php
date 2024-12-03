@@ -134,9 +134,9 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                             $totalPrice += $item['price'] * $item['quantity'];
                                         }
                                     }
-                                    echo '<span class="totalPrice">' . number_format($totalPrice, 0, ',', '.') . '</span> Đ';
+                                    echo '<span class="totalPrice">' . number_format($totalPrice, 0, ',', '.') . '</span> đ';
                                 } else {
-                                    echo '<span class="totalPrice">0</span> Đ';
+                                    echo '<span class="totalPrice">0</span> đ';
                                 }
                                 ?>
                             </h6>
@@ -174,7 +174,7 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                                     class="fa-solid fa-plus"></i></button>
                                         </div>
                                         <div class="cart-Price">
-                                        <h3 class="price"><?= number_format((int) $item['price'], 0, ',', '.') ?></h3>
+                                        <h3 class="price"><?= number_format((int) $item['price'], 0, ',', '.') ?> đ</h3>
                                         </div>
                                         <form action="index.php?page=removeFromCart" method="post" class="form-deteleCart">
                                             <input type="hidden" name="deletePro" value="<?= $item['id'] ?>">
@@ -193,9 +193,15 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
 
                 <?php
                 if (!empty($_SESSION['user'])) {
+                    
                     ?>
                     <div class="cart-box-footer">
-                        <a href="index.php?page=payment"><button>THANH TOÁN</button></a>
+                        <a href=" 
+                            <?php if(isset($_SESSION['cart'])){ ?>
+                                index.php?page=payment 
+                            <?php }?>">
+                            <button>THANH TOÁN</button>
+                        </a>
                     </div>
                 <?php } else { ?>
 

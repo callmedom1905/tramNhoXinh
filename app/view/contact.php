@@ -23,8 +23,9 @@
                         </div>
 
                         <div class="form_information">
-                        <input type="tel" id="phone" name="phone" placeholder="Số điện thoại" required>
+                        <input type="text" name="phone" placeholder="Số điện thoại" pattern="^0\d{9}$" required />
                         <input type="text" id="subject" name="subject" placeholder="Nhập chủ đề" required>
+                        
                         </div>
 
                         <div class="form_information"> 

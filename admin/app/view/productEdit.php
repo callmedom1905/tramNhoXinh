@@ -46,7 +46,7 @@
             </div>
             <div class="category-main-product">
                 <label for="">Giá giảm</label>
-                <input type="number" name="salePrice" value="<?= $salePrice ?>">
+                <input type="number" name="salePrice" value="<?= $salePrice == null ? '' : $salePrice ?>">
                 <input type="hidden" name="idPro" value="<?= $pro_detail['id'] ?>">
             </div>
             <div class="category-main-product">
@@ -56,15 +56,19 @@
             <div class="category-main-product">
                 <label for="status">Trạng thái</label>
                 <select name="status" id="status">
-                    <option class="status success" value="1" <?= ($pro_detail['status'] === 1) ? 'selected' : '' ?>>Đã hoạt động</option>
-                    <option class="status pending" value="2" <?= ($pro_detail['status'] === 2) ? 'selected' : '' ?>>Tạm ngưng</option>
-                    <option class="status danger" value="0" <?= ($pro_detail['status'] === 0) ? 'selected' : '' ?>>Đã hủy</option>
+                    <option class="status success" value="1" <?= ($pro_detail['status'] === 1) ? 'selected' : '' ?>>Đã hoạt
+                        động</option>
+                    <option class="status pending" value="2" <?= ($pro_detail['status'] === 2) ? 'selected' : '' ?>>Tạm
+                        ngưng</option>
+                    <option class="status danger" value="0" <?= ($pro_detail['status'] === 0) ? 'selected' : '' ?>>Đã hủy
+                    </option>
                 </select>
             </div>
             <div class="category-main-product">
                 <label for="">Hình ảnh</label>
                 <div class="image-product">
-                    <img src="../public/image/<?= $pro_detail['image'] ?>" alt="Ảnh chính" width="80px" height="80px" style="margin:5px 5px 5px 0"><br>
+                    <img src="../public/image/<?= $pro_detail['image'] ?>" alt="Ảnh chính" width="80px" height="80px"
+                        style="margin:5px 5px 5px 0"><br>
                     <input type="file" name="image" id="image">
                     <input type="hidden" name="image_old" value="<?= $pro_detail['image'] ?>">
                 </div>
@@ -81,8 +85,12 @@
                         echo "Chưa có ảnh";
                     } else {
                         // Nếu có ảnh phụ, hiển thị chúng
-                        foreach ($listImages as $img) {
-                            echo "<img src='../public/image/$img' width='80px' height='80px' style='margin:5px 5px 5px 0'><br>";
+                        foreach ($listImages as $key => $img) {
+                            echo "
+                            <div style='display: inline-block; text-align: center;'>
+                                <img src='../public/image/$img' width='80px' height='80px' style='margin-bottom: 5px;'><br>
+                                <button type='button' class='delete-image' data-image='$img'>Xóa</button>
+                            </div>";
                         }
                     }
                     ?>
@@ -99,6 +107,8 @@
 </div>
 </div>
 </div>
+<script src="public/js/deleteImage.js"></script>
+
 </body>
 
 </html>

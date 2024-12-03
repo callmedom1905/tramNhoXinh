@@ -119,13 +119,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <input id="btnCOD" type="radio" name="paymentMethod" value="1">
                                 Thanh toán khi nhận hàng
                             </label>
-                            <label class="payment-radio">
+                            <!-- <label class="payment-radio">
                                 <input id="btnBank" type="radio" name="paymentMethod" value="2" >
                                 Thanh toán ngân hàng
-                            </label>
+                            </label> -->
                        
                     <!-- thanh toans chuyen khoan -->
-                            <section id="paymentBank">
+                            <!-- <section id="paymentBank">
                                 <div class="row">
                                     <div class="col l-12 qr">
                                         <img src="public/image/QRcode.png" alt="">
@@ -151,7 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                         <p>Trạm Nhỏ Xinh</p>
                                     </div>
                                 </div>
-                            </section>
+                            </section> -->
 
 
                             <div class="col l-12 paymentStep2_btn">

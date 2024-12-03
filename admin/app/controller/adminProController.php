@@ -42,7 +42,9 @@ class ProAdminController
             $data['name'] = $_POST['name'];
             $data['idCate'] = $_POST['idCate'];
             $data['price'] = $_POST['price'];
-            $data['salePrice'] = $_POST['salePrice'];
+            // $data['salePrice'] = $_POST['salePrice'];
+            $data['salePrice'] = isset($_POST['salePrice']) && is_numeric($_POST['salePrice']) ? $_POST['salePrice'] : NULL;
+
             $data['quantity'] = $_POST['quantity'];
             $data['status'] = $_POST['status'];
             // Xử lý ảnh chính
@@ -120,7 +122,7 @@ class ProAdminController
             $data['name'] = $_POST['name'];
             $data['idCate'] = $_POST['idCate'];
             $data['price'] = $_POST['price'];
-            (int)$data['salePrice'] = $_POST['salePrice'];
+            $data['salePrice'] = $_POST['salePrice'];
             $data['quantity'] = $_POST['quantity'];
             $data['status'] = $_POST['status'];
             // Xử lý ảnh chính

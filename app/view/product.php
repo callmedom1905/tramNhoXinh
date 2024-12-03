@@ -60,9 +60,12 @@
                                     </a>
                                     <a href="#">
                                         <p><?=$name?></p>
-                                        <p><?=$view?> lượt xem</p>
+                                        <?php if(!empty($salePrice)){ ?>
+                                        <p><?=number_format($salePrice)?> đ</p>
+                                        <p><del><?=number_format($price)?> đ</del></p>
+                                        <?php } else{ ?>
                                         <p><?=number_format($price)?> đ</p>
-                                        <p><?=$salePrice?></p>
+                                        <?php }?>
                                     </a>
                                 </td>
                             </tr>
@@ -92,8 +95,12 @@
                                             <span><?=$name?></span>
                                         </div>
                                         <div class="price-product">
-                                            <span><?=number_format($price)?> đ</span>
-                                            <span> <sub><del><?=$salePrice?></del></sub> </span>
+                                            <?php if(!empty($salePrice)){ ?>
+                                            <span><?= number_format($salePrice) ?> đ</span>
+                                            <span> <sub><del><?= number_format($price) ?></del> đ</sub> </span>
+                                            <?php } else{ ?>
+                                            <span><?= number_format($price) ?> đ</span>
+                                            <?php } ?>
                                         </div>
                                         </a>
                                         

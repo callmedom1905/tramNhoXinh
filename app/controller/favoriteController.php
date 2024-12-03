@@ -30,11 +30,7 @@ class favoriteController
             foreach ($data['likePro'] as $item) {
                 // Kiểm tra xem sản phẩm đã yêu thích chưa
                 $test = $this->favorite->checkLike($userId, $item);
-                if ($test) {
-                    // Nếu đã yêu thích, hủy yêu thích
-                    $this->favorite->removeFavorite($userId, $item);
-                } else {
-                    // Nếu chưa yêu thích, thêm vào bảng yêu thích
+                if (!$test) {
                     date_default_timezone_set('Asia/Ho_Chi_Minh');
                     $date = date('Y-m-d H:i:s');
                     $this->favorite->addFavorite([

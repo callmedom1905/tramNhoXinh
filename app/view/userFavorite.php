@@ -41,7 +41,9 @@
                                     <td><img src="public/image/<?=$item['image']?>" alt="Sản phẩm 1" width="80"></td>
                                     <td><?=$item['name']?></td>
                                     <td><a href="index.php?page=productDetail&id=<?=$item['id']?>">Xem chi tiết</a></td>
-                                    <td><a href="" class="remove-favorite">Bỏ thích</a></td>
+                                    <td>
+                                        <a href="" class="remove-favorite">Bỏ thích</a>
+                                    </td>
                                 </tr>
                                 <?php } ?>
                             </tbody>

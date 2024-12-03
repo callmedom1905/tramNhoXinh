@@ -43,7 +43,6 @@
                                     </a>
                                     <a href="index.php?page=postDetail&id=<?= $id ?>">
                                         <p><?=$title?></p>
-
                                         <p><?=$datePost?></p>
                                     </a>
                                 </td>

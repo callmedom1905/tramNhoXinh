@@ -47,9 +47,9 @@
                                             ?>
                                         </p>
                                     </span>
-                                    <span class="payment__item-action">
+                                    <!-- <span class="payment__item-action">
                                         <i class="fa-regular fa-circle-xmark"></i>
-                                    </span>
+                                    </span> -->
                                 </div>
                             </div>
                         <?php
@@ -81,7 +81,7 @@
                                 <input type="text" name="name" placeholder="Họ và tên" required />
 
                                 <label for="phone">Số điện thoại người nhận</label>
-                                <input type="text" name="phone" placeholder="Số điện thoại" required />
+                                <input type="text" name="phone" placeholder="Số điện thoại" pattern="^0\d{9}$" required />
                             <?php } ?>
                             <label for="address">Địa chỉ</label>
                             <textarea name="address" placeholder="Vui lòng nhập địa chỉ cụ thể" rows="2" cols="10"

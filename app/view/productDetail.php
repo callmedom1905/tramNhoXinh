@@ -50,8 +50,12 @@ extract($product);
                             <img src="public/image/<?= $image ?>" alt="Tên sản phẩm">
                             <div class="info">
                                 <h2><?= $name ?></h2>
-                                <p class="price"><?= number_format($price) ?> đ</p>
-                                <p class="price"><?= $salePrice ?> </p>
+                                <?php if(!empty($salePrice)){ ?>
+                                <p class="price"><?= number_format($salePrice) ?> đ</p>
+                                <p class="price"><del><?= number_format($price) ?> đ</del></p>
+                                <?php } else { ?>
+                                <p class="price"><?=number_format($price)?> </p>
+                                <?php }?>
                                 <div class="quantity-controls">
                                     <button class="minus"><i class="fa-solid fa-minus"></i></button>
                                     <input type="text" id="amount" value="1">
@@ -332,8 +336,12 @@ extract($product);
                                                     <span><?= $name ?></span>
                                                 </div>
                                                 <div class="price-product">
-                                                    <span><?=number_format($price)?>đ</span>
-                                                    <span> <sub><del><?= $salePrice ?></del></sub> </span>
+                                                    <?php if(!empty($salePrice)){ ?>
+                                                    <span><?= number_format($salePrice) ?> đ</span>
+                                                    <span> <sub><del><?= number_format($price) ?></del> đ</sub> </span>
+                                                    <?php } else{ ?>
+                                                    <span><?= number_format($price) ?> đ</span>
+                                                    <?php } ?>
                                                 </div>
                                             </a>
                                             <button class="addCart-product">Thêm vào giỏ hàng</button>

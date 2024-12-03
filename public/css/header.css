@@ -343,6 +343,7 @@ header {
 }
 
 .cart-quantityANDPrice-pro .form-deteleCart{
+    width: 0;
     justify-items: end;
 }
 

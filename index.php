@@ -15,6 +15,7 @@ require_once 'app/model/favoriteModel.php';
 require_once 'app/model/searchModel.php';
 require_once 'app/model/orderModel.php';
 require_once 'app/model/orderItemModel.php';
+require_once 'app/model/bannerModel.php';
 
 //Controller
 require_once 'app/controller/homeController.php';
@@ -168,6 +169,7 @@ if (isset($_GET['page'])) {
             $updateCart = new CartController();
             $updateCart->updateCart();
             break;
+
         //thích sản phẩm
         case 'insertFavorite':
             $favorite = new FavoriteController();

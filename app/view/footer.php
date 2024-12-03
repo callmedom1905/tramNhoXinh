@@ -44,7 +44,7 @@
                         <ul class="footer_info">
                             <li><span><h6>Địa chỉ:</h6><p>51/17 Tân Lập 2, Hiệp Phú, Tp Thủ Đức</p></span></li>
                             <li><span><h6>Số điện thoại:</h6><p>+84 933 661 897</p></span></li>
-                            <li><span><h6>Email:</h6><p>minhtcps38149@gmail.com</p></span></li>
+                            <li><span><h6>Email:</h6><p>tramnhoxinh2410@gmail.com</p></span></li>
                             <li><span><h6>Thời gian làm việc:</h6><p>8h sáng - 17h chiều</p></span></li>
 
 

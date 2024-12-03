@@ -59,7 +59,13 @@
                                         <!-- <span>Chờ xác nhận</span> -->
                                     </td>
                                     <td><a href="">Xem chi tiết</a></td>
-                                    <td><a href="index.php?page=cancelOrder&id=<?=$id?>" class="cancel-order">Hủy đơn hàng</a></td>
+                                    <?php
+                                    if($status == 1){
+                                        echo '<td><a href="index.php?page=cancelOrder&id=<?=$id?>" class="cancel-order">Hủy đơn hàng</a></td>';
+                                    }else{
+                                        echo '<td></td>';
+                                    }
+                                    ?>
                                 </tr>
                                 <?php }?>
                             </tbody>

@@ -16,11 +16,12 @@
         <section class="row">
             <div class="col l-12 m-12 c-12 banner" style="padding: 0px;"> <!--có css ở đây-->
                 <div class="banner-home">
+
                     <div class="slider-container">
-                        <div class="slide"><img src="public/image/bannerSlide1.jpg" alt="Slide 1"></div>
-                        <div class="slide"><img src="public/image/bannerSlide2.jpg" alt="Slide 2"></div>
-                        <div class="slide"><img src="public/image/bannerSlide3.jpg" alt="Slide 3"></div>
-                        <div class="slide"><img src="public/image/bannerSlide4.jpg" alt="Slide 4"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][1]['name']?>" alt="Slide 1"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][2]['name']?>" alt="Slide 2"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][3]['name']?>" alt="Slide 3"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][4]['name']?>" alt="Slide 4"></div>
                     </div>
                     <div class="dots-container"></div>
                 </div>
@@ -50,8 +51,12 @@
                                     <span><?= $name ?></span>
                                 </div>
                                 <div class="price-product">
+                                    <?php if(!empty($salePrice)){ ?>
+                                    <span><?= number_format($salePrice) ?> đ</span>
+                                    <span> <sub><del><?= number_format($price) ?></del> đ</sub> </span>
+                                    <?php } else{ ?>
                                     <span><?= number_format($price) ?> đ</span>
-                                    <span> <sub><del><?= $salePrice ?></del></sub> </span>
+                                    <?php } ?>
                                 </div>
                             </a>
 
@@ -85,7 +90,7 @@
         <section class="row">
             <div class="col l-12 m-12 c-12 banner-sub">
                 <div class="sub-banner-home">
-                    <img src="public/image/bannerPhu.jpg" alt="">
+                    <img src="public/image/<?php echo $data['banner'][0]['name']?>" alt="">
                 </div>
             </div>
         </section>
@@ -115,9 +120,13 @@
                                         <span><?= $name ?></span>
                                     </div>
                                     <div class="price-product">
+                                        <?php if(!empty($salePrice)){ ?>
+                                        <span><?= number_format($salePrice) ?> đ</span>
+                                        <span> <sub><del><?= number_format($price) ?></del> đ</sub> </span>
+                                        <?php } else{ ?>
                                         <span><?= number_format($price) ?> đ</span>
-                                        <span> <sub><del><?= $salePrice ?></del></sub> </span>
-                                    </div>
+                                        <?php } ?>
+                                </div>
                                 </a>
                                  <!-- thêm giỏ hàng -->
                                 <form action="index.php?page=addToCart" method="post" class="addCart-product">
@@ -148,6 +157,7 @@
             $post = $data['post'];
             foreach ($post as $item) {
                 extract($item);
+                if($status == 1){
                 ?>
                 <div class="col l-4 m-6 c-12">
                     <a href="index.php?page=postDetail&id=<?= $id ?>">
@@ -157,15 +167,20 @@
 
                             </div>
                             <div class="name-post">
-                                <p><?= $title ?></p>
+                                <h3><?= $title ?></h3>
                             </div>
                             <div class="description">
-                                <span><?= $description ?></span>
+                                <span class="textDes"><?= $description ?></span>
+                                <div class="datePost"><?= $datePost ?></div>
+
                             </div>
                         </div>
                     </a>
                 </div>
-            <?php } ?>
+            <?php 
+                }
+            } 
+            ?>
 
 
         </section>
