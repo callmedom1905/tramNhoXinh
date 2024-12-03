@@ -105,13 +105,13 @@ class CartController
     {
         if (isset($_POST['addToCartInDetail'])) {
             // Lấy thông tin sản phẩm từ form
-            $quantity = $_POST['product_quantity'];
+            $quantity = (int)$_POST['product_quantity'];
             $id = $_POST['product_id'];
             $name = $_POST['product_name'];
             $price = $_POST['product_price'];
             $image = $_POST['product_image'];
             $color = $_POST['product_color'];
-
+    
             $item = [
                 'id' => $id,
                 'name' => $name,
@@ -120,28 +120,32 @@ class CartController
                 'color' => $color,
                 'quantity' => $quantity
             ];
-
+    
             if (!isset($_SESSION['cart'])) {
                 $_SESSION['cart'] = [];
             }
-
+    
             $found = false;
             // Duyệt qua giỏ hàng để kiểm tra sản phẩm đã có chưa
             foreach ($_SESSION['cart'] as &$cartItem) {
-                // Kiểm tra nếu $cartItem là một mảng và có chỉ số 'id'
                 if (is_array($cartItem) && isset($cartItem['id']) && $cartItem['id'] == $id) {
-                    $cartItem['quantity']++; // Cập nhật số lượng
+                    // Cộng số lượng sản phẩm đã chọn
+                    $cartItem['quantity'] += $quantity;
                     $found = true;
-                    header("Location: " . $_SERVER['HTTP_REFERER']);
                     break;
                 }
             }
+    
             // Nếu sản phẩm chưa có trong giỏ hàng, thêm mới
             if (!$found) {
                 $_SESSION['cart'][] = $item;
-                // chuyển hướng đến trang hiện tại
-                header("Location: " . $_SERVER['HTTP_REFERER']);
             }
+    
+            // Chuyển hướng lại trang hiện tại
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+            exit;
         }
     }
+
+
 }

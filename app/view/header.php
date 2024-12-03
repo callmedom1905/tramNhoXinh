@@ -73,9 +73,9 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                 </ul>
                             </li>
                             <li class="col l-2 m-2 c-12"><a href="index.php?page=post">Bài viết</a></li>
-                            <li class="col l-2 m-2 c-12"><a href="#">Giới thiệu</a></li>
-                            <li class="col l-2 m-2 c-12"><a href="#">Liên hệ</a></li>
-                            <li class="col l-2 m-2 c-12"><a href="#">Tài khoản </a>
+                            <li class="col l-2 m-2 c-12"><a href="">Giới thiệu</a></li>
+                            <li class="col l-2 m-2 c-12"><a href="index.php?page=contact">Liên hệ</a></li>
+                            <li class="col l-2 m-2 c-12"><a href="">Tài khoản </a>
                                 <!-- <ul class="nav_drop-down">
                                     <li><a href="#" class="dangnhap">Đăng nhập</a></li>
                                     <li><a href="#" class="dangky">Đăng ký</a></li>

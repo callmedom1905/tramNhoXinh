@@ -30,7 +30,9 @@
                             $cate = $data['cate'];
                             foreach($cate as $item){
                                 extract($item);
-                                echo "<li><a class='nameCate' href='index.php?page=product&id=$id'>$name</a></li>";
+                                if($status == 1){
+                                    echo "<li><a class='nameCate' href='index.php?page=product&id=$id'>$name</a></li>";
+                                }
                             }
                             
                             ?>

@@ -29,7 +29,7 @@ require_once 'app/controller/getFavoriteController.php';
 require_once 'app/controller/updateFavoriteController.php';
 require_once 'app/controller/removeFavoriteController.php';
 require_once 'app/controller/searchController.php';
-
+require_once 'app/controller/contactController.php';
 
 require_once 'app/view/header.php';
 $db = new DataBase();
@@ -116,11 +116,11 @@ if (isset($_GET['page'])) {
         
         
 
-        //     //trang liên hệ
-        // case 'contact':
-        //     $contact = new ContactController();
-        //     $contact->viewContact();
-        //     break;
+            //trang liên hệ
+        case 'contact':
+            $contact = new ContactController();
+            $contact->viewContact();
+            break;
 
         //các chức năng
         case 'register':
