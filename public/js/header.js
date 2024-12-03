@@ -12,6 +12,7 @@ document.querySelector(".show-password").addEventListener("click", function () {
         icon.classList.add("fa-eye");
     }
 });
+
 //   hiện box đănh nhập 
 let clickDangNhap = document.querySelector('.nav_drop-down .dangnhap')
 clickDangNhap.addEventListener('click', function () {

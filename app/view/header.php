@@ -239,6 +239,7 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                 <button type="button" class="show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
+                                <p id="passwordError" class="error-message" style="display: none;">Mật khẩu phải có ít nhất 6 ký tự.</p>
                             </div>
                         </div>
                         <div class="actions">
@@ -276,48 +277,86 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                     <form action="index.php?page=register" method="post">
                         <div class="re-input-group">
                             <label for="re-email">Email:</label>
-                            <input type="email" id="re-email" name="re-email" placeholder="Nhập email" required>
+                            <input type="email" id="re-email" name="re-email" placeholder="Nhập email" 
+                                value="<?php echo isset($_SESSION['form_data']['email']) ? $_SESSION['form_data']['email'] : ''; ?>" required>
+                            <?php 
+                            if (isset($_SESSION['errors']['email'])) {
+                                echo '<p class="error-message">' . $_SESSION['errors']['email'] . '</p>';
+                            }
+                            ?>
                         </div>
 
                         <div class="re-input-group">
-                            <label for="password" class="re-passForm">
+                            <label for="re-password" class="re-passForm">
                                 <span class="re-text-passForm">Mật khẩu:</span>
                             </label>
 
                             <div class="re-password-container">
-                                <input type="password" autocomplete="" id="re-password" name="mk"
-                                    placeholder="Nhập mật khẩu" required>
+                                <input type="password" autocomplete="" id="re-password" name="mk" placeholder="Nhập mật khẩu" 
+                                    value="<?php echo isset($_SESSION['form_data']['password']) ? $_SESSION['form_data']['password'] : ''; ?>" required>
+                                <?php 
+                                if (isset($_SESSION['errors']['password'])) {
+                                    echo '<p class="error-message">' . $_SESSION['errors']['password'] . '</p>';
+                                }
+                                ?>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
                             </div>
                         </div>
+
                         <div class="re-input-group">
-                            <label for="re-password" class="re-passForm">
+                            <label for="re-Repassword" class="re-passForm">
                                 <span class="re-text-passForm">Xác nhận mật khẩu</span>
                             </label>
 
                             <div class="re-password-container">
-                                <input type="password" autocomplete="" id="re-Repassword" name="remk"
-                                    placeholder="Xác nhận mật khẩu" required>
+                                <input type="password" autocomplete="" id="re-Repassword" name="remk" placeholder="Xác nhận mật khẩu" 
+                                    value="<?php echo isset($_SESSION['form_data']['repass']) ? $_SESSION['form_data']['repass'] : ''; ?>" required>
+                                <?php 
+                                if (isset($_SESSION['errors']['repassword'])) {
+                                    echo '<p class="error-message">' . $_SESSION['errors']['repassword'] . '</p>';
+                                }
+                                ?>
                                 <button type="button" class="re-show-password">
                                     <i class="fa-solid fa-eye"></i>
                                 </button>
                             </div>
                         </div>
+
                         <div class="re-input-group">
                             <label for="re-name">Họ và tên</label>
-                            <input type="text" id="re-name" name="hoten" placeholder="Nhập tên" required>
-                        </div>
-                        <div class="re-input-group">
-                            <label for="re-phone">Số điện thoại</label>
-                            <input type="text" id="re-phone" name="sdt" placeholder="Nhập số điện thoại" required>
+                            <input type="text" id="re-name" name="hoten" placeholder="Nhập tên" 
+                                value="<?php echo isset($_SESSION['form_data']['name']) ? $_SESSION['form_data']['name'] : ''; ?>" required>
+                            <?php 
+                            if (isset($_SESSION['errors']['name'])) {
+                                echo '<p class="error-message">' . $_SESSION['errors']['name'] . '</p>';
+                            }
+                            ?>
                         </div>
 
+                        <div class="re-input-group">
+                            <label for="re-phone">Số điện thoại</label>
+                            <input type="text" id="re-phone" name="sdt" placeholder="Nhập số điện thoại" 
+                                value="<?php echo isset($_SESSION['form_data']['phone']) ? $_SESSION['form_data']['phone'] : ''; ?>" required>
+                            <?php 
+                            if (isset($_SESSION['errors']['phone'])) {
+                                echo '<p class="error-message">' . $_SESSION['errors']['phone'] . '</p>';
+                            }
+                            ?>
+                        </div>
 
                         <input type="submit" name="dangky" value="Đăng ký" class="register-btn">
 
                     </form>
+
+
+                    <?php
+                    // Sau khi xử lý xong, xóa lỗi trong session
+                    if (isset($_SESSION['errors'])) {
+                        unset($_SESSION['errors']);
+                    }
+                    ?>
                 </div>
             </div>
 

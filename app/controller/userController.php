@@ -19,50 +19,76 @@ class UserController
         $view = 'app/view/'.$view.'.php';
         require_once $view;
     }
-    public function register()
-    {
-        if (isset($_POST['dangky'])) {
-            $data = [];
-            $data['email'] = $_POST['re-email'];
-            $pasword = $_POST['mk'];
-            $repass = $_POST['remk'];
-            $data['name'] = $_POST['hoten'];
-            $data['phone'] = $_POST['sdt'];
 
-            if ($pasword === $repass) {
-                $result = $this->user->checkmail($data['email']);
-                if ($result) {
-                    echo "<script>
-                   alert('Email đã tồn tại');
-               </script>";
+    public function validateRegister($data)
+{
+    $errors = []; 
 
-                    echo "<script>
-                   location.href='index.php';
-               </script>";
-                } else {
-                    $data['password'] = md5($pasword);
-                    $verificationCode = bin2hex(random_bytes(32));
-                    $this->user->insertUser($data, $verificationCode);
-                    $this->mailController->sendVerificationEmail($data['email'], $verificationCode);
-                    echo "<script>
-                   alert('Đăng ký thành công');
-               </script>";
+    // Kiểm tra tên người dùng
+    if (empty($data['name'])) {
+        $errors['name'] = 'Tên không được để trống!';
+    } elseif (!preg_match('/^[\p{L}\s]+$/u', $data['name'])) {
+        $errors['name'] = 'Tên chỉ được chứa chữ cái và khoảng trắng!';
+    }
 
-                    echo "<script>
-                   location.href='index.php';
-               </script>";
-                }
+    // Kiểm tra mật khẩu ít nhất 6 ký tự
+    if (empty($data['password']) || strlen($data['password']) < 6) {
+        $errors['password'] = 'Mật khẩu phải có ít nhất 6 ký tự!';
+    }
+
+    // Kiểm tra mật khẩu và xác nhận mật khẩu phải giống nhau
+    if ($data['password'] !== $data['repass']) {
+        $errors['repassword'] = 'Mật khẩu và xác nhận mật khẩu không khớp!';
+    }
+
+    // Kiểm tra số điện thoại
+    if (empty($data['phone']) || !preg_match('/^[0-9]{10}$/', $data['phone'])) {
+        $errors['phone'] = 'Số điện thoại phải có 10 chữ số!';
+    }
+
+    return $errors;
+}
+
+
+public function register()
+{
+    if (isset($_POST['dangky'])) {
+        $data = [];
+        $data['email'] = $_POST['re-email'];
+        $data['password'] = $_POST['mk'];
+        $data['repass'] = $_POST['remk'];
+        $data['name'] = $_POST['hoten'];
+        $data['phone'] = $_POST['sdt'];
+
+        // Gọi hàm validateRegister để kiểm tra dữ liệu
+        $errors = $this->validateRegister($data);
+
+         // Nếu có lỗi, hiển thị thông báo alert và quay lại trang index
+         if (!empty($errors)) {
+            $_SESSION['errors'] = $errors;
+            $_SESSION['form_data'] = $data;
+            echo "<script>alert('Thông tin đã nhập không đúng yêu cầu, hãy kiểm tra lại!'); location.href='index.php';</script>";
+            return;
+        }
+
+        if ($data['password'] === $data['repass']) {
+            $result = $this->user->checkmail($data['email']);
+            if ($result) {
+                echo "<script>alert('Email đã tồn tại'); location.href='index.php';</script>";
             } else {
-                echo "<script>
-                   alert('Mật khẩu không trùng khớp ');
-               </script>";
-
-                echo "<script>
-                   location.href='index.php';
-               </script>";
+                $data['password'] = md5($data['password']);
+                $verificationCode = bin2hex(random_bytes(32));
+                $this->user->insertUser($data, $verificationCode);
+                $this->mailController->sendVerificationEmail($data['email'], $verificationCode);
+                unset($_SESSION['form_data']);  // Xóa dữ liệu đã nhập
+                echo "<script>alert('Đăng ký thành công, vui lòng check email để kích hoạt tài khoản!'); location.href='index.php';</script>";
             }
+        } else {
+            echo "<script>alert('Mật khẩu không trùng khớp'); location.href='index.php';</script>";
         }
     }
+}
+
 
     public function login()
     {
@@ -71,6 +97,8 @@ class UserController
             $password = md5($_POST['mklogin']);
             $result = $this->user->checkUser($email, $password);
             $_SESSION['user'] = $result['id'];
+
+            
             if (is_array($result)) {
                 if ($result['role'] == 1 && $result['active'] == 1) {
                     // $_SESSION['admin'] = $result['username'];
@@ -124,6 +152,7 @@ class UserController
             }
         }
     }
+    
 
     function forgotPass()
     {
