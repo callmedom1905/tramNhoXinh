@@ -44,7 +44,7 @@
                                 <td>' . $title . '</td>
                                 <td>' . $catePost . '</td>
                                 <td>' . $view . '</td>
-                                <td>' . $datePost . '</td>
+                                <td>' . date('d/m/Y', strtotime($datePost)) . '</td>
                                 <td>' . $status . '</td>
                                 <td><a href="index.php?page=viewEditPost&id=' . $id . '">Sửa</a></td>
                             </tr>

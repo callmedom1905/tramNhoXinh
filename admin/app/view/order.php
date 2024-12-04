@@ -41,7 +41,7 @@
                         <td><?= $name ?></td>
                         <td><?= $address ?></td>
                         <td><?= $phone ?></td>
-                        <td><?= $dateOrder ?></td>
+                        <td><?= date('H:i:s d/m/Y', strtotime($dateOrder)) ?></td>
                         <td><?= $noteUser ?></td>
                         <?php
                         if ($status == 0) echo '<td><span class="status danger">Đã hủy</span></td>';

@@ -33,10 +33,10 @@
                         <td><?= $item['userName'] ?></td>
                         <td><?= $item['commentText'] ?></td>
                         <td><?= $item['productName'] ?></td>
-                        <td><?= $item['dateProComment'] ?></td>
+                        <td><?= date('d/m/Y', strtotime($item['dateProComment'])); ?></td>
                         <?php
-                            if($item['status'] == 1) echo '<td><span class="status success">Hiển thị</span></td>';
-                            if($item['status'] == 0) echo '<td><span class="status danger">Ẩn</span></td>';
+                        if ($item['status'] == 1) echo '<td><span class="status success">Hiển thị</span></td>';
+                        if ($item['status'] == 0) echo '<td><span class="status danger">Ẩn</span></td>';
                         ?>
                         <td><a href="?page=commentDetail&id=<?= $item['commentId'] ?>">Xem</a></td>
                     </tr>
