@@ -44,7 +44,7 @@
                         <tr>
                             <td><input type="checkbox" class="item-checkbox" name="delete_ids[]" value="<?= $id ?>"></td>
                             <td><?= $id ?></td>
-                            <td><img src="../public/image/<?= $image ?>" alt="" width="100px" height="100px"></td>
+                            <td><img src="../public/image/<?= $image ?>" alt="" width="100px" height="100px" onclick="openPopup('../public/image/<?= trim($image) ?>')"></td>
                             <td><?php if (!empty($images)): ?>
                                     <?php foreach ($images as $img): ?>
                                         <img src="../public/image/<?= trim($img) ?>"
