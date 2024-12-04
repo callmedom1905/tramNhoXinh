@@ -25,13 +25,14 @@ class OrderModel
 
     public function getOrderDetailsWithImages($idOrder)
     {
-        $sql = "SELECT 
+        $sql = "SELECT
                     oi.id, 
                     oi.quantity, 
                     oi.priceItem, 
                     p.name AS productName,
                     p.image,
-                    o.status AS orderStatus  -- Lấy trạng thái đơn hàng từ bảng orders
+                    o.status AS orderStatus,-- Lấy trạng thái đơn hàng từ bảng orders
+                    o.totalPrice
                 FROM 
                     orderitems oi
                 JOIN 

@@ -17,7 +17,9 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data['ordDetail'] as $item): ?>
+                <?php
+                $detail = $data['ordDetail'];
+                foreach ($detail as $item): ?>
                     <tr>
                         <td><?= $item['id'] ?></td>
                         <td><img src="../public/image/<?= $item['image'] ?>" alt="<?= $item['productName'] ?>" width="100px" height="100px"></td>
@@ -28,7 +30,7 @@
                 <?php endforeach; ?>
                 <tr class="total">
                     <td colspan="3" style="text-align: center;">Tổng cộng</td>
-                    <td colspan="2" id="total">???</td>
+                    <td colspan="2" id="total"><?= number_format($item['totalPrice']); ?></td>
                 </tr>
             </tbody>
             <tr>
@@ -42,7 +44,7 @@
                                 <option value="3" <?= ($data['orderStatus'] == 3) ? 'selected' : '' ?>>Đã giao</option>
                                 <option value="0" <?= ($data['orderStatus'] == 0) ? 'selected' : '' ?>>Đã hủy</option>
                             </select>
-                            <input type="hidden" name="id" value="<?= $data['idOrder']?>">
+                            <input type="hidden" name="id" value="<?= $data['idOrder'] ?>">
                         </div>
                         <div class="submit-main-product">
                             <button type="submit" name="submit">Cập nhật</button>
@@ -58,7 +60,7 @@
 </div>
 </div>
 </div>
-<script src="public/js/total.js"></script>
+<!-- <script src="public/js/total.js"></script> -->
 </body>
 
 </html>
