@@ -42,9 +42,10 @@
                                 <option value="3" <?= ($data['orderStatus'] == 3) ? 'selected' : '' ?>>Đã giao</option>
                                 <option value="0" <?= ($data['orderStatus'] == 0) ? 'selected' : '' ?>>Đã hủy</option>
                             </select>
+                            <input type="hidden" name="id" value="<?= $data['idOrder']?>">
                         </div>
                         <div class="submit-main-product">
-                            <button type="submit">Cập nhật</button>
+                            <button type="submit" name="submit">Cập nhật</button>
                         </div>
                     </form>
                 </td>
