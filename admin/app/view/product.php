@@ -59,7 +59,7 @@
                             </td>
                             <td><?= $name ?></td>
                             <td><?= number_format($price, 0, ',', '.') ?></td>
-                            <td><?= ($salePrice == null) ? '' : number_format($salePrice, 0, ',', '.') ?></td>
+                            <td><?= ($salePrice == null) ? '': number_format($salePrice, 0, ',', '.') ?></td>
                             <td><?= $quantity ?></td>
                             <?php
                             if ($status === 1) echo '<td><span class="status success">Đang hoạt động</span></td>';

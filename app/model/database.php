@@ -54,6 +54,7 @@ class Database
     {
         $this->query($sql, $param);
     }
+    
     function __destruct()
     {
         unset($this->conn);

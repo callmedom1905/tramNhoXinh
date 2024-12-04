@@ -38,16 +38,19 @@ class adminOrderController
 
     public function OrdDetail()
     {
-        // Lấy idOrder từ URL nếu có
         $idOrder = isset($_GET['id']) ? $_GET['id'] : null;
         if ($idOrder) {
-            // Lấy chi tiết đơn hàng với ID đó
+            // Lấy chi tiết đơn hàng
             $this->data['ordDetail'] = $this->order->getOrderDetailsWithImages($idOrder);
-            // Trả về dữ liệu cho view
-            return $this->renderView('orderDetail', $this->data);
+
+            // Lấy trạng thái đơn hàng
+            $this->data['orderStatus'] = $this->order->getOrderStatus($idOrder);
+
+            $this->renderView('orderDetail', $this->data);
         } else {
-            // Trường hợp không có idOrder
-            echo "Không có đơn hàng";
+            echo "Không có đơn hàng.";
         }
     }
+
+    
 }
