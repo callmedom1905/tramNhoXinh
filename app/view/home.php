@@ -18,10 +18,10 @@
                 <div class="banner-home">
 
                     <div class="slider-container">
-                        <div class="slide"><img src="public/image/<?php echo $data['banner'][1]['name']?>" alt="Slide 1"></div>
-                        <div class="slide"><img src="public/image/<?php echo $data['banner'][2]['name']?>" alt="Slide 2"></div>
-                        <div class="slide"><img src="public/image/<?php echo $data['banner'][3]['name']?>" alt="Slide 3"></div>
-                        <div class="slide"><img src="public/image/<?php echo $data['banner'][4]['name']?>" alt="Slide 4"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][1]['image']?>" alt="Slide 1"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][2]['image']?>" alt="Slide 2"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][3]['image']?>" alt="Slide 3"></div>
+                        <div class="slide"><img src="public/image/<?php echo $data['banner'][4]['image']?>" alt="Slide 4"></div>
                     </div>
                     <div class="dots-container"></div>
                 </div>
@@ -90,7 +90,7 @@
         <section class="row">
             <div class="col l-12 m-12 c-12 banner-sub">
                 <div class="sub-banner-home">
-                    <img src="public/image/<?php echo $data['banner'][0]['name']?>" alt="">
+                    <img src="public/image/<?php echo $data['banner'][0]['image']?>" alt="">
                 </div>
             </div>
         </section>
