@@ -122,6 +122,11 @@ if (isset($_GET['page'])) {
             $contact = new ContactController();
             $contact->viewContact();
             break;
+            //trang giới thiệu
+        case 'about':
+            $about = new HomeController();
+            $about->viewAbout();
+            break;
 
         //các chức năng
         case 'register':

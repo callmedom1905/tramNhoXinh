@@ -26,5 +26,10 @@ class HomeController{
         return $this->renderView('home', $this->data);
     }
 
+    //hiện trang giới thiệu
+    function viewAbout(){
+        return $this->renderView('about', $this->data);
+    }
+
 
 }

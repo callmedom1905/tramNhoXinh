@@ -16,7 +16,8 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
 }
 ?>
 
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 <link rel="stylesheet" href="public/css/grid.css">
 <link rel="stylesheet" href="public/css/header.css">
@@ -73,7 +74,7 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                 </ul>
                             </li>
                             <li class="col l-2 m-2 c-12"><a href="index.php?page=post">Bài viết</a></li>
-                            <li class="col l-2 m-2 c-12"><a href="">Giới thiệu</a></li>
+                            <li class="col l-2 m-2 c-12"><a href="index.php?page=about">Giới thiệu</a></li>
                             <li class="col l-2 m-2 c-12"><a href="index.php?page=contact">Liên hệ</a></li>
                             <li class="col l-2 m-2 c-12"><a href="">Tài khoản </a>
                                 <!-- <ul class="nav_drop-down">
