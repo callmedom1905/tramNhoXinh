@@ -18,7 +18,18 @@ class UserController
     // Hàm này để hiển thị tất cả người dùng
     function viewUser()
     {
-        $usersDB = $this->userModel->getAllUser();
+        $viTriTrangHienTai = 1 ;
+        if(isset($_GET['currentPage'])){
+            $viTriTrangHienTai = (int) $_GET['currentPage'];
+        }
+        if($viTriTrangHienTai < 1){
+            $viTriTrangHienTai = 1;
+        }
+        
+        // số người dùng hiển tị lên
+        $viewUser = 9;
+        $batDau = ($viTriTrangHienTai -1) * $viewUser;
+        $usersDB = $this->userModel->getAllUser($batDau, $viewUser);
         foreach ($usersDB as &$user) {
             $roleHtml = '';
             if ($user['role'] === 0) {
@@ -37,9 +48,66 @@ class UserController
             }
             $user['active'] = $activeHtml;
         }
-        $this->renderView('user', ['usersDB' => $usersDB]);
+        $tongUser = $this->userModel->tongUser();
+        $tongPage = ceil($tongUser / $viewUser);
+
+        $phamViTrang = 3;
+        $batDauTrang = max(1, $viTriTrangHienTai - $phamViTrang);
+        $cuoiTrang = min($tongPage, $viTriTrangHienTai + $phamViTrang);
+
+        $this->renderView('user', 
+        [
+            'usersDB' => $usersDB,
+            'viTriHienTai' => $viTriTrangHienTai,
+            'batDauTrang' => $batDauTrang,
+            'cuoiTrang' => $cuoiTrang,
+            'tongPage' => $tongPage
+        ]);
     }
 
+    function adminSearchUser(){
+        $searchKey = isset($_GET['search']) && !empty(trim($_GET['search'])) ? trim($_GET['search']) : null;
+        echo $searchKey;
+        $dataView = [];
+        $key = $searchKey;
+        $viTriHienTai = isset($_GET['currentPage']) && is_numeric($_GET['currentPage']) ? (int)$_GET['currentPage'] : 1;
+        $viTriHienTai = max(1, $viTriHienTai);
+        $soLuongTimKiem = 9;
+        $batDau = ($viTriHienTai - 1) * $soLuongTimKiem;
+        $dataView = $this->userModel->adminSearchUser($key, $batDau, $soLuongTimKiem);
+        foreach ($dataView as &$user) {
+            $roleHtml = '';
+            if ($user['role'] === 0) {
+                $roleHtml = 'Người dùng';
+            } else if ($user['role'] === 1) {
+                $roleHtml = 'Quản trị';
+            }
+            $user['role'] = $roleHtml;
+            $activeHtml = '';
+            if ($user['active'] === 0) {
+                $activeHtml = '<span class="status pending">Chưa kích hoạt</span>';
+            } else if ($user['active'] === 1) {
+                $activeHtml = '<span class="status success">Đã kích hoạt</span>';
+            } else if ($user['active'] === 2) {
+                $activeHtml = '<span class="status danger">Đã chặn</span>';
+            }
+            $user['active'] = $activeHtml;
+        }
+        $tongPost = $this->userModel->tongUser();
+        $tongPage = ceil($tongPost / $soLuongTimKiem);
+
+        $phamViTrang = 1;
+        $trangBatDau = max(1, $viTriHienTai - $phamViTrang);
+        $trangKetThuc = min($tongPage, $viTriHienTai + $phamViTrang);
+        $this->renderView('adminSearchUser', [
+            'dataSearch' => $dataView,
+            'key' => $key,
+            'viTriHienTai' =>$viTriHienTai,
+            'trangBatDau' => $trangBatDau,
+            'trangKetThuc' => $trangKetThuc,
+            'tongPage' => $tongPage
+        ]);
+    }
 
     // Hàm này để thêm người dùng vào DB
     function addUser()
@@ -71,8 +139,6 @@ class UserController
         }
         $this->renderView('userAdd', ['error' => $error, 'data' => $data]);
     }
-
-
     // HÀM NÀY ĐỂ HIỂN THỊ THÔNG TIN CẦN CHỈNH SỬA NGƯỜI DÙNG
     function viewEditUser()
     {

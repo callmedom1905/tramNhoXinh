@@ -91,6 +91,10 @@ if (isset($_GET['page'])) {
             $deletepost = new PostAdminController();
             $deletepost->delPost();
             break;
+        case 'adminSearchPost':
+            $adminSearchPost = new PostAdminController();
+            $adminSearchPost->adminSearchPost();
+            break;
             //user
         case 'user':
             $user = new UserController();
@@ -111,6 +115,10 @@ if (isset($_GET['page'])) {
         case 'deleteuser':
             $deleteuser = new UserController();
             $deleteuser->delUser();
+            break;
+        case 'adminSearchUser':
+            $adminSearchUser = new UserController();
+            $adminSearchUser->adminSearchUser();
             break;
             //order
         case 'order':

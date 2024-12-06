@@ -60,8 +60,7 @@
             }
             ?>
             <?php
-            // if (isset($error) && !empty($error)) {
-            //     echo '<div style="color: red;">' . $error . '</div>';
+            // if (isset($error) && !empty($error)) {/-strong/-heart:>:o:-((:-h //     echo '<div style="color: red;">' . $error . '</div>';
             // }
             ?>
 

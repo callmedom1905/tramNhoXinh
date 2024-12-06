@@ -183,6 +183,15 @@ body {
     padding: 10px;
     border-radius: 5px;
 }
+/* css tìm kiếm bài viết */
+.main-header .right-main-header .submitSearch{
+    margin-right: 20px;
+    border-radius: 5px;
+    background-color: #ffba76;
+    cursor: pointer;
+    padding: 10px 0px;
+}
+
 
 table {
     width: 100%;

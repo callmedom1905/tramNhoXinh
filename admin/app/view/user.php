@@ -11,7 +11,8 @@
                     <button type="submit" id="delete-btn" style="display: none;">Xóa</button> <!-- Nút Xóa -->
                 </div>
                 <div class="right-main-header">
-                    <input type="text" placeholder="Tìm kiếm">
+                <input type="text" class="inputSearch" placeholder="Tìm kiếm" name="search">
+                <span class="submitSearch" style="cursor: pointer;">Tìm kiếm</span>
                     <div class="filter"><i class="fa-solid fa-filter"></i></div>
                     <div class="sort"><i class="fa-solid fa-arrow-down-a-z"></i></div>
                 </div>
@@ -58,15 +59,36 @@
     </form>
     <!-- button chuyển trang -->
     <div class="main-turnpage">
-        <button class="prev">1</button>
-        <button class="next">2</button>
-        <button class="nextpage">></button>
+        <?php
+        // echo print_r('tong'.$data['tongPage'].'Trang');
+        if($data['tongPage'] > 1){
+            $tongPage = $data['tongPage'];
+            $viTriHienTai = $data['viTriHienTai'];
+            $batDauTrang = $data['batDauTrang'];
+            $cuoiTrang = $data['cuoiTrang'];
+            // nút trước
+            if($viTriHienTai > 1){
+                echo '<a href="index.php?page=user&currentPage=' . ($viTriHienTai - 1) . '"><i class="fa-solid fa-angle-left"></i></a>';
+            }
+            for ($i = $batDauTrang; $i <= $cuoiTrang; $i++){
+                if($i == $viTriHienTai){
+                    echo "<span>$i</span>";
+                }else{
+                    echo '<a href="index.php?page=user&currentPage='.$i.'">'.$i.'</a>';
+                }
+            }
+            if($viTriHienTai < $tongPage){
+                echo '<a href="index.php?page=user&currentPage=' . ($viTriHienTai + 1) . '"><i class="fa-solid fa-angle-right"></i></a>';
+            }
+        }
+        ?>
     </div>
 </div>
 </div>
 </div>
 </div>
 <script src="public/js/delete.js"></script>
+<script src="public/js/searchUser.js"></script>
 </body>
 
 </html>

@@ -41,9 +41,10 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                 <div class="col l-6 m-6 c-6">
                     <div class="header_search">
                         <div class="header_sub-search">
-                            <form action="index.php?page=search" method="post">
+                            <form action="index.php" method="GET">
+                                <input type="hidden" name="page" value="search">
                                 <input class="inputSearch" type="text" placeholder="Tìm kiếm sản phẩm" name="search"
-                                    id="search">
+                                    id="search" value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
                                 <button class="submitSearch" name="submitSearch">Tìm kiếm</button>
                             </form>
                             <label for="cart-checkbox-icon" class="box-cart-icon"><i

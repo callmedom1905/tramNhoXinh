@@ -5,8 +5,12 @@ class PostModel{
         $this->db = new DataBase();
     }
     //lấy bài viết
-    function getPost(){
+    function getPost($start, $limit)
+    {
         $sql = "SELECT * FROM post";
+        if ($limit != 0) {
+            $sql .= " LIMIT " . $start . "," . $limit;
+        }
         return $this->db->getAll($sql);
     }
     //lấy 1 bài viết theo id
@@ -42,5 +46,21 @@ class PostModel{
         $sql = "DELETE FROM post WHERE id = ?";
         $this->db->delete($sql, [$id]);
     }
+
+    //thay thế
+    function adminSearchPost($key, $start, $limit){
+        $sql ="SELECT *FROM post WHERE title like '%$key%'";
+        if($limit !=0){
+            $sql .=" LIMIT " . $start . "," . $limit;
+        }
+        return $this->db->getAll($sql);
+    }
+
+    function getTotalPosts() {
+        $sql = "SELECT COUNT(*) AS total FROM post";
+        $result = $this->db->getOne($sql);
+        return $result['total'];
+    }
+
     
 }

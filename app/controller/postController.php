@@ -12,7 +12,7 @@ class PostController{
     }
 
     function viewPost(){
-        $data['posts'] = $this->post->getPost();
+        $data['posts'] = $this->post->getPost(0,0);
         $this->renderView('post', $data);
     }
 

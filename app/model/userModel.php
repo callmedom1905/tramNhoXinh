@@ -67,8 +67,11 @@ class UserModel
         return $this->db->delete($sql, $param);
     }
     //admin
-    function getAllUser(){
+    function getAllUser($start, $limit){
         $sql = "SELECT * FROM users";
+        if($limit != 0 ){
+            $sql .=" LIMIT ".$start.",".$limit;
+        }
         return $this->db->getAll($sql);
     }
 
@@ -92,6 +95,20 @@ class UserModel
         $sql = "SELECT * FROM users WHERE id = $idUser";
         return $this->db->getOne($sql);
     }
+    function adminSearchUser($key, $start, $limit){
+        $sql ="SELECT *FROM users WHERE name like '%$key%'";
+        if($limit !=0){
+            $sql .=" LIMIT " . $start . "," . $limit;
+        }
+        return $this->db->getAll($sql);
+    }
+    function tongUser(){
+        $sql = "SELECT COUNT(*) AS tong FROM users";
+        $kq = $this->db->getOne($sql);
+        return $kq['tong'];
+    }
+
+    
 
     
 }

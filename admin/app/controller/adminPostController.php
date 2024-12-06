@@ -1,4 +1,5 @@
 <?php
+session_start();
 class PostAdminController
 {
     private $postModel;
@@ -16,20 +17,24 @@ class PostAdminController
     }
     function view()
     {
-        $postDB = $this->postModel->getPost();
-
+        $currentPage = 1; // Mặc định trang đầu tiên
+        if (isset($_GET['currentPage'])) {
+            $currentPage = (int)$_GET['currentPage']; // Lấy số trang từ URL
+        }
+        if ($currentPage < 1) {
+            $currentPage = 1; // Đảm bảo số trang không nhỏ hơn 1
+        }
+        // Số lượng bài viết mỗi trang
+        $postsPerPage = 5;
+        // Tính toán vị trí bắt đầu của bài viết
+        $start = ($currentPage - 1) * $postsPerPage; 
+        // Lấy dữ liệu từ model
+        $postDB = $this->postModel->getPost($start, $postsPerPage);
         foreach ($postDB as &$post) {
-            // lấy tên danh mục cảu bài viết
             $catePost = $this->postCateModel->getCateId($post['idCatePost']);
             $post['catePost'] = $catePost['name'];
-
-            // Xử lý View không để trống
-            // if ($post['view'] === null) {
-            //     $post['view'] = 0;
-            // } else {
-            //     $post['view'] = $post['view'];
-            // };
-            // xử lý trạng thái
+    
+            // Xử lý trạng thái bài viết
             $statusHtml = '';
             if ($post['status'] === 1) {
                 $statusHtml = '<span class="status success">Đã đăng</span>';
@@ -40,8 +45,80 @@ class PostAdminController
             }
             $post['status'] = $statusHtml;
         }
-        require_once 'app/view/post.php';
+    
+        // Lấy tổng số bài viết
+        $totalPosts = $this->postModel->getTotalPosts(); // Thêm một phương thức để lấy tổng số bài viết
+        $totalPages = ceil($totalPosts / $postsPerPage); // Tổng số trang
+    
+        // Tính các trang hiển thị gần nhau
+        $pageRange = 3; // Hiển thị 3 trang xung quanh trang hiện tại
+        $startPage = max(1, $currentPage - $pageRange);
+        $endPage = min($totalPages, $currentPage + $pageRange);
+    
+        // Trả về view với dữ liệu
+        $this->renderView('post', [
+            'posts' => $postDB,
+      
+            'currentPage' => $currentPage,
+            'startPage' => $startPage,
+            'endPage' => $endPage,
+            'totalPages' => $totalPages
+        ]);
     }
+    function adminSearchPost() {
+        $searchKey = isset($_GET['search']) && !empty(trim($_GET['search'])) ? trim($_GET['search']) : null;
+        // echo $searchKey;
+        $dataView = [];
+        $key = $searchKey;
+    
+        // Tính toán phân trang
+        $viTriHienTai = isset($_GET['currentPage']) && is_numeric($_GET['currentPage']) ? (int)$_GET['currentPage'] : 1;
+        $viTriHienTai = max(1, $viTriHienTai);
+
+        $soLuongTimKiem = 5;
+        $batDau = ($viTriHienTai - 1) * $soLuongTimKiem;
+
+        // Lấy dữ liệu tìm kiếm
+        $dataView = $this->postModel->adminSearchPost($key, $batDau, $soLuongTimKiem);
+        foreach ($dataView as &$post) {
+            $catePost = $this->postCateModel->getCateId($post['idCatePost']);
+            $post['catePost'] = $catePost['name'];
+    
+            // Xử lý trạng thái bài viết
+            $statusHtml = '';
+            if ($post['status'] === 1) {
+                $statusHtml = '<span class="status success">Đã đăng</span>';
+            } else if ($post['status'] === 0) {
+                $statusHtml = '<span class="status pending">Chưa đăng</span>';
+            } else if ($post['status'] === 2) {
+                $statusHtml = '<span class="status danger">Đã hủy</span>';
+            }
+            $post['status'] = $statusHtml;
+        }
+        // Tổng bài viết và phân trang
+        $tongPost = $this->postModel->getTotalPosts();
+        $tongPage = ceil($tongPost / $soLuongTimKiem);
+
+        $phamViTrang = 1;
+        $trangBatDau = max(1, $viTriHienTai - $phamViTrang);
+        $trangKetThuc = min($tongPage, $viTriHienTai + $phamViTrang);
+
+
+
+
+
+        // Render view
+        $this->renderView('adminSearchPost', [
+            'dataSearch' => $dataView,
+            'key' => $key,
+            'viTriHienTai' =>$viTriHienTai,
+            'trangBatDau' => $trangBatDau,
+            'trangKetThuc' => $trangKetThuc,
+            'tongPage' => $tongPage
+        ]);
+        // require_once 'app/view/adminSearchPosst.php';
+    }
+    
     function addPost()
     {
         $listCatePost = $this->postCateModel->getAllCatePost();
@@ -49,14 +126,23 @@ class PostAdminController
         $date = date('Y-m-d H:i:s');
         $error = [];
         $dataForm = [];
+        
+
         if (isset($_POST['submitForm'])) {
+            
             $dataForm['title'] = $_POST['tieuDe'];
             $dataForm['text'] = $_POST['noiDung'];
             $dataForm['datePost'] = $date;
             $dataForm['description'] = $_POST['moTaNgan'];
             $dataForm['status'] = $_POST['status'];
             $dataForm['idCatePost'] = $_POST['danhMuc'];
-            $dataForm['idUserPost'] = 1;
+            // $dataForm['idUserPost'] = 1;
+            if (isset($_SESSION['user'])) {
+                $dataForm['idUserPost'] = $_SESSION['user']; // Lấy idUser từ session
+            } else {
+                echo 'Vui lòng đăng nhập để thực hiện thao tác này';
+                exit;
+            }
             $dataForm['image'] = $_FILES['img']['name'];
             $error['title'] = (empty($dataForm['title'])) ? 'Tiều đều không được để trống' : '';
             $error['text'] = (empty($dataForm['text'])) ? 'Nội dung không được để trống' : '';
@@ -135,8 +221,7 @@ class PostAdminController
                         $this->postModel->deletePost($id);
                     }
                 }
-                echo '<script>
-                    alert("Xóa bài viết thành công");
+                echo '<script>/-strong/-heart:>:o:-((:-h alert("Xóa bài viết thành công");
                     window.location.href = "index.php?page=post";
                     </script>';
             } else {

@@ -6,7 +6,9 @@
         </div>
         <div class="main-header">
             <div class="right-main-header">
-                <input type="text" placeholder="Tìm kiếm">
+            <input type="text" class="inputSearch" placeholder="Tìm kiếm" name="search">
+            <span class="submitSearch" style="cursor: pointer;">Tìm kiếm</span>
+
                 <div class="filter"><i class="fa-solid fa-filter"></i></div>
                 <div class="sort"><i class="fa-solid fa-arrow-down-a-z"></i></div>
             </div>
@@ -39,10 +41,10 @@
                 <label for="">Mô tả ngắn</label>
                 <input type="text" name="moTaNgan" value="<?= $postID['description'] ?>">
             </div>
-            <div class="text-main-product">
+            <div class="text-main-product" style="display:block">
                 <label for="">Nội dung</label>
                 <!-- <input type="text"> -->
-                <textarea name="noiDung" id="" cols="50" rows="5"><?= $postID['text'] ?></textarea>
+                <textarea id="CKEditor" name="noiDung" id="" cols="50" rows="5"><?= $postID['text'] ?></textarea>
             </div>
             <div class="category-main-product">
                 <label for="">Hình ảnh</label>
@@ -58,8 +60,7 @@
             <!-- Hình ảnh -->
             <div class="category-main-product">
                 <label for="status">Trạng thái</label>
-                <select name="trangThai" id="">
-                    <option value="0" <?php echo ($postID['status'] == 0) ? 'selected' : ''; ?>>Chưa đăng</option>
+                <select name="trangThai" id=""><option value="0" <?php echo ($postID['status'] == 0) ? 'selected' : ''; ?>>Chưa đăng</option>
                     <option value="1" <?php echo ($postID['status'] == 1) ? 'selected' : ''; ?>>Đã đăng</option>
                     <option value="2" <?php echo ($postID['status'] == 2) ? 'selected' : ''; ?>>Đã hủy</option>
                 </select>
@@ -73,6 +74,11 @@
 </div>
 </div>
 </div>
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script src="public/js/search.js"></script>
+<script>
+    CKEDITOR.replace('CKEditor');
+</script>
 </body>
 
 </html>

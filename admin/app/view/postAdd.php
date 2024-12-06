@@ -53,10 +53,10 @@
                 echo '<div style="color: red; padding-left: 307px;">' . $error['description'] . '</div>';
             }
             ?>
-            <div class="text-main-product">
+            <div class="text-main-product" style="display:block">
                 <label for="">Nội dung</label>
                 <!-- <input type="text"> -->
-                <textarea name="noiDung" id="" cols="50" rows="5"><?php echo isset($dataForm['text']) ? $dataForm['text'] : '' ?></textarea>
+                <textarea id="CKEditor" name="noiDung" id="" cols="50" rows="5"><?php echo isset($dataForm['text']) ? $dataForm['text'] : '' ?></textarea>
             </div>
             <?php
             if (isset($error['text'])) {
@@ -65,8 +65,7 @@
             ?>
             <!-- Hình ảnh -->
             <div class="category-main-product">
-                <label for="">Hình ảnh</label>
-                <input type="file" name="img" value="">
+                <label for="">Hình ảnh</label><input type="file" name="img" value="">
             </div>
             <?php
             if (isset($error['image'])) {
@@ -90,6 +89,10 @@
 </div>
 </div>
 </div>
+<script src="https://cdn.ckeditor.com/4.22.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('CKEditor');
+</script>
 </body>
 
 </html>
