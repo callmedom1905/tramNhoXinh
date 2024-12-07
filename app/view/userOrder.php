@@ -61,7 +61,7 @@
                                     <td><a href="">Xem chi tiết</a></td>
                                     <?php
                                     if($status == 1){
-                                        echo '<td><a href="index.php?page=cancelOrder&id=<?=$id?>" class="cancel-order">Hủy đơn hàng</a></td>';
+                                        echo '<td><a href="index.php?page=cancelOrder&id='.$id.'" class="cancel-order">Hủy đơn hàng</a></td>';
                                     }else{
                                         echo '<td></td>';
                                     }

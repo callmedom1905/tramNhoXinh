@@ -36,7 +36,7 @@
                         <th>Trạng thái</th>
                         <th>Sửa</th>
                     </tr>
-                </thead>
+                </thead> 
                 <tbody>
                     <!-- Duyệt qua các bài viết và hiển thị -->
                     <?php

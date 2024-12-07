@@ -54,10 +54,6 @@ class ProAdminController
                 // Ảnh cũ sẽ không bị xóa nếu không thay đổi
                 if (!empty($_POST['image_old'])) {
                     $oldImage = "../public/image/" . $_POST['image_old'];
-                    if (file_exists($oldImage)) {
-                        // Ảnh cũ không bị xóa nếu không thay đổi
-                        // unlink($oldImage); 
-                    }
                 }
             } else {
                 // Nếu không có ảnh mới, giữ lại ảnh cũ

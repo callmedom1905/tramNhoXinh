@@ -41,12 +41,12 @@
                         <td><?= $name ?></td>
                         <td><?= $address ?></td>
                         <td><?= $phone ?></td>
-                        <td><?= $dateOrder ?></td>
+                        <td><?= date('H:i:s d/m/Y', strtotime($dateOrder)) ?></td>
                         <td><?= $noteUser ?></td>
                         <?php
                         if ($status == 0) echo '<td><span class="status danger">Đã hủy</span></td>';
                         if ($status == 1) echo '<td><span class="status pending">Chờ xác nhận</span></td>';
-                        if ($status == 2) echo '<td><span class="status succes">Đang vận chuyển</span></td>';
+                        if ($status == 2) echo '<td><span class="status success">Đang vận chuyển</span></td>';
                         if ($status == 3) echo '<td><span class="status done">Đã giao</span></td>';
                         ?>
                         <td><a href="?page=orderDetail&id=<?= $id ?>">Xem</a></td>

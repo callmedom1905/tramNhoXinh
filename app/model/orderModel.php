@@ -40,22 +40,42 @@ class OrderModel{
         return $this->db->getOne($sql);
     }
 
-    function getOrderDetailsWithImages($idOrder) {
-        $sql = "SELECT 
+    public function getOrderDetailsWithImages($idOrder)
+    {
+        $sql = "SELECT
                     oi.id, 
                     oi.quantity, 
                     oi.priceItem, 
-                    p.name AS productName, 
-                    p.image
+                    p.name AS productName,
+                    p.image,
+                    o.status AS orderStatus,-- Lấy trạng thái đơn hàng từ bảng orders
+                    o.totalPrice
                 FROM 
                     orderitems oi
                 JOIN 
                     products p ON oi.idProduct = p.id
+                JOIN
+                    orders o ON oi.idOrder = o.id  -- Kết hợp bảng orders
                 WHERE 
                     oi.idOrder = :idOrder";
         return $this->db->getAll($sql, ['idOrder' => $idOrder]);
     }
 
+    public function updateOrderStatus($orderId, $status)
+    {
+        // Cập nhật trạng thái đơn hàng trong bảng orders
+        $sql = "UPDATE orders SET status = :status WHERE id = :id";
+        $this->db->update($sql, ['status' => $status, 'id' => $orderId]);
+    }
+
+    public function getOrderStatus($idOrder)
+    {
+        $sql = "SELECT status FROM orders WHERE id = :idOrder";
+        $result = $this->db->getOne($sql, ['idOrder' => $idOrder]);
+        return $result['status'] ?? null; // Trả về trạng thái hoặc null nếu không tồn tại
+    }
+
+    
 
     
 }

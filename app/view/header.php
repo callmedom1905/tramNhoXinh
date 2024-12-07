@@ -172,8 +172,8 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                             <button class="giam" data-id="<?= $item['id'] ?>"><i
                                                     class="fa-solid fa-minus"></i></button>
                                             <span class="so"><?= $item['quantity'] ?></span>
-                                            <button class="tang" data-id="<?= $item['id'] ?>"><i
-                                                    class="fa-solid fa-plus"></i></button>
+                                            <button class="tang" data-id="<?= $item['id'] ?>">
+                                                <i class="fa-solid fa-plus"></i></button>
                                         </div>
                                         <div class="cart-Price">
                                         <h3 class="price"><?= number_format((int) $item['price'], 0, ',', '.') ?> đ</h3>

@@ -129,6 +129,11 @@ if (isset($_GET['page'])) {
             $orderDetail = new adminOrderController();
             $orderDetail->OrdDetail();
             break;
+        case 'updateStatus':
+            $updateStatus = new adminOrderController();
+            $updateStatus->updateStatus();
+            break;
+    
             //comment
         case 'comment':
             $comment = new CommentAdminController();

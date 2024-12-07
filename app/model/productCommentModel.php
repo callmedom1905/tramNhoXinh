@@ -22,13 +22,23 @@ class ProductCommentModel{
     function getCommentAndNameUser()
     {
         $sql = "SELECT 
-                c.id, c.text, c.idProduct, c.dateProComment, c.status, u.name as userName
+                c.id AS commentId, 
+                c.text AS commentText, 
+                c.idProduct, 
+                c.dateProComment, 
+                c.status, 
+                u.name AS userName, 
+                p.name AS productName
             FROM 
                 productcomment c
             JOIN 
                 users u 
             ON 
-                c.idUser = u.id";
+                c.idUser = u.id
+            JOIN 
+                products p 
+            ON 
+                c.idProduct = p.id";
         return $this->db->getAll($sql);
     }
 
