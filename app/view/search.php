@@ -99,8 +99,9 @@
                                                 </div>
                                             </a>
 
-                                            <button class="addCart-product">Thêm vào giỏ hàng</button>/-strong/-heart:>:o:-((:-h <button class="heart-button">
-                                                <i class="icon on fa-solid fa-heart"></i>
+                                            <button class="addCart-product">Thêm vào giỏ hàng</button>
+                                            <button class="heart-button" data-id="<?=$id?>">
+                                                <i class="icon on fa-solid fa-heart" ></i>
                                                 <i class="icon off fa-regular fa-heart"></i>
                                             </button>
                                         </div>

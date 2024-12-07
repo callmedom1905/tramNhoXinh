@@ -4,6 +4,12 @@ class ProductsModel{
     function __construct(){
         $this->db = new DataBase();
     }
+    //kiểm tra số lượng sản phẩm
+    function checkQuantity($id){
+        $sql= "SELECT quantity FROM products WHERE id = $id";
+        return $this->db->getOne($sql);
+        }
+
     //trang chủ
     function get8Pro(){
         $sql = "SELECT * FROM products LIMIT 8";
@@ -60,7 +66,6 @@ class ProductsModel{
         $sql = "SELECT * FROM products WHERE idCate = '$idcate' AND id <> '$idpro' LIMIT 4"; 
         return $this->db->getAll($sql);
    }
-
 
    //admin
    function getProduct()

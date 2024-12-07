@@ -162,6 +162,10 @@ if (isset($_GET['page'])) {
             $addToCart = new CartController();
             $addToCart->addToCart();
             break;
+        case 'checkQuantity':
+            $checkQuantity = new CartController();
+            $checkQuantity->checkQuantity();
+            break;
         case 'removeFromCart':
             $removeFromCart = new CartController();
             $removeFromCart->removeFromCart();

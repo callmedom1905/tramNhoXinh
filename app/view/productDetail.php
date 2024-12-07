@@ -61,18 +61,20 @@ extract($product);
                                     <input type="text" id="amount" value="1">
                                     <button class="plus"><i class="fa-solid fa-plus"></i></button>
                                 </div>
-                                <p>Mô tả</p>
+                                <div class="description-product">
+                                    <p><?=$description?></p>
+                                </div>
                                 <div class="cart-button">
                                     <form action="index.php?page=addToCartInDetail" method="post" style=" display: contents;">
                                         <input type="hidden" name="product_quantity" class="amount" id="hidden_quantity" value="1">
-                                        <input type="hidden" name="product_id" value="<?= $id ?>">
+                                        <input type="hidden" name="product_id" class="product_id" value="<?= $id ?>" >
                                         <input type="hidden" name="product_name" value="<?= $name ?>">
                                         <input type="hidden" name="product_price" value="<?= $price ?>">
                                         <input type="hidden" name="product_image" value="<?= $image ?>">
                                         <input type="hidden" name="product_color" value="<?= $color ?>">
                                         <button type="submit" name="addToCartInDetail" class="addCart-product">Thêm vào giỏ hàng</button>
                                     </form>
-                                    <button>Mua ngay</button>
+                                    <!-- <button>Mua ngay</button> -->
                                 </div>
                             </div>
                         </div>

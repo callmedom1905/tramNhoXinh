@@ -1,6 +1,10 @@
 <?php
 class CartController
 {
+    private $product;
+    function __construct(){
+        $this->product = new ProductsModel();
+    }
     function addToCart()
     {
         // Kiểm tra xem form đã được gửi hay chưa
@@ -71,6 +75,26 @@ class CartController
                 }
             }
         }
+    }
+
+    function checkQuantity(){
+        header('Content-Type: application/json');
+        $input = file_get_contents('php://input');
+        $data = json_decode($input, true);
+    
+        // Kiểm tra dữ liệu đầu vào
+        if (!isset($data['proId'])) {
+            echo json_encode(['error' => 'Invalid input']);
+            return;
+        }
+    
+        $proId = $data['proId'];
+        $kq = $this->product->checkQuantity($proId);
+        // Đảm bảo trả về JSON hợp lệ
+        echo json_encode([
+            'proId' => $proId,
+            'quantity' => $kq
+        ]);
     }
 
     function updateCart()

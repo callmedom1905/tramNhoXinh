@@ -22,7 +22,8 @@
 }
 
 .product-detail .info {
-    flex: 1;    
+    flex: 1;  
+    position: relative;  
 }
 
 .product-detail .info h2 {
@@ -43,6 +44,12 @@
     font-size: 1.5em;
     color: #8D6e6e;
     margin: 10px 0;
+}
+
+.description-product{
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 /* nút tăng giảm số lượng */
