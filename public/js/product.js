@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     const slDbHienTai = data.quantity.quantity;
                     console.log(slDbHienTai);
                     const hienThiValue  = parseInt(soHienThi.value);
-                    if(slDbHienTai > hienThiValue ){
+                    if(slDbHienTai >= hienThiValue ){
                         hiddenQuantity.value = hienThiValue ; 
                     }else{
-                        alert('Hết hàng');
-                        soHienThi.value = hienThiValue  -1
+                        alert(`Chỉ còn ${slDbHienTai} sản phẩm trong kho.`);
+                        soHienThi.value = hienThiValue  - 1
                     }
                     
                 } else {
@@ -115,7 +115,7 @@ function checkQuantity(soLuongHienTai,proId,nut) {
                     updateCart('tang', proId); 
                     hamCapNhat();
                 }else{
-                    alert('Hết hàng');
+                    alert(`Chỉ còn ${slDbHienTai} sản phẩm trong kho.`);
                     
                     const cartBoxMain = nut.closest('.cart-box-main');
                     const so = cartBoxMain.querySelector('.so')

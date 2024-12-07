@@ -344,11 +344,11 @@ function checkQuantity(soLuongHienTai,proId,nut) {
                 const jsonString = jsonMatch[0]; 
                 const data = JSON.parse(jsonString); 
                 const slDbHienTai = data.quantity.quantity;
-                if (soLuongHienTai < slDbHienTai) {
+                if (soLuongHienTai <= slDbHienTai) {
                     updateCart('tang', proId); 
                     hamCapNhat();
                 }else{
-                    alert('Hết hàng');
+                    alert(`Chỉ còn ${slDbHienTai} sản phẩm trong kho.`);
                     
                     const cartBoxMain = nut.closest('.cart-box-main');
                     const so = cartBoxMain.querySelector('.so')
