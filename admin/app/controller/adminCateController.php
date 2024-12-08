@@ -25,7 +25,13 @@ class CateAdminController
 
     function viewCategory()
     {
-        $this->data['listcate'] = $this->category->getAllCate();
+        $page = isset($_GET['p']) ? (int)$_GET['p'] : 1;
+        $limit = 4;
+        $totalCates = $this->category->getTotalCates();
+        $totalPages = ceil($totalCates / $limit);
+        $this->data['listcate'] = $this->category->getCatesPaginated($page, $limit);
+        $this->data['totalPages'] = $totalPages;  // Thêm dòng này
+        $this->data['currentPage'] = $page;  // Thêm dòng này nếu bạn cần sử dụng trang hiện tại trong view
         $this->renderView('category', $this->data);
     }
 

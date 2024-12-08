@@ -46,4 +46,17 @@ class ProductCateModel{
         $this->db->delete($sql, [$id]);
     }
     
+    public function getTotalCates()
+    {
+        $sql = "SELECT COUNT(*) as total FROM productcate";
+        $result = $this->db->getOne($sql);
+        return $result['total'];
+    }
+
+    public function getCatesPaginated($page, $limit)
+    {
+        $start = ($page - 1) * $limit;
+        $sql = "SELECT * FROM productcate LIMIT $start, $limit";
+        return $this->db->getAll($sql);
+    }   
 }

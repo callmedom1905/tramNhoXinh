@@ -19,9 +19,16 @@ class ProAdminController
 
     function viewPro()
     {
-        $this->data['listpro'] = $this->product->getProduct();
+        $page = isset($_GET['p']) ? (int)$_GET['p'] : 1;
+        $limit = 4;
+        $totalProducts = $this->product->getTotalProducts();
+        $totalPages = ceil($totalProducts / $limit);
+        $this->data['listpro'] = $this->product->getProductsPaginated($page, $limit);
+        $this->data['totalPages'] = $totalPages;  // Thêm dòng này
+        $this->data['currentPage'] = $page;  // Thêm dòng này nếu bạn cần sử dụng trang hiện tại trong view
         $this->renderView('product', $this->data);
     }
+
 
     function viewEditPro()
     {
@@ -118,7 +125,9 @@ class ProAdminController
             $data['name'] = $_POST['name'];
             $data['idCate'] = $_POST['idCate'];
             $data['price'] = $_POST['price'];
-            $data['salePrice'] = $_POST['salePrice'];
+            // $data['salePrice'] = $_POST['salePrice'];
+            $data['salePrice'] = isset($_POST['salePrice']) && $_POST['salePrice'] !== '' ? $_POST['salePrice'] : null;
+
             $data['quantity'] = $_POST['quantity'];
             $data['status'] = $_POST['status'];
             // Xử lý ảnh chính

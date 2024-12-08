@@ -80,9 +80,11 @@
     </form>
     <!-- button chuyển trang -->
     <div class="main-turnpage">
-        <button class="prev">1</button>
-        <button class="next">2</button>
-        <button class="nextpage">></button>
+        <?php for ($i = 1; $i <= $data['totalPages']; $i++) : ?>
+            <li class="page-item <?= ($i == $data['currentPage']) ? 'active' : '' ?>">
+                <a class="page-link" href="?page=product&p=<?= $i ?>"><?= $i ?></a>
+            </li>
+        <?php endfor; ?>
     </div>
 </div>
 </div>

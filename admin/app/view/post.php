@@ -66,28 +66,27 @@
     <!-- Phân trang -->
     <div class="main-turnpage">
         <?php
-        // Hiển thị các số trang gần với trang hiện tại
-        $pageRange = 1; // Số trang cần hiển thị xung quanh trang hiện tại
-        $startPage = max(1, $currentPage - $pageRange); // Trang bắt đầu (không nhỏ hơn 1)
-        $endPage = min($totalPages, $currentPage + $pageRange); // Trang kết thúc (không lớn hơn tổng số trang)
-
+        $currentPage = $data['currentPage'];
+        $startPage = $data['startPage'];
+        $totalPages = $data['totalPages'];
+        $endPage =$data['endPage'];
         // Hiển thị nút trang trước
         if ($currentPage > 1) {
-            echo '<a href="index.php?page=post&currentPage=' . ($currentPage - 1) . '" class="prev"><i class="fa-solid fa-angle-left"></i></a>';
+            echo '<a href="index.php?page=post&currentPage=' . ($currentPage - 1) . '" class="prev" ><i class="fa-solid fa-angle-left"></i></a>';
         }
 
         // Hiển thị các số trang
         for ($i = $startPage; $i <= $endPage; $i++) {
             if ($i == $currentPage) {
-                echo '<span class="current-page">' . $i . '</span>';
+                echo '<span class="prev">' . $i . '</span>';
             } else {
-                echo '<a href="index.php?page=post&currentPage=' . $i . '">' . $i . '</a>';
+                echo '<a class="next"  href="index.php?page=post&currentPage=' . $i . '">' . $i . '</a>';
             }
         }
 
         // Hiển thị nút trang tiếp theo
         if ($currentPage < $totalPages) {
-            echo '<a href="index.php?page=post&currentPage=' . ($currentPage + 1) . '" class="next"><i class="fa-solid fa-angle-right"></i></a>';
+            echo '<a href="index.php?page=post&currentPage=' . ($currentPage + 1) . '" class="next" ><i class="fa-solid fa-angle-right"></i></a>';
         }
         ?>
     </div>

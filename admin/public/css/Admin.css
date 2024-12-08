@@ -281,6 +281,21 @@ tbody a:hover {
     padding: 10px;
 }
 
+.main-turnpage li{
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 100%;
+    border: 3px solid #8D6E6E;
+    background-color: #fff;
+    color: #8D6E6E;
+    list-style-type: none;
+}
+
+.main-turnpage a{
+    text-decoration: none;
+    color: #8d6e6e;
+}
+
 .main-turnpage .prev {
     padding: 5px 10px;
     margin-right: 10px;

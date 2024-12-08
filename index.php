@@ -51,6 +51,11 @@ if (isset($_GET['page'])) {
             $productDetail = new ProductController();
             $productDetail->viewProDetail();
             break;
+        // Bình Luận
+        case 'addComment':
+            $addComment = new ProductController();
+            $addComment->addComment();
+            break;
 
         // trang bài viết
         case 'post':

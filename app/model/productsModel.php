@@ -110,6 +110,20 @@ class ProductsModel{
         $sql = "DELETE FROM products WHERE id = ?";
         return $this->db->delete($sql, [$id]);
     }
+
+    public function getTotalProducts()
+    {
+        $sql = "SELECT COUNT(*) as total FROM products";
+        $result = $this->db->getOne($sql);
+        return $result['total'];
+    }
+
+    public function getProductsPaginated($page, $limit)
+    {
+        $start = ($page - 1) * $limit;
+        $sql = "SELECT * FROM products LIMIT $start, $limit";
+        return $this->db->getAll($sql);
+    }
     
 
     

@@ -110,6 +110,7 @@
                                             <input type="hidden" name="product_price" value="<?=$price?>">
                                             <input type="hidden" name="product_image" value="<?=$image?>">
                                             <input type="hidden" name="product_color" value="<?=$color?>">
+                                            <input type="hidden" name="product_quantity" value="1">
                                             <button type="submit" name="addToCart" class="addCart-product">Thêm vào giỏ hàng</button>
                                         </form>
                                         <button class="heart-button" data-id="<?=$id?>">

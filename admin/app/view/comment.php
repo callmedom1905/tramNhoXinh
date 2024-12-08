@@ -45,11 +45,11 @@
         </table>
     </div>
     <!-- button chuyển trang -->
-    <div class="main-turnpage">
+    <!-- <div class="main-turnpage">
         <button class="prev">1</button>
         <button class="next">2</button>
         <button class="nextpage">></button>
-    </div>
+    </div> -->
 </div>
 </div>
 </div>

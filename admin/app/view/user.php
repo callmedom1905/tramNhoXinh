@@ -68,17 +68,17 @@
             $cuoiTrang = $data['cuoiTrang'];
             // nút trước
             if($viTriHienTai > 1){
-                echo '<a href="index.php?page=user&currentPage=' . ($viTriHienTai - 1) . '"><i class="fa-solid fa-angle-left"></i></a>';
+                echo '<a href="index.php?page=user&currentPage=' . ($viTriHienTai - 1) . '" class="prev"><i class="fa-solid fa-angle-left"></i></a>';
             }
             for ($i = $batDauTrang; $i <= $cuoiTrang; $i++){
                 if($i == $viTriHienTai){
-                    echo "<span>$i</span>";
+                    echo '<span class="prev">' . $i . '</span>';
                 }else{
-                    echo '<a href="index.php?page=user&currentPage='.$i.'">'.$i.'</a>';
+                    echo '<a class="next" href="index.php?page=user&currentPage='.$i.'">'.$i.'</a>';
                 }
             }
             if($viTriHienTai < $tongPage){
-                echo '<a href="index.php?page=user&currentPage=' . ($viTriHienTai + 1) . '"><i class="fa-solid fa-angle-right"></i></a>';
+                echo '<a href="index.php?page=user&currentPage=' . ($viTriHienTai + 1) . '" class="next" ><i class="fa-solid fa-angle-right"></i></a>';
             }
         }
         ?>

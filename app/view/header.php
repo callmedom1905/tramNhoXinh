@@ -389,5 +389,8 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
 
         </div>
     </section>
+
+    
+
 </body>
 <script src="public/js/header.js"></script>

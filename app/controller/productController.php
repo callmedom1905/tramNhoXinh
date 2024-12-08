@@ -51,5 +51,17 @@ class ProductController
         }
     }
 
+    function addComment()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $data['idProduct'] = $_POST['idProduct'];
+            $data['idUser'] = $_SESSION['user'];
+            $data['text'] = trim($_POST['comment_text']);
+            $this->comment->addComment($data);
+            echo "<script>alert('Thêm bình luận thành công')</script>";
+            echo '<script>location.href="?page=productDetail&id=' . $data['idProduct'] . '"</script>';
+        }
+    }
+
 
 }

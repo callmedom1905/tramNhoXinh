@@ -18,6 +18,13 @@ class ProductCommentModel{
         $sql = "SELECT * FROM productcomment WHERE id = $id";
         return $this->db->getOne($sql);
     }
+
+    public function addComment($data)
+    {
+        $sql = "INSERT INTO productcomment (idProduct, idUser, text, status, dateProComment) VALUES (?,?,?, 1,NOW())";
+        $param = [$data['idProduct'], $data['idUser'], $data['text']];
+        return $this->db->insert($sql, $param);
+    }
     //admin
     function getCommentAndNameUser()
     {
@@ -58,4 +65,6 @@ class ProductCommentModel{
         ";
         return $this->db->getOne($sql, ['id' => $id]);
     }
+
+
 }
