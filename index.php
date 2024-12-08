@@ -16,6 +16,7 @@ require_once 'app/model/searchModel.php';
 require_once 'app/model/orderModel.php';
 require_once 'app/model/orderItemModel.php';
 require_once 'app/model/bannerModel.php';
+require_once 'app/model/mailModel.php';
 
 //Controller
 require_once 'app/controller/homeController.php';
@@ -127,6 +128,10 @@ if (isset($_GET['page'])) {
             $contact = new ContactController();
             $contact->viewContact();
             break;
+           //gửi mail liên hệ
+        case 'contactSendMail':
+            $contactSendMail = new ContactController();
+            $contactSendMail->handleContactForm();
             //trang giới thiệu
         case 'about':
             $about = new HomeController();

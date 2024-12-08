@@ -24,7 +24,7 @@
             <p style="margin: 0;">Trạm Nhỏ Xinh</p>
             <p style="margin: 0;">📍 QTSC 9, CVPM Quang Trung, Quận 12, TP. Hồ Chí Minh</p>
             <p style="margin: 0;">📞 0933661897 | 🌐 
-                <!-- <a href="https://ngulongbakery.store" style="color: #8d6e6e; text-decoration: none;">ngulongbakery.store</a> -->
+                <a href="https://tramnhoxinh.name.vn" style="color: #8d6e6e; text-decoration: none;">tramnhoxinh.name.vn</a>
             </p>
         </div>
     </div>

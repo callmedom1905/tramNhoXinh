@@ -15,7 +15,7 @@
                 
                 <div class="col l-8 contact-form">
                     <h2>Liên hệ với chúng tôi</h2>
-                    <form class="contact-form" action="">
+                    <form class="contact-form" action="index.php?page=contactSendMail" method="post">
 
                         <div class="form_information">
                         <input type="text" id="name" name="name" placeholder="Họ và tên" required>         
@@ -23,16 +23,16 @@
                         </div>
 
                         <div class="form_information">
-                        <input type="text" name="phone" placeholder="Số điện thoại" pattern="^0\d{9}$" required />
+                        <!-- <input type="text" name="phone" placeholder="Số điện thoại" pattern="^0\d{9}$" required /> -->
                         <input type="text" id="subject" name="subject" placeholder="Nhập chủ đề" required>
                         
                         </div>
 
                         <div class="form_information"> 
-                            <textarea id="note" placeholder="Nhập nội dung" rows="5"></textarea> <br>
+                            <textarea id="note" name="message" placeholder="Nhập nội dung" rows="5"></textarea> <br>
                         </div>
 
-                        <button class="gui-button">Gửi Liên Hệ</button>
+                        <button type="submit" class="gui-button">Gửi Liên Hệ</button>
                     </form>
                 </div>
 
