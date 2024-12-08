@@ -11,8 +11,11 @@ class ProductsModel{
         }
 
     //trang chủ
-    function get8Pro(){
-        $sql = "SELECT * FROM products LIMIT 8";
+    function getQuantityPro($start, $limit){
+        $sql = "SELECT * FROM products";
+        if($limit != 0){
+            $sql.=" LIMIT ".$start.",".$limit;
+        }
         return $this->db->getAll($sql);
     }
 

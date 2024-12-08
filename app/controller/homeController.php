@@ -19,9 +19,9 @@ class HomeController{
     }
 
     function viewHome(){
-        $this->data['product8'] = $this->product->get8Pro();
+        $this->data['product8'] = $this->product->getQuantityPro(0,8);
         $this->data['product6'] = $this->product->get6Pro();
-        $this->data['post'] = $this->post->getPost(0,0);
+        $this->data['post'] = $this->post->getPost(0,3);
         $this->data['banner'] = $this->banner->getBanner();
         return $this->renderView('home', $this->data);
     }
