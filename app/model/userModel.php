@@ -102,7 +102,7 @@ class UserModel
         }
         return $this->db->getAll($sql);
     }
-    function tongUser(){
+function tongUser(){
         $sql = "SELECT COUNT(*) AS tong FROM users";
         $kq = $this->db->getOne($sql);
         return $kq['tong'];

@@ -221,7 +221,7 @@ class PostAdminController
                         $this->postModel->deletePost($id);
                     }
                 }
-                echo '<script>/-strong/-heart:>:o:-((:-h alert("Xóa bài viết thành công");
+                echo '<script>alert("Xóa bài viết thành công");
                     window.location.href = "index.php?page=post";
                     </script>';
             } else {

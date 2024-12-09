@@ -180,8 +180,9 @@ if (isset($_SESSION['user']) && ($_SESSION['user'] != '')) {
                                         </div>
                                         <form action="index.php?page=removeFromCart" method="post" class="form-deteleCart">
                                             <input type="hidden" name="deletePro" value="<?= $item['id'] ?>">
-                                            <button class="cart-xoaProduct" name="removeFromCart"><i
-                                                    class="fa-solid fa-xmark"></i></button>
+                                            <button class="cart-xoaProduct" name="removeFromCart">
+                                                <i class="fa-solid fa-xmark"></i>
+                                            </button>
                                         </form>
 
                                     </div>
