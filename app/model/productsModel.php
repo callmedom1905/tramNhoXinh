@@ -12,7 +12,7 @@ class ProductsModel{
 
     //trang chủ
     function getQuantityPro($start, $limit){
-        $sql = "SELECT * FROM products";
+        $sql = "SELECT * FROM products ORDER BY id DESC";
         if($limit != 0){
             $sql.=" LIMIT ".$start.",".$limit;
         }
@@ -20,7 +20,7 @@ class ProductsModel{
     }
 
     function get6Pro(){
-        $sql = "SELECT * FROM products ORDER BY name DESC LIMIT 6";
+        $sql = "SELECT * FROM products ORDER BY view DESC LIMIT 6";
         return $this->db->getAll($sql);
     }
     
